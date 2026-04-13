@@ -28,7 +28,7 @@
 | Secondary CTA | Link `See how it works ↓` — scrolls to LP-03 |
 | Visual | Short looping animation / illustration: trader → network → funds arriving in wallet (~3s loop) |
 | Layout | 2 columns: Text left · Visual right (desktop) / Stacked (mobile) |
-| Background | Deep navy `#1E3A5F` or white with subtle gradient |
+| Background | Deep teal `#146255` or white with subtle gradient |
 
 ---
 
@@ -190,9 +190,9 @@
 |---|---|
 | Headline | `Start Earning Rebates From Your Trades` |
 | Sub | `Free to sign up · Fast KYC · Connect your broker in 5 minutes` |
-| Primary CTA | Button `Sign Up Now` — large, accent color |
+| Primary CTA | Button `Sign Up Now` — large, teal accent color |
 | Secondary CTA | `Or reach us on Telegram →` |
-| Background | Deep navy or gradient, white text |
+| Background | Deep teal or gradient, white text |
 
 ---
 
@@ -223,7 +223,7 @@
 
 | Group | Rule |
 |---|---|
-| **Colors** | Brand: `#9fe870` Lime Green · Dark: `#0f1619` · Warning: `#B07000` Amber · Surface: `#F4F4F4` Gray |
+| **Colors** | Brand: `#18CBA8` Teal · Mint: `#29FFB5` · Dark: `#146255` · Warning: `#B07000` Amber · Surface: `#F4F4F4` Gray |
 | **Typography** | Font: Inter · Headline: 48–64px bold · Body: 16–18px regular · Line-height: 1.7 |
 | **CTA** | 1 primary CTA per viewport · Min height 48px · Border radius 9999px (pill) · Action-oriented text |
 | **Mobile** | Breakpoint 768px · Stacked layout · Touch target min 44px · No font below 14px |

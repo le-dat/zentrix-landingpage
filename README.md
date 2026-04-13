@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zentrix — Rebate Trading Platform
+
+**Zentrix** standardizes the rebate flow from your broker directly to your wallet. Fully on-chain transparent. No hidden intermediaries.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the landing page.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework**: Next.js 16 (App Router)
+- **UI**: React 19 + Tailwind CSS v4 + shadcn/ui
+- **i18n**: next-intl (English · Vietnamese)
+- **Fonts**: Geist + Geist Mono (Google Fonts)
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+├── app/
+│   ├── [locale]/           # Locale-based routing (en/vi)
+│   │   ├── layout.tsx      # Root layout with Header
+│   │   └── page.tsx        # Landing page
+│   ├── globals.css         # Global styles + CSS variables
+│   └── layout.tsx          # Root layout
+├── components/
+│   └── ui/                 # shadcn/ui components
+├── messages/
+│   ├── en.json             # English translations
+│   └── vi.json             # Vietnamese translations
+└── docs/
+    └── spec.md             # Design specification
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Commands
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev      # Development server
+npm run build    # Production build
+npm run start    # Start production server
+npm run lint     # ESLint
+```
 
-## Deploy on Vercel
+## Design
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See `docs/spec.md` for the full design specification covering:
+- Hero section (LP-01)
+- Trust metrics (LP-02)
+- How it works (LP-03)
+- Why Zentrix (LP-04)
+- Referral network (LP-05)
+- Integrated brokers (LP-06)
+- Comparison table (LP-07)
+- Testimonials (LP-08)
+- FAQ (LP-09)
+- Final CTA (LP-10)
+- Footer (LP-11)

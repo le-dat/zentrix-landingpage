@@ -2,13 +2,14 @@
 
 ## 1. Visual Theme & Atmosphere
 
-Zentrix is a fintech rebate platform that communicates trust, transparency, and modern professionalism. The design features a dark, sophisticated palette with a signature lime-green accent — fresh and optimistic, unlike the corporate blues of traditional banking.
+Zentrix is a fintech rebate platform that communicates trust, transparency, and modern professionalism. The design features a dark, sophisticated palette with a signature teal-mint accent — fresh and optimistic, unlike the corporate blues of traditional banking.
 
-The logo features a lime-green mark (`#9fe870`) on a dark background (`#0f1619`), with clean white text. This green-on-dark identity carries through CTAs and accent elements.
+The logo features a teal mark (`#18CBA8`) on a dark background (`#146255`), with clean white text. This teal-on-dark identity carries through CTAs and accent elements.
 
 **Key Characteristics:**
-- Lime Green (`#9fe870`) accent on dark surfaces — signature brand color
-- Dark background (`#0f1619`) for header/nav — sophisticated fintech feel
+- Teal (`#18CBA8`) accent on dark surfaces — signature brand color
+- Dark background (`#146255`) for header/nav — sophisticated fintech feel
+- Mint (`#29FFB5`) highlight for additional accent elements
 - White (`#ffffff`) text on dark backgrounds — high contrast readability
 - Scale(1.05) hover animations — buttons physically grow
 - Pill buttons (9999px radius) and rounded cards (16px–40px)
@@ -17,18 +18,19 @@ The logo features a lime-green mark (`#9fe870`) on a dark background (`#0f1619`)
 ## 2. Color Palette & Roles
 
 ### Primary Brand (from logo)
-- **Brand Green** (`#9fe870`): Logo mark, primary CTA, brand accent
-- **Dark** (`#0f1619`): Header background, logo icon background, dark sections
+- **Teal** (`#18CBA8`): Logo mark, primary CTA, brand accent
+- **Dark Teal** (`#146255`): Header background, logo icon background, dark sections
+- **Mint** (`#29FFB5`): Highlight accent, secondary CTAs, hover states
 - **White** (`#ffffff`): Logo text, primary text on dark, high contrast elements
 
 ### Supporting Colors
 - **Navy** (`#1E3A5F`): Alternative dark accent (used sparingly)
-- **Green Dark** (`#163300`): Text on green buttons/CTA for readability
+- **Teal Dark** (`#0d3d34`): Text on teal buttons/CTA for readability
 - **Surface** (`#F4F4F4`): Light section backgrounds
 - **Gray** (`#868685`): Muted text, secondary information
 
 ### Semantic
-- **Positive Green** (`#054d28`): Success states, confirmations
+- **Positive Teal** (`#0d3d34`): Success states, confirmations
 - **Danger Red** (`#d03238`): Error/destructive states
 - **Warning Amber** (`#B07000`): Warnings, attention states
 
@@ -65,9 +67,9 @@ The logo features a lime-green mark (`#9fe870`) on a dark background (`#0f1619`)
 
 ### Buttons
 
-**Primary Green Pill (CTA)**
-- Background: `#9fe870` (Brand Green)
-- Text: `#163300` (Green Dark — for readability on green)
+**Primary Teal Pill (CTA)**
+- Background: `#18CBA8` (Teal)
+- Text: `#0d3d34` (Teal Dark — for readability on teal)
 - Padding: 10px 20px
 - Radius: 9999px (pill)
 - Min height: 44px (touch-friendly)
@@ -78,7 +80,7 @@ The logo features a lime-green mark (`#9fe870`) on a dark background (`#0f1619`)
 **Secondary Pill (Nav/UI)**
 - Background: transparent
 - Text: White `rgba(255,255,255,0.85)`
-- Hover: `rgba(211,242,192,0.4)` green-tinted background, rounded-full
+- Hover: `rgba(41,255,181,0.4)` mint-tinted background, rounded-full
 - Padding: 8px 16px
 - Radius: 9999px
 - Same scale hover/active behavior
@@ -89,8 +91,8 @@ The logo features a lime-green mark (`#9fe870`) on a dark background (`#0f1619`)
 - Shadow: Minimal — ring shadows only on light surfaces
 
 ### Navigation
-- Header background: `#0f1619` (Dark from logo)
-- Nav link hover: `rgba(211,242,192,0.4)` green-tinted background
+- Header background: `#146255` (Dark Teal from logo)
+- Nav link hover: `rgba(41,255,181,0.4)` mint-tinted background
 - Clean header with Zentrix logo (left)
 - Pill CTAs right-aligned
 
@@ -124,8 +126,9 @@ The logo features a lime-green mark (`#9fe870`) on a dark background (`#0f1619`)
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Brand Green (`#9fe870`) for CTAs and accent elements
-- Use Dark (`#0f1619`) for header and dark sections
+- Use Teal (`#18CBA8`) for CTAs and accent elements
+- Use Dark Teal (`#146255`) for header and dark sections
+- Use Mint (`#29FFB5`) for highlights and secondary accents
 - Apply scale(1.05) hover and scale(0.95) active on buttons
 - Use pill shape (9999px radius) for buttons and nav items
 - Use Inter weight 600 as the body default
@@ -133,10 +136,10 @@ The logo features a lime-green mark (`#9fe870`) on a dark background (`#0f1619`)
 
 ### Don't
 - Don't use light font weights for display headings — use 700-800 for bold impact
-- Don't use the Brand Green as background for large surfaces — it's for accents and CTAs
+- Don't use the Teal as background for large surfaces — it's for accents and CTAs
 - Don't skip the scale animation on buttons
 - Don't use heavy shadows — prefer border-based separation
-- Don't use the old navy `#1E3A5F` for main branding — the logo uses `#0f1619`
+- Don't use the old navy `#1E3A5F` for main branding — the logo uses `#146255`
 
 ## 8. Responsive Behavior
 
@@ -151,15 +154,16 @@ The logo features a lime-green mark (`#9fe870`) on a dark background (`#0f1619`)
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference (from logo)
-- Brand Green: `#9fe870` — logo mark, CTAs, accents
-- Dark: `#0f1619` — header, logo background, dark sections
+- Teal: `#18CBA8` — logo mark, CTAs, accents
+- Dark Teal: `#146255` — header, logo background, dark sections
+- Mint: `#29FFB5` — highlights, secondary accents
 - White: `#ffffff` — text on dark, logo text
-- Button text on green: `#163300`
+- Button text on teal: `#0d3d34`
 - Surface (light): `#F4F4F4`
 - Gray: `#868685`
 
 ### Example Component Prompts
-- "Create hero: dark background (#0f1619). Headline in white, Inter 700 weight. Green pill CTA (#9fe870, 9999px radius, 10px 20px padding, #163300 text). Hover: scale(1.05)."
+- "Create hero: dark background (#146255). Headline in white, Inter 700 weight. Teal pill CTA (#18CBA8, 9999px radius, 10px 20px padding, #0d3d34 text). Hover: scale(1.05)."
 - "Build a card: 30px radius, border rgba(255,255,255,0.1). Title at 22px Inter weight 600, body at 18px weight 400."
 
 ### Iteration Guide

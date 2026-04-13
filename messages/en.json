@@ -9,11 +9,9 @@
     "documentation": "Documentation"
   },
   "HomePage": {
-    "title": "To get started, edit the page.tsx file.",
-    "description": "Looking for a starting point or more instructions? Head over to Templates or the Learning center.",
-    "templatesLink": "Templates",
-    "learningLink": "Learning",
-    "deployButton": "Deploy Now",
-    "documentationButton": "Documentation"
+    "title": "Build something amazing with Zentrix",
+    "description": "The modern platform for building and scaling your next project. Get started in minutes.",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
   }
 }
