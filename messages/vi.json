@@ -1,0 +1,19 @@
+{
+  "Common": {
+    "appName": "Zentrix"
+  },
+  "Navigation": {
+    "home": "Trang chủ",
+    "templates": "Mẫu giao diện",
+    "learning": "Học tập",
+    "documentation": "Tài liệu"
+  },
+  "HomePage": {
+    "title": "Để bắt đầu, chỉnh sửa file page.tsx.",
+    "description": "Tìm kiếm điểm bắt đầu hoặc hướng dẫn thêm? Truy cập Mẫu giao diện hoặc Trung tâm Học tập.",
+    "templatesLink": "Mẫu giao diện",
+    "learningLink": "Học tập",
+    "deployButton": "Triển khai ngay",
+    "documentationButton": "Tài liệu"
+  }
+}
