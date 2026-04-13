@@ -115,6 +115,53 @@
 
 ---
 
+## LP-06B · Broker Rebate Listing *(Backcom-style)*
+
+**Goal:** Show all supported brokers with rebate rates, referral codes, and concrete earning examples. Inspired by backcom.ai's broker listing page.
+
+### Page Structure
+
+#### Filter Bar
+- Tab filters: `All` · `Forex` · `Crypto`
+- Pills/chips style · Active state highlighted in brand teal
+
+#### Broker Card Grid
+- 2–3 columns desktop, 1 column mobile
+- Each card displays:
+
+| Field | Content |
+|---|---|
+| Broker Logo | Top-left, 40×40px |
+| Broker Name | Bold, below logo |
+| Type Badge | `Auto Daily` or `Auto Monthly` — green pill |
+| Rebate Rate | Large percentage (e.g., `50%`) |
+| Referral Code | Monospace, copy button on right |
+| Example | `100$ fee → $50 back` — shows concrete value |
+| CTA | `Register →` button linking to broker |
+
+#### Card States
+- Default: white background, subtle border
+- Hover: slight shadow elevation, border color → teal
+- Featured: gold/yellow badge `Best Rate` for highest rebate broker
+
+### Placeholder Broker Data
+
+| Broker | Category | Type | Rebate | Example |
+|---|---|---|---|---|
+| Broker A | Forex | Auto Daily | 50% | 100$ fee → $50 back |
+| Broker B | Forex | Auto Monthly | 100% | 100$ fee → $100 back |
+| Broker C | Crypto | Auto Daily | 20% | 100$ fee → $20 back |
+
+### Why This Section Works
+- **Transparency**: Shows exact rebate percentages, no hidden math
+- **Social proof**: Referral codes + examples make it feel real and actionable
+- **Urgency**: Copy button + CTA creates immediate action incentive
+- **Comparison**: Side-by-side rates help traders choose best broker
+
+**Layout:** Card grid · Hover interactions · Filter tabs · Mobile: stacked single column
+
+---
+
 ## LP-07 · Zentrix vs Traditional Rebate
 
 **Goal:** Quick comparison table so users immediately see the advantages.

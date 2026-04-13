@@ -1,6 +1,9 @@
-import { redirect } from "next/navigation";
-import { routing } from "@/src/i18n/routing";
+import React from 'react'
 
-export default function RootPage() {
-  redirect(routing.defaultLocale);
+const page = () => {
+  return (
+    <div>page</div>
+  )
 }
+
+export default page

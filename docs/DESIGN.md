@@ -8,7 +8,7 @@ The logo features a teal mark (`#18CBA8`) on a dark background (`#146255`), with
 
 **Key Characteristics:**
 - Teal (`#18CBA8`) accent on dark surfaces — signature brand color
-- Dark background (`#146255`) for header/nav — sophisticated fintech feel
+- Black (`#0a0a0a`) for header/nav — premium fintech feel
 - Mint (`#29FFB5`) highlight for additional accent elements
 - White (`#ffffff`) text on dark backgrounds — high contrast readability
 - Scale(1.05) hover animations — buttons physically grow
@@ -91,7 +91,7 @@ The logo features a teal mark (`#18CBA8`) on a dark background (`#146255`), with
 - Shadow: Minimal — ring shadows only on light surfaces
 
 ### Navigation
-- Header background: `#146255` (Dark Teal from logo)
+- Header background: `#0a0a0a` (Premium Black)
 - Nav link hover: `rgba(41,255,181,0.4)` mint-tinted background
 - Clean header with Zentrix logo (left)
 - Pill CTAs right-aligned
@@ -127,7 +127,7 @@ The logo features a teal mark (`#18CBA8`) on a dark background (`#146255`), with
 
 ### Do
 - Use Teal (`#18CBA8`) for CTAs and accent elements
-- Use Dark Teal (`#146255`) for header and dark sections
+- Use Black (`#0a0a0a`) for header and dark sections
 - Use Mint (`#29FFB5`) for highlights and secondary accents
 - Apply scale(1.05) hover and scale(0.95) active on buttons
 - Use pill shape (9999px radius) for buttons and nav items
@@ -139,7 +139,7 @@ The logo features a teal mark (`#18CBA8`) on a dark background (`#146255`), with
 - Don't use the Teal as background for large surfaces — it's for accents and CTAs
 - Don't skip the scale animation on buttons
 - Don't use heavy shadows — prefer border-based separation
-- Don't use the old navy `#1E3A5F` for main branding — the logo uses `#146255`
+- Don't use the old navy `#1E3A5F` for main branding — the header uses `#0a0a0a`
 
 ## 8. Responsive Behavior
 
