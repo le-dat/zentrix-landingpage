@@ -9,12 +9,27 @@
     "langVi": "VI"
   },
   "hero": {
+    "eyebrow": "Nền Tảng Hoàn Tiền Trên Chuỗi",
     "headline": "Giao Dịch — Nhận Hoàn Tiền — Rút Về Ví",
     "subheadline": "Zentrix chuẩn hóa dòng hoàn tiền từ broker trực tiếp đến ví của bạn. Minh bạch hoàn toàn trên chuỗi. Không trung gian ẩn.",
     "primaryCta": "Bắt Đầu Nhận Hoàn Tiền",
-    "secondaryCta": "Xem cách hoạt động ↓"
+    "secondaryCta": "Xem cách hoạt động",
+    "scrollHint": "Cuộn để khám phá",
+    "trustKyc": "KYC Miễn Phí",
+    "trustNoFees": "Không phí ẩn",
+    "trustOnchain": "Xác minh trên chuỗi",
+    "vizBroker": "Broker",
+    "vizNetwork": "Mạng Lưới",
+    "vizWallet": "Ví",
+    "vizRebateLabel": "Hoàn Tiền Hiện Tại",
+    "vizPending": "Đang Chờ",
+    "vizLots": "Khối Lượng",
+    "vizSettlementProgress": "Tiến Độ Kỳ Thanh Toán"
   },
   "metrics": {
+    "badge": "Dữ Liệu Nền Tảng Trực Tiếp",
+    "title": "Được Tin Tưởng Bởi Nhà Giao Dịch Trên Toàn Thế Giới",
+    "subtitle": "Số liệu thực tế từ nền tảng trực tiếp của chúng tôi — mọi con số có thể xác minh trên chuỗi",
     "totalVolume": "Khối Lượng Đã Xử Lý",
     "activeTraders": "Nhà Giao Dịch Đang Hoạt Động",
     "integratedBrokers": "Broker Đã Tích Hợp",
@@ -29,6 +44,9 @@
     "step3Desc": "Hoàn tiền được phân bổ vào sổ cái, xác nhận sau mỗi kỳ thanh toán, và bạn có thể claim về ví BEP20 bất kỳ lúc nào."
   },
   "why": {
+    "badge": "Tại Sao Zentrix",
+    "title": "4 Lý Do Để Chọn Zentrix",
+    "subtitle": "Dành cho nhà giao dịch và IBs đòi hỏi sự minh bạch và kiểm soát hoàn tiền của mình",
     "onchainTitle": "Minh Bạch Trên Chuỗi",
     "onchainDesc": "Pool hợp đồng thông minh công khai. Mọi giao dịch claim đều có tx hash có thể xác minh trên block explorer.",
     "multiBrokerTitle": "Hỗ Trợ Nhiều Broker",
@@ -57,9 +75,14 @@
     "tooltipAssets": "Tài sản hỗ trợ"
   },
   "comparison": {
+    "badge": "So Sánh",
+    "title": "Tại Sao Nhà Giao Dịch Chuyển Sang Zentrix",
+    "subtitle": "Xem chi tiết sự khác biệt giữa nền tảng hoàn tiền truyền thống và chúng tôi",
     "criteria": "Tiêu Chí",
     "traditional": "Hoàn Tiền Truyền Thống",
+    "traditionalNote": "Cách cũ",
     "zentrix": "Zentrix",
+    "zentrixBadge": "Cách minh bạch",
     "liquidity": "Minh Bạch Thanh Khoản",
     "liquidityTraditional": "Số dư nội bộ, khó xác minh bên ngoài",
     "liquidityZentrix": "Pool trên chuỗi, có thể xác minh trên explorer",

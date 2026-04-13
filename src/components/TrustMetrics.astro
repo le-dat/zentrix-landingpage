@@ -1,0 +1,295 @@
+---
+import { t, getLocale } from '../i18n/utils';
+import type { Locale } from '../i18n/utils';
+
+const locale: Locale = getLocale(Astro.request.url);
+---
+
+<section id="trust-metrics" class="py-20 md:py-28 bg-[#F4F4F4] relative overflow-hidden">
+  <!-- Subtle background grid -->
+  <div class="absolute inset-0 opacity-[0.025] pointer-events-none" aria-hidden="true"
+    style="background-image: linear-gradient(#0f1619 1px, transparent 1px), linear-gradient(90deg, #0f1619 1px, transparent 1px); background-size: 48px 48px;">
+  </div>
+
+  <!-- Decorative gradient fade at top -->
+  <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#F4F4F4] to-transparent pointer-events-none" aria-hidden="true"></div>
+
+  <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="inline-flex items-center gap-2 text-[#9fe870] text-xs font-semibold tracking-[0.15em] uppercase mb-5">
+        <span class="w-1.5 h-1.5 bg-[#9fe870] rounded-full animate-pulse"></span>
+        {t(locale, 'metrics.badge')}
+      </span>
+      <h2 class="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-[#0f1619] mb-4 tracking-tight leading-[1.1]">
+        {t(locale, 'metrics.title')}
+      </h2>
+      <p class="text-[#868685] text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
+        {t(locale, 'metrics.subtitle')}
+      </p>
+    </div>
+
+    <!-- Metrics Grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+
+      <!-- Total Volume -->
+      <div class="metric-card bg-white rounded-[28px] p-7 md:p-9 text-center relative overflow-hidden group"
+           data-target="8725000" data-prefix="$" data-suffix="" data-index="0">
+        <!-- Top accent line -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-[3px] bg-gradient-to-r from-transparent via-[#9fe870] to-transparent group-hover:w-full transition-all duration-500 ease-out"></div>
+        <!-- Ambient glow -->
+        <div class="absolute -top-16 -right-16 w-32 h-32 bg-[#9fe870]/[0.07] rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+        <div class="relative flex flex-col items-center">
+          <!-- Circle icon container -->
+          <div class="w-[72px] h-[72px] mb-7 rounded-full bg-[#9fe870]/[0.08] border border-[#9fe870]/[0.15] flex items-center justify-center group-hover:border-[#9fe870]/[0.3] group-hover:bg-[#9fe870]/[0.12] transition-all duration-300">
+            <svg class="w-8 h-8 text-[#9fe870]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <!-- Animated value -->
+          <div class="metric-value text-[2.75rem] md:text-[3.25rem] lg:text-[3.75rem] font-extrabold text-[#0f1619] mb-3 tracking-tight leading-none"
+               data-animate="true">$0</div>
+          <div class="text-[#868685] text-sm md:text-[0.9375rem] font-medium leading-tight text-center">{t(locale, 'metrics.totalVolume')}</div>
+        </div>
+      </div>
+
+      <!-- Active Traders -->
+      <div class="metric-card bg-white rounded-[28px] p-7 md:p-9 text-center relative overflow-hidden group"
+           data-target="2847" data-suffix="+" data-index="1">
+        <!-- Top accent line -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-[3px] bg-gradient-to-r from-transparent via-[#9fe870] to-transparent group-hover:w-full transition-all duration-500 ease-out"></div>
+        <!-- Ambient glow -->
+        <div class="absolute -top-16 -right-16 w-32 h-32 bg-[#9fe870]/[0.07] rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        <!-- Live indicator pulse -->
+        <div class="absolute top-4 right-4 flex items-center gap-1.5">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#9fe870] opacity-60"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#9fe870]"></span>
+          </span>
+          <span class="text-[10px] font-semibold text-[#9fe870]/70 tracking-wider uppercase">Live</span>
+        </div>
+
+        <div class="relative flex flex-col items-center">
+          <!-- Circle icon container -->
+          <div class="w-[72px] h-[72px] mb-7 rounded-full bg-[#9fe870]/[0.08] border border-[#9fe870]/[0.15] flex items-center justify-center group-hover:border-[#9fe870]/[0.3] group-hover:bg-[#9fe870]/[0.12] transition-all duration-300">
+            <svg class="w-8 h-8 text-[#9fe870]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <!-- Animated value -->
+          <div class="metric-value text-[2.75rem] md:text-[3.25rem] lg:text-[3.75rem] font-extrabold text-[#0f1619] mb-3 tracking-tight leading-none"
+               data-animate="true">0+</div>
+          <div class="text-[#868685] text-sm md:text-[0.9375rem] font-medium leading-tight text-center">{t(locale, 'metrics.activeTraders')}</div>
+        </div>
+      </div>
+
+      <!-- Integrated Brokers -->
+      <div class="metric-card bg-white rounded-[28px] p-7 md:p-9 text-center relative overflow-hidden group"
+           data-target="12" data-suffix="" data-index="2">
+        <!-- Top accent line -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-[3px] bg-gradient-to-r from-transparent via-[#9fe870] to-transparent group-hover:w-full transition-all duration-500 ease-out"></div>
+        <!-- Ambient glow -->
+        <div class="absolute -top-16 -right-16 w-32 h-32 bg-[#9fe870]/[0.07] rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+        <div class="relative flex flex-col items-center">
+          <!-- Circle icon container -->
+          <div class="w-[72px] h-[72px] mb-7 rounded-full bg-[#9fe870]/[0.08] border border-[#9fe870]/[0.15] flex items-center justify-center group-hover:border-[#9fe870]/[0.3] group-hover:bg-[#9fe870]/[0.12] transition-all duration-300">
+            <svg class="w-8 h-8 text-[#9fe870]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+          </div>
+          <!-- Animated value -->
+          <div class="metric-value text-[2.75rem] md:text-[3.25rem] lg:text-[3.75rem] font-extrabold text-[#0f1619] mb-3 tracking-tight leading-none"
+               data-animate="true">0</div>
+          <div class="text-[#868685] text-sm md:text-[0.9375rem] font-medium leading-tight text-center">{t(locale, 'metrics.integratedBrokers')}</div>
+        </div>
+      </div>
+
+      <!-- Total Rebates Paid -->
+      <div class="metric-card bg-white rounded-[28px] p-7 md:p-9 text-center relative overflow-hidden group"
+           data-target="1250000" data-prefix="$" data-suffix="+" data-index="3">
+        <!-- Top accent line -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-[3px] bg-gradient-to-r from-transparent via-[#9fe870] to-transparent group-hover:w-full transition-all duration-500 ease-out"></div>
+        <!-- Ambient glow -->
+        <div class="absolute -top-16 -right-16 w-32 h-32 bg-[#9fe870]/[0.07] rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+        <div class="relative flex flex-col items-center">
+          <!-- Circle icon container -->
+          <div class="w-[72px] h-[72px] mb-7 rounded-full bg-[#9fe870]/[0.08] border border-[#9fe870]/[0.15] flex items-center justify-center group-hover:border-[#9fe870]/[0.3] group-hover:bg-[#9fe870]/[0.12] transition-all duration-300">
+            <svg class="w-8 h-8 text-[#9fe870]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <!-- Animated value -->
+          <div class="metric-value text-[2.75rem] md:text-[3.25rem] lg:text-[3.75rem] font-extrabold text-[#0f1619] mb-3 tracking-tight leading-none"
+               data-animate="true">$0+</div>
+          <div class="text-[#868685] text-sm md:text-[0.9375rem] font-medium leading-tight text-center">{t(locale, 'metrics.totalRebates')}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // Intersection Observer for scroll-triggered animations
+  const observerOptions = {
+    threshold: 0.25,
+    rootMargin: '0px 0px -60px 0px'
+  };
+
+  // Format number string (handles raw number, no prefix/suffix)
+  const formatNumber = (num: number): string => {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    }
+    if (num >= 1000) {
+      return (num / 1000).toFixed(0) + 'K';
+    }
+    return num.toLocaleString();
+  };
+
+  // Ease-out-expo for premium fintech feel
+  const easeOutExpo = (t: number): number => {
+    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+  };
+
+  const animateValue = (
+    el: HTMLElement,
+    target: number,
+    prefix: string = '',
+    suffix: string = '',
+    duration: number = 2000,
+    staggerDelay: number = 0
+  ) => {
+    const startTime = performance.now() + staggerDelay;
+    const startValue = 0;
+
+    const update = (currentTime: number) => {
+      // Skip if before start time (stagger)
+      if (currentTime < startTime) {
+        requestAnimationFrame(update);
+        return;
+      }
+
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutExpo(progress);
+      const currentValue = Math.floor(startValue + (target - startValue) * easedProgress);
+
+      el.textContent = prefix + formatNumber(currentValue) + suffix;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    };
+
+    requestAnimationFrame(update);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target as HTMLElement;
+        const valueEl = card.querySelector('.metric-value') as HTMLElement;
+
+        if (valueEl && valueEl.dataset.animate === 'true') {
+          const target = parseInt(card.dataset.target || '0', 10);
+          const prefix = card.dataset.prefix || '';
+          const suffix = card.dataset.suffix || '';
+          const index = parseInt(card.dataset.index || '0', 10);
+          const staggerDelay = index * 120; // 120ms stagger between cards
+
+          animateValue(valueEl, target, prefix, suffix, 2200, staggerDelay);
+          valueEl.dataset.animate = 'false'; // Only animate once
+        }
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.metric-card').forEach(card => {
+    observer.observe(card);
+  });
+</script>
+
+<style>
+  .metric-card {
+    transition:
+      transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.35s ease,
+      background-color 0.3s ease;
+  }
+
+  .metric-card:hover {
+    transform: translateY(-3px) scale(1.015);
+    box-shadow:
+      0 24px 48px rgba(159, 232, 112, 0.09),
+      0 0 0 1px rgba(159, 232, 112, 0.08);
+  }
+
+  .metric-card:active {
+    transform: translateY(-1px) scale(0.99);
+    transition-duration: 0.1s;
+  }
+
+  /* Tabular nums for stable number width during animation */
+  .metric-value {
+    font-feature-settings: 'tnum' on, 'lnum' on;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .metric-card,
+    .metric-card::before {
+      transition: none;
+    }
+    .metric-card:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .metric-card:hover .top-accent {
+      width: 0;
+    }
+    .metric-card:active {
+      transform: none;
+    }
+    .metric-value {
+      font-feature-settings: normal;
+    }
+    /* Show final values instantly */
+    [data-target="8725000"] + .metric-value { content: '$8.7M'; }
+  }
+
+  /* Mobile touch optimization */
+  @media (hover: none) {
+    .metric-card:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .metric-card:active {
+      transform: scale(0.98);
+    }
+  }
+
+  /* Number animation starts from correct position */
+  @keyframes count-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .metric-value {
+    animation: count-in 0.4s ease-out forwards;
+  }
+</style>

@@ -9,12 +9,27 @@
     "langVi": "VI"
   },
   "hero": {
+    "eyebrow": "On-chain Rebate Platform",
     "headline": "Trade — Earn Rebates — Withdraw to Your Wallet",
     "subheadline": "Zentrix standardizes the rebate flow from your broker directly to your wallet. Fully on-chain transparent. No hidden intermediaries.",
     "primaryCta": "Start Earning Rebates",
-    "secondaryCta": "See how it works ↓"
+    "secondaryCta": "See how it works",
+    "scrollHint": "Scroll to explore",
+    "trustKyc": "Free KYC",
+    "trustNoFees": "No hidden fees",
+    "trustOnchain": "On-chain verified",
+    "vizBroker": "Broker",
+    "vizNetwork": "Network",
+    "vizWallet": "Wallet",
+    "vizRebateLabel": "Current Rebates",
+    "vizPending": "Pending",
+    "vizLots": "Volume",
+    "vizSettlementProgress": "Settlement Period"
   },
   "metrics": {
+    "badge": "Live Platform Data",
+    "title": "Trusted by Traders Worldwide",
+    "subtitle": "Real numbers from our live platform — every figure verifiable on-chain",
     "totalVolume": "Total Volume Processed",
     "activeTraders": "Active Traders",
     "integratedBrokers": "Integrated Brokers",
@@ -29,6 +44,9 @@
     "step3Desc": "Rebates are allocated to your ledger, confirmed after each settlement period, and you can claim them to your BEP20 wallet at any time."
   },
   "why": {
+    "badge": "Why Zentrix",
+    "title": "4 Reasons to Choose Zentrix",
+    "subtitle": "Built for traders and IBs who demand transparency and control over their rebates",
     "onchainTitle": "On-chain Transparency",
     "onchainDesc": "A public smart contract Pool. Every claim transaction has a tx hash verifiable on the block explorer.",
     "multiBrokerTitle": "Multi-Broker Support",
@@ -57,9 +75,14 @@
     "tooltipAssets": "Supported assets"
   },
   "comparison": {
+    "badge": "Compare",
+    "title": "Why Traders Switch to Zentrix",
+    "subtitle": "See exactly how we stack up against traditional rebate platforms",
     "criteria": "Criteria",
     "traditional": "Traditional Rebate",
+    "traditionalNote": "The old way",
     "zentrix": "Zentrix",
+    "zentrixBadge": "The transparent way",
     "liquidity": "Liquidity Transparency",
     "liquidityTraditional": "Internal balance, hard to verify externally",
     "liquidityZentrix": "On-chain Pool, verifiable on explorer",

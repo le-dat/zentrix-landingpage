@@ -6,7 +6,7 @@ import Logo from '../assets/logo.png';
 const locale: Locale = getLocale(Astro.request.url);
 ---
 
-<header class="sticky top-0 z-50 bg-[#0f1619] shadow-md">
+<header class="sticky top-0 z-50 bg-[#0f1619] border-b border-white/[0.08]">
   <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between gap-6">
     <!-- Logo -->
     <a href="/" class="logo-link flex items-center gap-3 no-underline flex-shrink-0 hover:opacity-80 transition-opacity duration-200" aria-label="Zentrix Home">
@@ -15,10 +15,10 @@ const locale: Locale = getLocale(Astro.request.url);
 
     <!-- Desktop Nav -->
     <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
-      <a href="#how-it-works" class="nav-link text-white/85 px-4 py-2 text-sm font-semibold transition-all duration-200 min-h-11 flex items-center relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">{t(locale, 'header.navHowItWorks')}</a>
-      <a href="#why-zentrix" class="nav-link text-white/85 px-4 py-2 text-sm font-semibold transition-all duration-200 min-h-11 flex items-center relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">{t(locale, 'header.navWhyZentrix')}</a>
-      <a href="#referral" class="nav-link text-white/85 px-4 py-2 text-sm font-semibold transition-all duration-200 min-h-11 flex items-center relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">{t(locale, 'header.navReferral')}</a>
-      <a href="#faq" class="nav-link text-white/85 px-4 py-2 text-sm font-semibold transition-all duration-200 min-h-11 flex items-center relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">{t(locale, 'header.navFAQ')}</a>
+      <a href="#how-it-works" class="nav-link text-white/85 px-4 py-2 text-sm font-semibold transition-all duration-200 min-h-11 flex items-center relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:shadow-[0_0_8px_#9fe870]">{t(locale, 'header.navHowItWorks')}</a>
+      <a href="#why-zentrix" class="nav-link text-white/85 px-4 py-2 text-sm font-semibold transition-all duration-200 min-h-11 flex items-center relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:shadow-[0_0_8px_#9fe870]">{t(locale, 'header.navWhyZentrix')}</a>
+      <a href="#referral" class="nav-link text-white/85 px-4 py-2 text-sm font-semibold transition-all duration-200 min-h-11 flex items-center relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:shadow-[0_0_8px_#9fe870]">{t(locale, 'header.navReferral')}</a>
+      <a href="#faq" class="nav-link text-white/85 px-4 py-2 text-sm font-semibold transition-all duration-200 min-h-11 flex items-center relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:shadow-[0_0_8px_#9fe870]">{t(locale, 'header.navFAQ')}</a>
     </nav>
 
     <!-- CTA + Language Toggle + Mobile Menu -->
@@ -61,21 +61,21 @@ const locale: Locale = getLocale(Astro.request.url);
        <!-- CTA Button (Wise-style pill) -->
       <a
         href="#cta"
-        class="cta-btn bg-[#9fe870] text-[#163300] hover:scale-105 active:scale-95 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 min-h-11 flex items-center hidden sm:flex overflow-hidden relative"
+        class="cta-btn bg-[#9fe870] text-[#163300] hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(159,232,112,0.4)] active:scale-95 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 min-h-11 flex items-center hidden sm:flex"
       >
-        <span class="relative z-10">{t(locale, 'header.navCTA')}</span>
+        {t(locale, 'header.navCTA')}
       </a>
     </div>
   </div>
 
   <!-- Mobile Nav -->
   <nav id="mobile-nav" class="mobile-nav hidden md:hidden bg-[#0f1619] border-t border-white/10 px-6 py-4 flex-col gap-2" aria-label="Mobile navigation">
-    <a href="#how-it-works" class="nav-link-mobile text-white/85 no-underline text-base font-semibold py-3 min-h-11 flex items-center border-b border-white/10 rounded-lg px-2 transition-all duration-200 relative after:absolute after:bottom-2 after:left-2 after:w-[calc(100%-16px)] after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">{t(locale, 'header.navHowItWorks')}</a>
-    <a href="#why-zentrix" class="nav-link-mobile text-white/85 no-underline text-base font-semibold py-3 min-h-11 flex items-center border-b border-white/10 rounded-lg px-2 transition-all duration-200 relative after:absolute after:bottom-2 after:left-2 after:w-[calc(100%-16px)] after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">{t(locale, 'header.navWhyZentrix')}</a>
-    <a href="#referral" class="nav-link-mobile text-white/85 no-underline text-base font-semibold py-3 min-h-11 flex items-center border-b border-white/10 rounded-lg px-2 transition-all duration-200 relative after:absolute after:bottom-2 after:left-2 after:w-[calc(100%-16px)] after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">{t(locale, 'header.navReferral')}</a>
-    <a href="#faq" class="nav-link-mobile text-white/85 no-underline text-base font-semibold py-3 min-h-11 flex items-center rounded-lg px-2 transition-all duration-200 relative after:absolute after:bottom-2 after:left-2 after:w-[calc(100%-16px)] after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">{t(locale, 'header.navFAQ')}</a>
+    <a href="#how-it-works" class="nav-link-mobile text-white/85 no-underline text-base font-semibold py-3 min-h-11 flex items-center border-b border-white/10 rounded-lg px-2 transition-all duration-200 relative after:absolute after:bottom-2 after:left-2 after:w-[calc(100%-16px)] after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:shadow-[0_0_8px_#9fe870]">{t(locale, 'header.navHowItWorks')}</a>
+    <a href="#why-zentrix" class="nav-link-mobile text-white/85 no-underline text-base font-semibold py-3 min-h-11 flex items-center border-b border-white/10 rounded-lg px-2 transition-all duration-200 relative after:absolute after:bottom-2 after:left-2 after:w-[calc(100%-16px)] after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:shadow-[0_0_8px_#9fe870]">{t(locale, 'header.navWhyZentrix')}</a>
+    <a href="#referral" class="nav-link-mobile text-white/85 no-underline text-base font-semibold py-3 min-h-11 flex items-center border-b border-white/10 rounded-lg px-2 transition-all duration-200 relative after:absolute after:bottom-2 after:left-2 after:w-[calc(100%-16px)] after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:shadow-[0_0_8px_#9fe870]">{t(locale, 'header.navReferral')}</a>
+    <a href="#faq" class="nav-link-mobile text-white/85 no-underline text-base font-semibold py-3 min-h-11 flex items-center rounded-lg px-2 transition-all duration-200 relative after:absolute after:bottom-2 after:left-2 after:w-[calc(100%-16px)] after:h-0.5 after:bg-[#9fe870] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:shadow-[0_0_8px_#9fe870]">{t(locale, 'header.navFAQ')}</a>
     <!-- Mobile CTA -->
-    <a href="#cta" class="cta-btn-mobile bg-[#9fe870] text-[#163300] hover:scale-105 active:scale-95 mt-2 px-5 py-3 rounded-full text-sm font-semibold transition-all duration-200 min-h-12 flex items-center justify-center">{t(locale, 'header.navCTA')}</a>
+    <a href="#cta" class="cta-btn-mobile bg-[#9fe870] text-[#163300] hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(159,232,112,0.4)] active:scale-95 mt-2 px-5 py-3 rounded-full text-sm font-semibold transition-all duration-200 min-h-12 flex items-center justify-center">{t(locale, 'header.navCTA')}</a>
   </nav>
 </header>
 
@@ -91,22 +91,7 @@ const locale: Locale = getLocale(Astro.request.url);
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* Slip animation for CTA button */
-  .cta-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    transform: translateX(-150%);
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border-radius: inherit;
-  }
-  .cta-btn:hover::before {
-    transform: translateX(150%);
-  }
-  .cta-btn:hover {
-    filter: brightness(1.1);
-  }
+  /* CTA lift + glow is handled via Tailwind classes for cleaner separation */
 
   /* Respect prefers-reduced-motion */
   @media (prefers-reduced-motion: reduce) {
@@ -118,9 +103,6 @@ const locale: Locale = getLocale(Astro.request.url);
     .lang-btn,
     .logo-img {
       transition: none;
-    }
-    .cta-btn::before {
-      display: none;
     }
   }
 </style>

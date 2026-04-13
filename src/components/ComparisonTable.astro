@@ -1,0 +1,305 @@
+---
+import { t, getLocale } from '../i18n/utils';
+import type { Locale } from '../i18n/utils';
+
+const locale: Locale = getLocale(Astro.request.url);
+
+const criteria = [
+  {
+    key: 'liquidity',
+    icon: 'link',
+    zentrixIcon: 'check',
+  },
+  {
+    key: 'fundFlow',
+    icon: 'arrow-right',
+    zentrixIcon: 'check',
+  },
+  {
+    key: 'reconciliation',
+    icon: 'shield',
+    zentrixIcon: 'check',
+  },
+  {
+    key: 'referral',
+    icon: 'users',
+    zentrixIcon: 'check',
+  },
+  {
+    key: 'withdrawals',
+    icon: 'zap',
+    zentrixIcon: 'check',
+  },
+];
+---
+
+<section id="comparison" class="py-20 md:py-28 bg-[#F4F4F4] relative overflow-hidden">
+  <!-- Subtle grid pattern -->
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true"
+    style="background-image: linear-gradient(#0f1619 1px, transparent 1px), linear-gradient(90deg, #0f1619 1px, transparent 1px); background-size: 40px 40px;">
+  </div>
+
+  <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+
+    <!-- Section Header -->
+    <div class="text-center mb-14">
+      <span class="inline-block text-[#9fe870] text-sm font-semibold tracking-wider uppercase mb-4">
+        {t(locale, 'comparison.badge')}
+      </span>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0f1619] mb-4">
+        {t(locale, 'comparison.title')}
+      </h2>
+      <p class="text-[#868685] text-lg md:text-xl max-w-2xl mx-auto">
+        {t(locale, 'comparison.subtitle')}
+      </p>
+    </div>
+
+    <!-- Comparison Cards Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-6 items-stretch">
+
+      <!-- Traditional Card -->
+      <div class="comparison-card comparison-card--traditional bg-white rounded-[30px] p-7 md:p-8 relative overflow-hidden group">
+        <div class="absolute -top-12 -right-12 w-24 h-24 bg-[#868685]/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative">
+          <!-- Card Header -->
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-12 h-12 bg-[#868685]/10 rounded-2xl flex items-center justify-center border border-[#868685]/20">
+              <svg class="w-6 h-6 text-[#868685]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-[#0f1619] text-xl font-semibold">{t(locale, 'comparison.traditional')}</h3>
+              <p class="text-[#868685] text-sm">{t(locale, 'comparison.traditionalNote')}</p>
+            </div>
+          </div>
+
+          <!-- Criteria List -->
+          <div class="space-y-5">
+            <!-- Liquidity -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#868685]/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-[#868685]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-[#0f1619] text-sm font-semibold mb-1">{t(locale, 'comparison.liquidity')}</div>
+                <div class="text-[#868685] text-base">{t(locale, 'comparison.liquidityTraditional')}</div>
+              </div>
+            </div>
+
+            <!-- Fund Flow -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#868685]/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-[#868685]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-[#0f1619] text-sm font-semibold mb-1">{t(locale, 'comparison.fundFlow')}</div>
+                <div class="text-[#868685] text-base">{t(locale, 'comparison.fundFlowTraditional')}</div>
+              </div>
+            </div>
+
+            <!-- Reconciliation -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#868685]/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-[#868685]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-[#0f1619] text-sm font-semibold mb-1">{t(locale, 'comparison.reconciliation')}</div>
+                <div class="text-[#868685] text-base">{t(locale, 'comparison.reconciliationTraditional')}</div>
+              </div>
+            </div>
+
+            <!-- Referral -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#868685]/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-[#868685]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-[#0f1619] text-sm font-semibold mb-1">{t(locale, 'comparison.referral')}</div>
+                <div class="text-[#868685] text-base">{t(locale, 'comparison.referralTraditional')}</div>
+              </div>
+            </div>
+
+            <!-- Withdrawals -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#868685]/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-[#868685]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-[#0f1619] text-sm font-semibold mb-1">{t(locale, 'comparison.withdrawals')}</div>
+                <div class="text-[#868685] text-base">{t(locale, 'comparison.withdrawalsTraditional')}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zentrix Card -->
+      <div class="comparison-card comparison-card--zentrix bg-white rounded-[30px] p-7 md:p-8 relative overflow-hidden group border-[#9fe870]/30">
+        <!-- Green top accent line -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-[3px] bg-gradient-to-r from-transparent via-[#9fe870] to-transparent group-hover:w-full transition-all duration-500"></div>
+        <div class="absolute -top-12 -right-12 w-24 h-24 bg-[#9fe870]/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative">
+          <!-- Card Header -->
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-12 h-12 bg-[#9fe870]/15 rounded-2xl flex items-center justify-center border border-[#9fe870]/30">
+              <svg class="w-6 h-6 text-[#9fe870]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-[#0f1619] text-xl font-semibold">{t(locale, 'comparison.zentrix')}</h3>
+              <p class="text-[#9fe870] text-sm font-medium">{t(locale, 'comparison.zentrixBadge')}</p>
+            </div>
+          </div>
+
+          <!-- Criteria List -->
+          <div class="space-y-5">
+            <!-- Liquidity -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#9fe870]/15 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-[#9fe870]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-[#0f1619] text-sm font-semibold mb-1">{t(locale, 'comparison.liquidity')}</div>
+                <div class="text-[#0f1619] text-base font-medium">{t(locale, 'comparison.liquidityZentrix')}</div>
+              </div>
+            </div>
+
+            <!-- Fund Flow -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#9fe870]/15 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-[#9fe870]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-[#0f1619] text-sm font-semibold mb-1">{t(locale, 'comparison.fundFlow')}</div>
+                <div class="text-[#0f1619] text-base font-medium">{t(locale, 'comparison.fundFlowZentrix')}</div>
+              </div>
+            </div>
+
+            <!-- Reconciliation -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#9fe870]/15 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-[#9fe870]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-[#0f1619] text-sm font-semibold mb-1">{t(locale, 'comparison.reconciliation')}</div>
+                <div class="text-[#0f1619] text-base font-medium">{t(locale, 'comparison.reconciliationZentrix')}</div>
+              </div>
+            </div>
+
+            <!-- Referral -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#9fe870]/15 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-[#9fe870]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-[#0f1619] text-sm font-semibold mb-1">{t(locale, 'comparison.referral')}</div>
+                <div class="text-[#0f1619] text-base font-medium">{t(locale, 'comparison.referralZentrix')}</div>
+              </div>
+            </div>
+
+            <!-- Withdrawals -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#9fe870]/15 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-[#9fe870]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-[#0f1619] text-sm font-semibold mb-1">{t(locale, 'comparison.withdrawals')}</div>
+                <div class="text-[#0f1619] text-base font-medium">{t(locale, 'comparison.withdrawalsZentrix')}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .comparison-card {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .comparison-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, transparent 40%, rgba(159, 232, 112, 0.3) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .comparison-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(159, 232, 112, 0.1), 0 0 0 1px rgba(159, 232, 112, 0.15);
+  }
+
+  .comparison-card:hover::before {
+    opacity: 1;
+  }
+
+  .comparison-card:active {
+    transform: translateY(-2px) scale(0.99);
+    transition-duration: 0.1s;
+  }
+
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .comparison-card {
+      transition: none;
+    }
+    .comparison-card:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .comparison-card:hover::before {
+      opacity: 0;
+    }
+    .comparison-card:active {
+      transform: none;
+    }
+  }
+
+  /* Mobile touch optimization */
+  @media (hover: none) {
+    .comparison-card:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .comparison-card:active {
+      transform: scale(0.98);
+    }
+  }
+</style>
