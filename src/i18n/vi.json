@@ -1,0 +1,121 @@
+{
+  "header": {
+    "navHowItWorks": "Cách Hoạt Động",
+    "navWhyZentrix": "Tại Sao Zentrix",
+    "navReferral": "Giới Thiệu",
+    "navFAQ": "FAQ",
+    "langEn": "EN",
+    "langVi": "VI"
+  },
+  "hero": {
+    "headline": "Giao Dịch — Nhận Hoàn Tiền — Rút Về Ví",
+    "subheadline": "Zentrix chuẩn hóa dòng hoàn tiền từ broker trực tiếp đến ví của bạn. Minh bạch hoàn toàn trên chuỗi. Không trung gian ẩn.",
+    "primaryCta": "Bắt Đầu Nhận Hoàn Tiền",
+    "secondaryCta": "Xem cách hoạt động ↓"
+  },
+  "metrics": {
+    "totalVolume": "Khối Lượng Đã Xử Lý",
+    "activeTraders": "Nhà Giao Dịch Đang Hoạt Động",
+    "integratedBrokers": "Broker Đã Tích Hợp",
+    "totalRebates": "Tổng Hoàn Tiền Đã Chi Trả"
+  },
+  "howItWorks": {
+    "step1Title": "Kết Nối Broker Của Bạn",
+    "step1Desc": "Đăng ký tài khoản Zentrix, hoàn tất KYC và liên kết tài khoản giao dịch (MT4/MT5).",
+    "step2Title": "Giao Dịch Như Thường Lệ",
+    "step2Desc": "Tiếp tục giao dịch tại broker như bình thường. Zentrix tự động ghi nhận khối lượng và tính toán hoàn tiền của bạn.",
+    "step3Title": "Nhận Hoàn Tiền Về Ví",
+    "step3Desc": "Hoàn tiền được phân bổ vào sổ cái, xác nhận sau mỗi kỳ thanh toán, và bạn có thể claim về ví BEP20 bất kỳ lúc nào."
+  },
+  "why": {
+    "onchainTitle": "Minh Bạch Trên Chuỗi",
+    "onchainDesc": "Pool hợp đồng thông minh công khai. Mọi giao dịch claim đều có tx hash có thể xác minh trên block explorer.",
+    "multiBrokerTitle": "Hỗ Trợ Nhiều Broker",
+    "multiBrokerDesc": "Kết nối nhiều broker dưới một tài khoản. Tất cả hoàn tiền được hợp nhất tại một nơi.",
+    "refNetworkTitle": "Mạng Lưới Giới Thiệu Rõ Ràng",
+    "refNetworkDesc": "Cây giới thiệu F1/F2/F3 với tỷ lệ công khai. Không phí ẩn, không phân bổ bí mật.",
+    "easyWithdrawTitle": "Rút Tiền Dễ Dàng",
+    "easyWithdrawDesc": "Claim về ví BEP20 với phí cố định $0.50 mỗi lần rút. Không cần phê duyệt thủ công."
+  },
+  "referral": {
+    "f1Label": "F1",
+    "f1Relationship": "Người bạn giới thiệu trực tiếp",
+    "f1Earn": "X% hoàn tiền từ khối lượng giao dịch của họ",
+    "f2Label": "F2",
+    "f2Relationship": "Người được giới thiệu bởi F1 của bạn",
+    "f2Earn": "Y% hoàn tiền từ khối lượng giao dịch của họ",
+    "f3Label": "F3",
+    "f3Relationship": "Người được giới thiệu bởi F2 của bạn",
+    "f3Earn": "Z% hoàn tiền từ khối lượng giao dịch của họ",
+    "exampleLabel": "Ví dụ",
+    "exampleText": "F1 của bạn giao dịch 100 lots/tháng → bạn nhận ~$XX hoàn tiền từ F1, bất kể F1 có giới thiệu ai hay không.",
+    "legalNote": "Hoa hồng được tính từ phí giao dịch thực tế — không từ việc bán gói tham gia hay gửi tiền vào hệ thống."
+  },
+  "brokers": {
+    "badge": "+ Thêm broker sắp ra mắt",
+    "tooltipAssets": "Tài sản hỗ trợ"
+  },
+  "comparison": {
+    "criteria": "Tiêu Chí",
+    "traditional": "Hoàn Tiền Truyền Thống",
+    "zentrix": "Zentrix",
+    "liquidity": "Minh Bạch Thanh Khoản",
+    "liquidityTraditional": "Số dư nội bộ, khó xác minh bên ngoài",
+    "liquidityZentrix": "Pool trên chuỗi, có thể xác minh trên explorer",
+    "fundFlow": "Dòng Tiền",
+    "fundFlowTraditional": "Chuyển khoản nội bộ, batch không công khai",
+    "fundFlowZentrix": "Broker → Treasury → Pool → Ví",
+    "reconciliation": "Đối Soát",
+    "reconciliationTraditional": "Chủ yếu báo cáo nội bộ",
+    "reconciliationZentrix": "Broker + Ledger + Chain (3-way)",
+    "referral": "Phân Bổ Giới Thiệu",
+    "referralTraditional": "Công cụ kiểm toán hạn chế",
+    "referralZentrix": "Cây ref + chính sách + log công khai",
+    "withdrawals": "Rút Tiền",
+    "withdrawalsTraditional": "Quy trình phê duyệt thủ công",
+    "withdrawalsZentrix": "Claim trên chuỗi, phí cố định"
+  },
+  "testimonials": {
+    "alexName": "Alex N.",
+    "alexRole": "IB",
+    "alexBroker": "Broker XYZ",
+    "alexQuote": "Trước đây tôi không biết mình có nhận đúng tỷ lệ hoàn tiền không. Zentrix cho tôi thấy mọi phân bổ kèm trạng thái. Đó là một mức độ tin cậy hoàn toàn khác.",
+    "sarahName": "Sarah T.",
+    "sarahRole": "Nhà Giao Dịch",
+    "sarahBroker": "Broker ABC",
+    "sarahQuote": "Kết nối broker xong thì hoàn tiền tự động xuất hiện. Rút tiền nhanh, phí rõ ràng. Không cần hỏi ai bất kỳ điều gì."
+  },
+  "faq": {
+    "q1": "Hoàn tiền là gì và nó đến từ đâu?",
+    "a1": "Hoàn tiền là một phần của phí giao dịch (spread/commission) mà broker hoàn lại thông qua Zentrix. Số tiền này đến từ khối lượng giao dịch thực tế của bạn — không từ bất kỳ nguồn nào khác.",
+    "q2": "Zentrix tính phí bao nhiêu?",
+    "a2": "Zentrix tính phí nền tảng $0.50–$1.00 mỗi lot giao dịch (tùy broker và tài sản) và phí rút tiền cố định $0.50 mỗi claim. Không có phí ẩn nào khác.",
+    "q3": "Có bắt buộc KYC không?",
+    "a3": "Có. KYC là bắt buộc để rút tiền, nhằm tuân thủ quy định AML và bảo vệ tài khoản của bạn. Quy trình bao gồm tải lên CCCD/hộ chiếu và ảnh selfie — thường được xử lý trong vài giờ làm việc.",
+    "q4": "Pool trên chuỗi là gì? Tiền của tôi có an toàn không?",
+    "a4": "Pool là smart contract BEP20 giữ thanh khoản hoàn tiền. Tiền vào Pool chỉ sau khi broker đã thanh toán cho treasury và được xác minh qua đối soát 3-way. Bạn có thể kiểm tra số dư Pool và lịch sử claim trực tiếp trên BSCScan.",
+    "q5": "Nhận hoàn tiền mất bao lâu?",
+    "a5": "Hoàn tiền được ghi nhận khi khối lượng giao dịch đến. Sau mỗi kỳ thanh toán (thường hàng tuần hoặc hàng tháng tùy broker), hoàn tiền được xác nhận và mở cho claim. Bạn có thể claim bất kỳ lúc nào sau đó.",
+    "q6": "Zentrix có phải là mô hình đa cấp không?",
+    "a6": "Không. Hoa hồng giới thiệu đến từ phí giao dịch thực tế do người bạn giới thiệu tạo ra — không từ việc bán gói tham gia hay yêu cầu gửi tiền. Zentrix không yêu cầu bạn mua bất kỳ thứ gì để tham gia.",
+    "q7": "Tôi có thể kết nối nhiều broker không?",
+    "a7": "Có. Bạn có thể liên kết nhiều tài khoản broker dưới một tài khoản Zentrix. Hoàn tiền từ tất cả broker được hợp nhất tại một nơi."
+  },
+  "cta": {
+    "headline": "Bắt Đầu Nhận Hoàn Tiền Từ Giao Dịch Của Bạn",
+    "sub": "Đăng ký miễn phí · KYC nhanh · Kết nối broker trong 5 phút",
+    "primaryCta": "Đăng Ký Ngay",
+    "secondaryCta": "Hoặc liên hệ chúng tôi qua Telegram →"
+  },
+  "footer": {
+    "tagline": "Nền tảng hoàn tiền đáng tin cậy của bạn",
+    "linksTerms": "Điều Khoản Dịch Vụ",
+    "linksPrivacy": "Chính Sách Bảo Mật",
+    "linksSupport": "Hỗ Trợ / Liên Hệ",
+    "linksRoadmap": "Lộ Trình",
+    "socialTelegram": "Telegram",
+    "socialTwitter": "Twitter / X",
+    "socialDiscord": "Discord",
+    "disclaimer": "Zentrix là nền tảng hoàn tiền kết nối nhà giao dịch và broker. Hoàn tiền đến từ phí giao dịch thực tế. Zentrix không đảm bảo lợi nhuận đầu tư. Giao dịch forex và phái sinh có rủi ro đáng kể. Vui lòng đảm bảo tuân thủ quy định áp dụng trong khu vực của bạn trước khi tham gia."
+  }
+}

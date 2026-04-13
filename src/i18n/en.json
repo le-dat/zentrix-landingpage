@@ -1,0 +1,121 @@
+{
+  "header": {
+    "navHowItWorks": "How It Works",
+    "navWhyZentrix": "Why Zentrix",
+    "navReferral": "Referral",
+    "navFAQ": "FAQ",
+    "langEn": "EN",
+    "langVi": "VI"
+  },
+  "hero": {
+    "headline": "Trade — Earn Rebates — Withdraw to Your Wallet",
+    "subheadline": "Zentrix standardizes the rebate flow from your broker directly to your wallet. Fully on-chain transparent. No hidden intermediaries.",
+    "primaryCta": "Start Earning Rebates",
+    "secondaryCta": "See how it works ↓"
+  },
+  "metrics": {
+    "totalVolume": "Total Volume Processed",
+    "activeTraders": "Active Traders",
+    "integratedBrokers": "Integrated Brokers",
+    "totalRebates": "Total Rebates Paid Out"
+  },
+  "howItWorks": {
+    "step1Title": "Connect Your Broker",
+    "step1Desc": "Sign up for a Zentrix account, complete KYC, and link your trading account (MT4/MT5).",
+    "step2Title": "Trade as Usual",
+    "step2Desc": "Keep trading on your broker as normal. Zentrix automatically records your volume and calculates your rebates.",
+    "step3Title": "Receive Rebates to Your Wallet",
+    "step3Desc": "Rebates are allocated to your ledger, confirmed after each settlement period, and you can claim them to your BEP20 wallet at any time."
+  },
+  "why": {
+    "onchainTitle": "On-chain Transparency",
+    "onchainDesc": "A public smart contract Pool. Every claim transaction has a tx hash verifiable on the block explorer.",
+    "multiBrokerTitle": "Multi-Broker Support",
+    "multiBrokerDesc": "Connect multiple brokers under one account. All rebates consolidated in one place.",
+    "refNetworkTitle": "Clear Referral Network",
+    "refNetworkDesc": "F1/F2/F3 referral tree with publicly visible rates. No hidden fees, no secret allocations.",
+    "easyWithdrawTitle": "Easy Withdrawals",
+    "easyWithdrawDesc": "Claim to your BEP20 wallet with a fixed $0.50 fee per withdrawal. No manual approval required."
+  },
+  "referral": {
+    "f1Label": "F1",
+    "f1Relationship": "People you directly refer",
+    "f1Earn": "X% rebate from their trading volume",
+    "f2Label": "F2",
+    "f2Relationship": "People referred by your F1s",
+    "f2Earn": "Y% rebate from their trading volume",
+    "f3Label": "F3",
+    "f3Relationship": "People referred by your F2s",
+    "f3Earn": "Z% rebate from their trading volume",
+    "exampleLabel": "Example",
+    "exampleText": "Your F1 trades 100 lots/month → you earn ~$XX in rebates from F1, regardless of whether F1 refers anyone else.",
+    "legalNote": "Commissions are derived from actual trading fees — not from selling participation packages or depositing funds into the system."
+  },
+  "brokers": {
+    "badge": "+ More brokers coming soon",
+    "tooltipAssets": "Supported assets"
+  },
+  "comparison": {
+    "criteria": "Criteria",
+    "traditional": "Traditional Rebate",
+    "zentrix": "Zentrix",
+    "liquidity": "Liquidity Transparency",
+    "liquidityTraditional": "Internal balance, hard to verify externally",
+    "liquidityZentrix": "On-chain Pool, verifiable on explorer",
+    "fundFlow": "Fund Flow",
+    "fundFlowTraditional": "Internal transfers, non-public batches",
+    "fundFlowZentrix": "Broker → Treasury → Pool → Wallet",
+    "reconciliation": "Reconciliation",
+    "reconciliationTraditional": "Mostly internal reporting",
+    "reconciliationZentrix": "Broker + Ledger + Chain (3-way)",
+    "referral": "Referral Allocation",
+    "referralTraditional": "Limited audit tools",
+    "referralZentrix": "Ref tree + policy + public log",
+    "withdrawals": "Withdrawals",
+    "withdrawalsTraditional": "Manual approval process",
+    "withdrawalsZentrix": "On-chain claim, fixed fee"
+  },
+  "testimonials": {
+    "alexName": "Alex N.",
+    "alexRole": "IB",
+    "alexBroker": "Broker XYZ",
+    "alexQuote": "I never knew if I was getting the right rebate rate before. Zentrix shows me every single allocation with its status. It's a completely different level of trust.",
+    "sarahName": "Sarah T.",
+    "sarahRole": "Trader",
+    "sarahBroker": "Broker ABC",
+    "sarahQuote": "Connected my broker and the rebates just showed up automatically. Withdrawal was fast, fees were clear. No need to ask anyone anything."
+  },
+  "faq": {
+    "q1": "What is a rebate and where does it come from?",
+    "a1": "A rebate is a portion of the trading fee (spread/commission) that your broker returns through Zentrix. This money comes from your actual trading volume — not from any other source.",
+    "q2": "How much does Zentrix charge?",
+    "a2": "Zentrix charges a platform fee of $0.50–$1.00 per lot traded (varies by broker and asset) and a fixed withdrawal fee of $0.50 per claim. There are no other hidden fees.",
+    "q3": "Is KYC required?",
+    "a3": "Yes. KYC is mandatory to withdraw funds, in order to comply with AML regulations and protect your account. The process involves uploading a government-issued ID and a selfie — typically processed within a few business hours.",
+    "q4": "What is the on-chain Pool? Is my money safe?",
+    "a4": "The Pool is a BEP20 smart contract that holds rebate liquidity. Funds enter the Pool only after broker payouts have been received by treasury and verified through 3-way reconciliation. You can check the Pool balance and full claim history directly on BSCScan.",
+    "q5": "How long does it take to receive my rebates?",
+    "a5": "Rebates are recorded as your trading volume comes in. After each settlement period (typically weekly or monthly depending on the broker), rebates are confirmed and opened for claiming. You can claim at any time after that.",
+    "q6": "Is Zentrix an MLM scheme?",
+    "a6": "No. Referral commissions come from the actual trading fees generated by people you refer — not from selling participation packages or requiring deposits. Zentrix does not require you to purchase anything to participate.",
+    "q7": "Can I connect multiple brokers?",
+    "a7": "Yes. You can link multiple broker accounts under a single Zentrix account. Rebates from all brokers are consolidated in one place."
+  },
+  "cta": {
+    "headline": "Start Earning Rebates From Your Trades",
+    "sub": "Free to sign up · Fast KYC · Connect your broker in 5 minutes",
+    "primaryCta": "Sign Up Now",
+    "secondaryCta": "Or reach us on Telegram →"
+  },
+  "footer": {
+    "tagline": "Your trusted rebate platform",
+    "linksTerms": "Terms of Service",
+    "linksPrivacy": "Privacy Policy",
+    "linksSupport": "Support / Contact",
+    "linksRoadmap": "Roadmap",
+    "socialTelegram": "Telegram",
+    "socialTwitter": "Twitter / X",
+    "socialDiscord": "Discord",
+    "disclaimer": "Zentrix is a rebate platform connecting traders and brokers. Rebates are derived from actual trading fees. Zentrix does not guarantee investment returns. Forex and derivative trading involves significant risk. Please ensure compliance with the regulations applicable in your jurisdiction before participating."
+  }
+}

@@ -1,0 +1,118 @@
+---
+import { t, getLocale } from '../i18n/utils';
+import type { Locale } from '../i18n/utils';
+
+const locale: Locale = getLocale(Astro.request.url);
+---
+
+<header class="sticky top-0 z-50 bg-[#1E3A5F] shadow-md">
+  <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between gap-6">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 no-underline flex-shrink-0" aria-label="Zentrix Home">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="32" height="32" rx="8" fill="#1E3A5F"/>
+        <path d="M8 16L13 21L24 10" stroke="#1A6B2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="font-bold text-xl text-white tracking-tight">Zentrix</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex gap-8" aria-label="Main navigation">
+      <a href="#how-it-works" class="text-white/85 hover:text-white transition-colors text-sm font-medium min-h-11 flex items-center">{t(locale, 'header.navHowItWorks')}</a>
+      <a href="#why-zentrix" class="text-white/85 hover:text-white transition-colors text-sm font-medium min-h-11 flex items-center">{t(locale, 'header.navWhyZentrix')}</a>
+      <a href="#referral" class="text-white/85 hover:text-white transition-colors text-sm font-medium min-h-11 flex items-center">{t(locale, 'header.navReferral')}</a>
+      <a href="#faq" class="text-white/85 hover:text-white transition-colors text-sm font-medium min-h-11 flex items-center">{t(locale, 'header.navFAQ')}</a>
+    </nav>
+
+    <!-- Language Toggle + Mobile Menu -->
+    <div class="flex items-center gap-4">
+      <div class="flex bg-white/10 rounded-md p-0.5" role="group" aria-label="Language selector">
+        <button
+          class={`lang-btn ${locale === 'en' ? 'bg-[#1A6B2E] text-white' : 'text-white/60'} px-3 py-1.5 rounded text-sm font-semibold transition-all min-h-9 min-w-11`}
+          data-lang="en"
+          aria-pressed={locale === 'en' ? 'true' : 'false'}
+        >
+          {t(locale, 'header.langEn')}
+        </button>
+        <button
+          class={`lang-btn ${locale === 'vi' ? 'bg-[#1A6B2E] text-white' : 'text-white/60'} px-3 py-1.5 rounded text-sm font-semibold transition-all min-h-9 min-w-11`}
+          data-lang="vi"
+          aria-pressed={locale === 'vi' ? 'true' : 'false'}
+        >
+          {t(locale, 'header.langVi')}
+        </button>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button class="hamburger flex flex-col justify-center gap-[5px] w-11 h-11 bg-transparent border-none cursor-pointer p-0 md:hidden" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger-line block w-6 h-0.5 bg-white/85 rounded transition-all"></span>
+        <span class="hamburger-line block w-6 h-0.5 bg-white/85 rounded transition-all"></span>
+        <span class="hamburger-line block w-6 h-0.5 bg-white/85 rounded transition-all"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Nav -->
+  <nav id="mobile-nav" class="hidden md:hidden bg-[#1E3A5F] border-t border-white/10 px-6 py-4 flex-col gap-2" aria-label="Mobile navigation">
+    <a href="#how-it-works" class="nav-link-mobile text-white/85 hover:text-white no-underline text-base font-medium py-3 min-h-11 flex items-center border-b border-white/10">{t(locale, 'header.navHowItWorks')}</a>
+    <a href="#why-zentrix" class="nav-link-mobile text-white/85 hover:text-white no-underline text-base font-medium py-3 min-h-11 flex items-center border-b border-white/10">{t(locale, 'header.navWhyZentrix')}</a>
+    <a href="#referral" class="nav-link-mobile text-white/85 hover:text-white no-underline text-base font-medium py-3 min-h-11 flex items-center border-b border-white/10">{t(locale, 'header.navReferral')}</a>
+    <a href="#faq" class="nav-link-mobile text-white/85 hover:text-white no-underline text-base font-medium py-3 min-h-11 flex items-center">{t(locale, 'header.navFAQ')}</a>
+  </nav>
+</header>
+
+<style>
+  .hamburger.open .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = 'zentrix-locale';
+
+  function setLocale(locale: string): void {
+    localStorage.setItem(STORAGE_KEY, locale);
+    document.documentElement.lang = locale;
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', locale);
+    window.location.href = url.toString();
+  }
+
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLButtonElement;
+      const lang = target.dataset.lang;
+      if (lang && (lang === 'en' || lang === 'vi')) {
+        setLocale(lang);
+      }
+    });
+  });
+
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('#mobile-nav');
+
+  hamburger?.addEventListener('click', () => {
+    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!isExpanded));
+    if (mobileNav) {
+      (mobileNav as HTMLElement).style.display = isExpanded ? 'flex' : 'none';
+    }
+    hamburger.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.nav-link-mobile').forEach((link) => {
+    link.addEventListener('click', () => {
+      hamburger?.setAttribute('aria-expanded', 'false');
+      if (mobileNav) {
+        (mobileNav as HTMLElement).style.display = 'none';
+      }
+      hamburger?.classList.remove('open');
+    });
+  });
+</script>
