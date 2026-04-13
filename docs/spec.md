@@ -223,11 +223,11 @@
 
 | Group | Rule |
 |---|---|
-| **Colors** | Primary: `#1E3A5F` Navy · Accent: `#1A6B2E` Green · Warning: `#B07000` Amber · Surface: `#F4F4F4` Gray |
-| **Typography** | Font: Inter or Plus Jakarta Sans · Headline: 48–64px bold · Body: 16–18px regular · Line-height: 1.7 |
-| **CTA** | 1 primary CTA per viewport · Min height 48px · Border radius 8px · Action-oriented text |
+| **Colors** | Brand: `#9fe870` Lime Green · Dark: `#0f1619` · Warning: `#B07000` Amber · Surface: `#F4F4F4` Gray |
+| **Typography** | Font: Inter · Headline: 48–64px bold · Body: 16–18px regular · Line-height: 1.7 |
+| **CTA** | 1 primary CTA per viewport · Min height 48px · Border radius 9999px (pill) · Action-oriented text |
 | **Mobile** | Breakpoint 768px · Stacked layout · Touch target min 44px · No font below 14px |
-| **Animation** | Subtle only · Respect prefers-reduced-motion · No autoplaying audio/video |
+| **Animation** | Subtle only · Respect prefers-reduced-motion · Scale 1.05 hover on buttons |
 | **Performance** | Lazy load images · LCP < 2.5s · No heavy libraries on landing page |
 
 ---

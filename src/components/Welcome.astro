@@ -5,21 +5,67 @@ import type { Locale } from '../i18n/utils';
 const locale: Locale = getLocale(Astro.request.url);
 ---
 
-<section id="hero" class="min-h-screen bg-[#1E3A5F] flex items-center justify-center px-6">
-  <div class="text-center max-w-3xl mx-auto">
-    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+<section id="hero" class="min-h-screen bg-[#0f1619] flex items-center justify-center px-6 relative overflow-hidden">
+  <!-- Background gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[#0f1619] via-[#1a2a3a] to-[#0f1619] opacity-50 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="text-center max-w-3xl mx-auto relative z-10">
+    <!-- Animated headline with fade-in and slide-up -->
+    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
       {t(locale, 'hero.headline')}
     </h1>
-    <p class="text-lg md:text-xl text-white/80 mb-8 leading-relaxed max-w-2xl mx-auto">
+    <!-- Animated subheadline with staggered delay -->
+    <p class="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 100ms">
       {t(locale, 'hero.subheadline')}
     </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#how-it-works" class="inline-flex items-center justify-center px-8 py-3 bg-[#1A6B2E] text-white font-semibold rounded-lg min-h-12 hover:bg-[#155a24] transition-colors">
+    <!-- Animated CTA buttons with staggered delay -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style="animation-delay: 200ms">
+      <!-- Primary CTA - Wise-style pill with scale animation -->
+      <a
+        href="#how-it-works"
+        class="cta-pill bg-[#9fe870] text-[#163300] hover:scale-105 active:scale-95 px-8 py-4 font-semibold rounded-full min-h-12 transition-all duration-200 inline-flex items-center justify-center"
+      >
         {t(locale, 'hero.primaryCta')}
       </a>
-      <a href="#how-it-works" class="inline-flex items-center justify-center px-8 py-3 bg-white/10 text-white font-semibold rounded-lg min-h-12 hover:bg-white/20 transition-colors border border-white/20">
+      <!-- Secondary CTA - outline pill -->
+      <a
+        href="#how-it-works"
+        class="cta-pill-secondary bg-transparent text-white hover:bg-[rgba(211,242,192,0.15)] hover:scale-105 active:scale-95 px-8 py-4 font-semibold rounded-full min-h-12 transition-all duration-200 border border-white/30 inline-flex items-center justify-center"
+      >
         {t(locale, 'hero.secondaryCta')}
       </a>
     </div>
   </div>
 </section>
+
+<style>
+  /* Fade-in and slide-up animation */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .cta-pill,
+    .cta-pill-secondary {
+      transition: none;
+    }
+  }
+</style>

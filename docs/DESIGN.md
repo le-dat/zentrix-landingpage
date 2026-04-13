@@ -1,43 +1,36 @@
-# Design System Inspired by Wise
+# Design System — Zentrix Brand
 
 ## 1. Visual Theme & Atmosphere
 
-Wise's website is a bold, confident fintech platform that communicates "money without borders" through massive typography and a distinctive lime-green accent. The design operates on a warm off-white canvas with near-black text (`#0e0f0c`) and a signature Wise Green (`#9fe870`) — a fresh, lime-bright color that feels alive and optimistic, unlike the corporate blues of traditional banking.
+Zentrix is a fintech rebate platform that communicates trust, transparency, and modern professionalism. The design features a dark, sophisticated palette with a signature lime-green accent — fresh and optimistic, unlike the corporate blues of traditional banking.
 
-The typography uses Wise Sans — a proprietary font used at extreme weight 900 (black) for display headings with a remarkably tight line-height of 0.85 and OpenType `"calt"` (contextual alternates). At 126px, the text is so dense it feels like a protest sign — bold, urgent, and impossible to ignore. Inter serves as the body font with weight 600 as the default for emphasis, creating a consistently confident voice.
-
-What distinguishes Wise is its green-on-white-on-black material palette. Lime Green (`#9fe870`) appears on buttons with dark green text (`#163300`), creating a nature-inspired CTA that feels fresh. Hover states use `scale(1.05)` expansion rather than color changes — buttons physically grow on interaction. The border-radius system uses 9999px for buttons (pill), 30px–40px for cards, and the shadow system is minimal — just `rgba(14,15,12,0.12) 0px 0px 0px 1px` ring shadows.
+The logo features a lime-green mark (`#9fe870`) on a dark background (`#0f1619`), with clean white text. This green-on-dark identity carries through CTAs and accent elements.
 
 **Key Characteristics:**
-- Wise Sans at weight 900, 0.85 line-height — billboard-scale bold headlines
-- Lime Green (`#9fe870`) accent with dark green text (`#163300`) — nature-inspired fintech
-- Inter body at weight 600 as default — confident, not light
-- Near-black (`#0e0f0c`) primary with warm green undertone
+- Lime Green (`#9fe870`) accent on dark surfaces — signature brand color
+- Dark background (`#0f1619`) for header/nav — sophisticated fintech feel
+- White (`#ffffff`) text on dark backgrounds — high contrast readability
 - Scale(1.05) hover animations — buttons physically grow
-- OpenType `"calt"` on all text
-- Pill buttons (9999px) and large rounded cards (30px–40px)
-- Semantic color system with comprehensive state management
+- Pill buttons (9999px radius) and rounded cards (16px–40px)
+- Inter font family with weight 600 as default for body
 
 ## 2. Color Palette & Roles
 
-### Primary Brand
-- **Near Black** (`#0e0f0c`): Primary text, background for dark sections
-- **Wise Green** (`#9fe870`): Primary CTA button, brand accent
-- **Dark Green** (`#163300`): Button text on green, deep green accent
-- **Light Mint** (`#e2f6d5`): Soft green surface, badge backgrounds
-- **Pastel Green** (`#cdffad`): `--color-interactive-contrast-hover`, hover accent
+### Primary Brand (from logo)
+- **Brand Green** (`#9fe870`): Logo mark, primary CTA, brand accent
+- **Dark** (`#0f1619`): Header background, logo icon background, dark sections
+- **White** (`#ffffff`): Logo text, primary text on dark, high contrast elements
+
+### Supporting Colors
+- **Navy** (`#1E3A5F`): Alternative dark accent (used sparingly)
+- **Green Dark** (`#163300`): Text on green buttons/CTA for readability
+- **Surface** (`#F4F4F4`): Light section backgrounds
+- **Gray** (`#868685`): Muted text, secondary information
 
 ### Semantic
-- **Positive Green** (`#054d28`): `--color-sentiment-positive-primary`, success
-- **Danger Red** (`#d03238`): `--color-interactive-negative-hover`, error/destructive
-- **Warning Yellow** (`#ffd11a`): `--color-sentiment-warning-hover`, warnings
-- **Background Cyan** (`rgba(56,200,255,0.10)`): `--color-background-accent`, info tint
-- **Bright Orange** (`#ffc091`): `--color-bright-orange`, warm accent
-
-### Neutral
-- **Warm Dark** (`#454745`): Secondary text, borders
-- **Gray** (`#868685`): Muted text, tertiary
-- **Light Surface** (`#e8ebe6`): Subtle green-tinted light surface
+- **Positive Green** (`#054d28`): Success states, confirmations
+- **Danger Red** (`#d03238`): Error/destructive states
+- **Warning Amber** (`#B07000`): Warnings, attention states
 
 ## 3. Typography Rules
 
@@ -72,30 +65,33 @@ What distinguishes Wise is its green-on-white-on-black material palette. Lime Gr
 
 ### Buttons
 
-**Primary Green Pill**
-- Background: `#9fe870` (Wise Green)
-- Text: `#163300` (Dark Green)
-- Padding: 5px 16px
-- Radius: 9999px
+**Primary Green Pill (CTA)**
+- Background: `#9fe870` (Brand Green)
+- Text: `#163300` (Green Dark — for readability on green)
+- Padding: 10px 20px
+- Radius: 9999px (pill)
+- Min height: 44px (touch-friendly)
 - Hover: scale(1.05) — button physically grows
 - Active: scale(0.95) — button compresses
-- Focus: inset ring + outline
+- Focus: ring outline
 
-**Secondary Subtle Pill**
-- Background: `rgba(22, 51, 0, 0.08)` (dark green at 8% opacity)
-- Text: `#0e0f0c`
-- Padding: 8px 12px 8px 16px
+**Secondary Pill (Nav/UI)**
+- Background: transparent
+- Text: White `rgba(255,255,255,0.85)`
+- Hover: `rgba(211,242,192,0.4)` green-tinted background, rounded-full
+- Padding: 8px 16px
 - Radius: 9999px
 - Same scale hover/active behavior
 
 ### Cards & Containers
 - Radius: 16px (small), 30px (medium), 40px (large cards/tables)
-- Border: `1px solid rgba(14,15,12,0.12)` or `1px solid #9fe870` (green accent)
-- Shadow: `rgba(14,15,12,0.12) 0px 0px 0px 1px` (ring shadow)
+- Border: `1px solid rgba(255,255,255,0.1)` for dark cards
+- Shadow: Minimal — ring shadows only on light surfaces
 
 ### Navigation
-- Green-tinted navigation hover: `rgba(211,242,192,0.4)`
-- Clean header with Wise wordmark
+- Header background: `#0f1619` (Dark from logo)
+- Nav link hover: `rgba(211,242,192,0.4)` green-tinted background
+- Clean header with Zentrix logo (left)
 - Pill CTAs right-aligned
 
 ## 5. Layout Principles
@@ -128,19 +124,19 @@ What distinguishes Wise is its green-on-white-on-black material palette. Lime Gr
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Wise Sans weight 900 for display — the extreme boldness IS the brand
-- Apply line-height 0.85 on Wise Sans display — ultra-tight is intentional
-- Use Lime Green (#9fe870) for primary CTAs with Dark Green (#163300) text
+- Use Brand Green (`#9fe870`) for CTAs and accent elements
+- Use Dark (`#0f1619`) for header and dark sections
 - Apply scale(1.05) hover and scale(0.95) active on buttons
-- Enable "calt" on all text
+- Use pill shape (9999px radius) for buttons and nav items
 - Use Inter weight 600 as the body default
+- Ensure 44px minimum touch targets
 
 ### Don't
-- Don't use light font weights for Wise Sans — only 900
-- Don't relax the 0.85 line-height on display — the density is the identity
-- Don't use the Wise Green as background for large surfaces — it's for buttons and accents
+- Don't use light font weights for display headings — use 700-800 for bold impact
+- Don't use the Brand Green as background for large surfaces — it's for accents and CTAs
 - Don't skip the scale animation on buttons
-- Don't use traditional shadows — ring shadows only
+- Don't use heavy shadows — prefer border-based separation
+- Don't use the old navy `#1E3A5F` for main branding — the logo uses `#0f1619`
 
 ## 8. Responsive Behavior
 
@@ -154,16 +150,17 @@ What distinguishes Wise is its green-on-white-on-black material palette. Lime Gr
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Text: Near Black (`#0e0f0c`)
-- Background: White (`#ffffff` / off-white)
-- Accent: Wise Green (`#9fe870`)
-- Button text: Dark Green (`#163300`)
-- Secondary: Gray (`#868685`)
+### Quick Color Reference (from logo)
+- Brand Green: `#9fe870` — logo mark, CTAs, accents
+- Dark: `#0f1619` — header, logo background, dark sections
+- White: `#ffffff` — text on dark, logo text
+- Button text on green: `#163300`
+- Surface (light): `#F4F4F4`
+- Gray: `#868685`
 
 ### Example Component Prompts
-- "Create hero: white background. Headline at 96px Wise Sans weight 900, line-height 0.85, 'calt' enabled, #0e0f0c text. Green pill CTA (#9fe870, 9999px radius, 5px 16px padding, #163300 text). Hover: scale(1.05)."
-- "Build a card: 30px radius, 1px solid rgba(14,15,12,0.12). Title at 22px Inter weight 600, body at 18px weight 400."
+- "Create hero: dark background (#0f1619). Headline in white, Inter 700 weight. Green pill CTA (#9fe870, 9999px radius, 10px 20px padding, #163300 text). Hover: scale(1.05)."
+- "Build a card: 30px radius, border rgba(255,255,255,0.1). Title at 22px Inter weight 600, body at 18px weight 400."
 
 ### Iteration Guide
 1. Wise Sans 900 at 0.85 line-height — the extreme weight IS the brand
