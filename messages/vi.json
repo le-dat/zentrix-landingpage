@@ -17,10 +17,10 @@
     "learnMore": "Xem cách hoạt động"
   },
   "TrustMetrics": {
-    "totalVolume": "Khối lượng giao dịch",
-    "activeTraders": "Nhà giao dịch hoạt động",
-    "integratedBrokers": "Broker tích hợp",
-    "totalRebates": "Tổng hoàn tiền đã trả"
+    "fullyAutomated": "Hoàn toàn tự động",
+    "totalRebates": "Tổng tiền phí được hoàn",
+    "activeTraders": "Người tham gia hoàn tiền",
+    "userSatisfaction": "Người dùng hài lòng"
   },
   "HowItWorks": {
     "title": "Cách Hoạt Động",
@@ -191,5 +191,10 @@
       "twitter": "Twitter / X"
     },
     "disclaimer": "Zentrix là nền tảng hoàn tiền kết nối nhà giao dịch và broker. Hoàn tiền đến từ phí giao dịch thực tế. Zentrix không đảm bảo lợi nhuận đầu tư. Giao dịch forex và phái sinh có rủi ro đáng kể. Vui lòng đảm bảo tuân thủ các quy định áp dụng cho juris của bạn trước khi tham gia."
+  },
+  "NotFound": {
+    "title": "Bạn bị lạc đường?",
+    "description": "Trang bạn đang tìm kiếm không tồn tại. Hãy quay lại trang chủ để bắt đầu nhận ưu đãi hoàn phí.",
+    "backHome": "Quay lại Trang chủ"
   }
 }

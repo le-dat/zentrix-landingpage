@@ -4,40 +4,44 @@ import React from "react";
 import { motion } from "framer-motion";
 import { t } from "@/lib/t";
 import type { Messages } from "@/lib/translations";
-import { Users, BarChart3, Globe, Landmark } from "lucide-react";
+import { Users2, DollarSign, RefreshCcw, Smile } from "lucide-react";
 
 export function StatsBar({ messages }: { messages: Messages }) {
   const stats = [
     { 
-      id: "volume",
-      label: t(messages, "TrustMetrics.totalVolume"), 
-      value: "$4,250,000", 
-      icon: <BarChart3 className="w-5 h-5 text-teal" /> 
+      id: "auto",
+      label: t(messages, "TrustMetrics.fullyAutomated"), 
+      value: "Auto", 
+      icon: <RefreshCcw className="w-5 h-5 text-gray-900" />,
+      color: "green"
+    },
+    { 
+      id: "rebates",
+      label: t(messages, "TrustMetrics.totalRebates"), 
+      value: "$2M+", 
+      icon: <DollarSign className="w-5 h-5 text-white" />,
+      color: "dark"
     },
     { 
       id: "traders",
       label: t(messages, "TrustMetrics.activeTraders"), 
-      value: "8,400+", 
-      icon: <Users className="w-5 h-5 text-teal" /> 
+      value: "10,000+", 
+      icon: <Users2 className="w-5 h-5 text-white" />,
+      color: "dark"
     },
     { 
-      id: "brokers",
-      label: t(messages, "TrustMetrics.integratedBrokers"), 
-      value: "12", 
-      icon: <Landmark className="w-5 h-5 text-teal" /> 
-    },
-    { 
-      id: "payouts",
-      label: t(messages, "TrustMetrics.totalRebates"), 
-      value: "$840,000+", 
-      icon: <Globe className="w-5 h-5 text-teal" /> 
+      id: "satisfaction",
+      label: t(messages, "TrustMetrics.userSatisfaction"), 
+      value: "99%", 
+      icon: <Smile className="w-5 h-5 text-white" />,
+      color: "dark"
     },
   ];
 
   return (
-    <section className="bg-white border-y border-gray-100 py-12 md:py-16">
+    <section className="bg-gray-50/50 py-12 border-y border-gray-100">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, idx) => (
             <motion.div
               key={stat.id}
@@ -45,18 +49,31 @@ export function StatsBar({ messages }: { messages: Messages }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="flex flex-col items-center text-center lg:items-start lg:text-left gap-4"
+              className="flex items-center gap-4"
             >
-              <div className="w-12 h-12 rounded-2xl bg-teal/5 flex items-center justify-center border border-teal/10">
-                {stat.icon}
+              <div className="relative flex-shrink-0">
+                {stat.color === "green" ? (
+                  <div className="relative w-16 h-16 flex items-center justify-center">
+                    {/* Dashed outer circle */}
+                    <div className="absolute inset-0 rounded-full border border-dashed border-green-400/60" />
+                    {/* Main green circle */}
+                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-sm">  
+                      {stat.icon}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="w-12 h-12 rounded-full bg-[#344054] flex items-center justify-center">
+                    {stat.icon}
+                  </div>
+                )}
               </div>
-              <div>
-                <div className="text-3xl md:text-4xl font-black text-[#101828] mb-1">
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold text-gray-900 leading-none mb-1">
                   {stat.value}
-                </div>
-                <div className="text-sm font-medium text-gray-400 uppercase tracking-wide">
+                </span>
+                <span className="text-sm font-medium text-gray-500">
                   {stat.label}
-                </div>
+                </span>
               </div>
             </motion.div>
           ))}

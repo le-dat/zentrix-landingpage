@@ -15,27 +15,33 @@ export function Footer({ messages }: { messages: Messages }) {
           {/* Brand Column */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-2">
-              <div className="relative w-8 h-8 overflow-hidden rounded-lg">
-                <Image 
-                  src="/logo.png" 
-                  alt="Zentrix" 
-                  fill 
+              <div className="relative w-30 h-10 overflow-hidden rounded-lg">
+                <Image
+                  src="/logo.png"
+                  alt="Zentrix"
+                  fill
                   className="object-contain brightness-0 invert"
                 />
               </div>
-              <span className="font-bold text-2xl tracking-tight uppercase">Zentrix</span>
             </Link>
-            <p className="text-gray-400 leading-relaxed">
-              {t(messages, "Footer.tagline")}
-            </p>
+            <p className="text-gray-400 leading-relaxed">{t(messages, "Footer.tagline")}</p>
             <div className="flex gap-4">
-              <Link href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-teal transition-colors">
+              <Link
+                href="#"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-teal transition-colors"
+              >
                 <Send className="w-5 h-5" />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-teal transition-colors">
+              <Link
+                href="#"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-teal transition-colors"
+              >
                 <Link2 className="w-5 h-5" />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-teal transition-colors">
+              <Link
+                href="#"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-teal transition-colors"
+              >
                 <Link2 className="w-5 h-5" />
               </Link>
             </div>
@@ -91,8 +97,8 @@ export function Footer({ messages }: { messages: Messages }) {
             <p className="text-gray-400 mb-6">
               Bạn có thắc mắc? Đừng ngần ngại liên hệ với chúng tôi qua Telegram hỗ trợ 24/7.
             </p>
-            <Link 
-              href="https://t.me/zentrix_support" 
+            <Link
+              href="https://t.me/zentrix_support"
               className="inline-flex items-center gap-2 bg-teal hover:bg-teal/90 text-white px-6 py-3 rounded-2xl font-bold transition-all"
             >
               <Send className="w-4 h-4" />

@@ -17,10 +17,10 @@
     "learnMore": "See how it works"
   },
   "TrustMetrics": {
-    "totalVolume": "Total Volume Processed",
+    "fullyAutomated": "Fully Automated",
+    "totalRebates": "Total Rebates Paid Out",
     "activeTraders": "Active Traders",
-    "integratedBrokers": "Integrated Brokers",
-    "totalRebates": "Total Rebates Paid Out"
+    "userSatisfaction": "User Satisfaction"
   },
   "HowItWorks": {
     "title": "How It Works",
@@ -191,5 +191,10 @@
       "twitter": "Twitter / X"
     },
     "disclaimer": "Zentrix is a rebate platform connecting traders and brokers. Rebates are derived from actual trading fees. Zentrix does not guarantee investment returns. Forex and derivative trading involves significant risk. Please ensure compliance with the regulations applicable in your jurisdiction before participating."
+  },
+  "NotFound": {
+    "title": "Lost in Trade?",
+    "description": "The page you're looking for doesn't exist. Let's get you back to the home page so you can start earning rebates.",
+    "backHome": "Return to Home Page"
   }
 }
