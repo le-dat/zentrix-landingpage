@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function HeroSection() {
   return (
@@ -15,7 +15,9 @@ export function HeroSection() {
           transition={{ duration: 0.5 }}
           className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/80 border border-white/10 mb-8"
         >
-          <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-white text-black">NEW</span>
+          <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-white text-black">
+            NEW
+          </span>
           <span className="text-sm text-white/90">Latest integration just arrived</span>
         </motion.div>
 
@@ -36,7 +38,8 @@ export function HeroSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-6 text-center text-lg text-white/70 max-w-[544px] leading-relaxed"
         >
-          Elevate your site&apos;s visibility effortlessly with AI, where smart technology meets SEO expertise.
+          Elevate your site&apos;s visibility effortlessly with AI, where smart technology meets SEO
+          expertise.
         </motion.p>
 
         {/* CTA */}
@@ -51,6 +54,21 @@ export function HeroSection() {
           </button>
         </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <Image
+          src="/app.png"
+          alt="App"
+          width={1200}
+          height={600}
+          className="w-full max-w-[1200px] mx-auto h-auto"
+        />
+      </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#020103] via-transparent to-transparent" />
     </section>
   );
 }
