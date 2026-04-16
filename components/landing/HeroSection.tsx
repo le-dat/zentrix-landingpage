@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[1165px] overflow-hidden">
+    <section className="relative min-h-[1165px] overflow-hidden mt-[82px]">
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center pt-20">
         {/* Badge */}

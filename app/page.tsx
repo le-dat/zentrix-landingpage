@@ -7,14 +7,25 @@ import { ClientsSection } from "@/components/landing/ClientsSection";
 import { FAQSection } from "@/components/landing/FAQSection";
 import { Footer } from "@/components/landing/Footer";
 
-export default function SEOLandingPage() {
+export default function LandingPage() {
   return (
     <main className="relative min-h-screen bg-[#020103] text-white overflow-hidden">
       {/* Navigation */}
       <LandingNav />
-
-      {/* Hero */}
-      <HeroSection />
+      <div
+        className="relative"
+        style={{
+          backgroundImage: "url('/circle.png')",
+          backgroundSize: "contain",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.8)_0%,transparent_80%)] pointer-events-none mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020103] via-transparent to-transparent" />
+        {/* Hero */}
+        <HeroSection />
+      </div>
 
       {/* Trusted companies */}
       <CompaniesSection />

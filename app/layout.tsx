@@ -11,6 +11,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Zentrix",
   description: "Zentrix - Optimized Rebates for Traders",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default async function RootLayout({
