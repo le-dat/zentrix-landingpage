@@ -1,8 +1,45 @@
 "use client";
-import React from "react";
 
-const error = () => {
-  return <div>error</div>;
-};
+import Link from "next/link";
+import { useEffect } from "react";
 
-export default error;
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  useEffect(() => {
+    console.error("Application error:", error);
+  }, [error]);
+
+  return (
+    <main className="min-h-screen flex items-center justify-center bg-[#020103]">
+      <div className="text-center px-6 max-w-md">
+        <p className="text-6xl font-bold text-[#18CBA8] mb-4">!</p>
+
+        <h1 className="text-2xl font-bold text-white mb-3">Something went wrong</h1>
+
+        <p className="text-white/50 mb-8">An unexpected error occurred.</p>
+
+        <div className="flex gap-4 justify-center">
+          <button
+            onClick={reset}
+            className="px-6 py-3 rounded-full bg-[#18CBA8] text-black font-medium hover:bg-[#29FFB5] transition-colors"
+          >
+            Try again
+          </button>
+          <Link
+            href="/"
+            className="px-6 py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white/5 transition-colors"
+          >
+            Go home
+          </Link>
+        </div>
+
+        {error.digest && <p className="mt-12 text-xs text-white/20 font-mono">{error.digest}</p>}
+      </div>
+    </main>
+  );
+}
