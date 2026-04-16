@@ -1,122 +1,130 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { t } from "@/lib/t";
-import type { Messages } from "@/lib/translations";
-import { Send, Link2 } from "lucide-react";
 
-export function Footer({ messages }: { messages: Messages }) {
+const footerLinks = {
+  Product: ["Features", "Integration", "Updates", "FAQ", "Pricing"],
+  Company: ["About", "Blog", "Careers", "Manifesto", "Press", "Contract"],
+  Resources: ["Examples", "Community", "Guides", "Docs", "Press"],
+  Legal: ["Privacy", "Terms", "Security"],
+};
+
+function XIcon({ className }: { className?: string }) {
   return (
-    <footer className="bg-[#101828] text-white py-16 lg:py-24">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
-          {/* Brand Column */}
-          <div className="space-y-6">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="relative w-30 h-10 overflow-hidden rounded-lg">
-                <Image
-                  src="/logo.png"
-                  alt="Zentrix"
-                  fill
-                  className="object-contain brightness-0 invert"
-                />
-              </div>
-            </Link>
-            <p className="text-gray-400 leading-relaxed">{t(messages, "Footer.tagline")}</p>
-            <div className="flex gap-4">
-              <Link
-                href="#"
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-teal transition-colors"
-              >
-                <Send className="w-5 h-5" />
-              </Link>
-              <Link
-                href="#"
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-teal transition-colors"
-              >
-                <Link2 className="w-5 h-5" />
-              </Link>
-              <Link
-                href="#"
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-teal transition-colors"
-              >
-                <Link2 className="w-5 h-5" />
-              </Link>
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.259 5.631L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
+    </svg>
+  );
+}
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+    </svg>
+  );
+}
+
+function YoutubeIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  );
+}
+
+const socials = [
+  { Icon: XIcon, label: "X" },
+  { Icon: InstagramIcon, label: "Instagram" },
+  { Icon: YoutubeIcon, label: "YouTube" },
+];
+
+export function Footer() {
+  return (
+    <section className="relative py-20 border-t border-white/5">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="flex flex-col md:flex-row gap-16 mb-16">
+          {/* Logo */}
+          <div className="shrink-0">
+            <Image
+              src="/zentrix-logo.png"
+              alt="Logo"
+              width={127}
+              height={10}
+              className="object-contain"
+              style={{ height: "auto" }}
+            />
+          </div>
+
+          {/* Links grid */}
+          <div className="flex justify-end flex-wrap gap-12 flex-1">
+            <div className="min-w-[120px]">
+              <h4 className="font-semibold mb-4">Product</h4>
+              <ul className="space-y-3">
+                {footerLinks.Product.map((link) => (
+                  <li key={link}>
+                    <span className="text-sm text-white/60 hover:text-white transition-colors cursor-pointer">
+                      {link}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="min-w-[120px]">
+              <h4 className="font-semibold mb-4">Company</h4>
+              <ul className="space-y-3">
+                {footerLinks.Company.map((link) => (
+                  <li key={link}>
+                    <span className="text-sm text-white/60 hover:text-white transition-colors cursor-pointer">
+                      {link}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="min-w-[120px]">
+              <h4 className="font-semibold mb-4">Resources</h4>
+              <ul className="space-y-3">
+                {footerLinks.Resources.map((link) => (
+                  <li key={link}>
+                    <span className="text-sm text-white/60 hover:text-white transition-colors cursor-pointer">
+                      {link}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="min-w-[120px]">
+              <h4 className="font-semibold mb-4">Legal</h4>
+              <ul className="space-y-3">
+                {footerLinks.Legal.map((link) => (
+                  <li key={link}>
+                    <span className="text-sm text-white/60 hover:text-white transition-colors cursor-pointer">
+                      {link}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-bold text-lg mb-6">Trang chủ</h4>
-            <ul className="space-y-4">
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-teal transition-colors">
-                  {t(messages, "Navigation.howItWorks")}
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-teal transition-colors">
-                  {t(messages, "Navigation.whyZentrix")}
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-teal transition-colors">
-                  FAQ
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="font-bold text-lg mb-6">Pháp lý</h4>
-            <ul className="space-y-4">
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-teal transition-colors">
-                  {t(messages, "Footer.links.terms")}
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-teal transition-colors">
-                  {t(messages, "Footer.links.privacy")}
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-teal transition-colors">
-                  Disclaimer
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-bold text-lg mb-6">Liên hệ</h4>
-            <p className="text-gray-400 mb-6">
-              Bạn có thắc mắc? Đừng ngần ngại liên hệ với chúng tôi qua Telegram hỗ trợ 24/7.
-            </p>
-            <Link
-              href="https://t.me/zentrix_support"
-              className="inline-flex items-center gap-2 bg-teal hover:bg-teal/90 text-white px-6 py-3 rounded-2xl font-bold transition-all"
-            >
-              <Send className="w-4 h-4" />
-              Zentrix Support
-            </Link>
-          </div>
         </div>
 
-        {/* Disclaimer Bottom */}
-        <div className="pt-8 border-t border-white/5 text-center">
-          <p className="text-xs text-gray-500 leading-relaxed max-w-5xl mx-auto mb-8">
-            {t(messages, "Footer.disclaimer")}
-          </p>
-          <div className="text-gray-600 text-[10px] uppercase font-bold tracking-[0.2em]">
-            © 2026 Zentrix Network. All rights reserved.
-          </div>
+        {/* Social icons */}
+        <div className="flex items-center gap-4">
+          {socials.map((social) => (
+            <button
+              key={social.label}
+              className="w-6 h-6 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+              aria-label={social.label}
+            >
+              <social.Icon className="w-5 h-5" />
+            </button>
+          ))}
         </div>
       </div>
-    </footer>
+    </section>
   );
 }

@@ -5,15 +5,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, Home, Search, RefreshCcw, DollarSign, Users2 } from "lucide-react";
 
-interface NotFoundClientProps {
-  t: {
-    title: string;
-    description: string;
-    backHome: string;
-  };
-}
+interface NotFoundClientProps {}
 
-export function NotFoundClient({ t }: NotFoundClientProps) {
+export function NotFoundClient({}: NotFoundClientProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -27,7 +21,7 @@ export function NotFoundClient({ t }: NotFoundClientProps) {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
   };
 
   return (
@@ -98,11 +92,11 @@ export function NotFoundClient({ t }: NotFoundClientProps) {
           </motion.div>
 
           <motion.h2 variants={itemVariants} className="mb-6 text-5xl sm:text-7xl font-extrabold text-[#101828] tracking-tight">
-            {t.title}
+            Oops! Page not found
           </motion.h2>
 
           <motion.p variants={itemVariants} className="mb-12 text-xl text-gray-500 leading-relaxed max-w-xl mx-auto">
-            {t.description}
+            The page you are looking for might have been removed or is temporarily unavailable.
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -112,7 +106,7 @@ export function NotFoundClient({ t }: NotFoundClientProps) {
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#101828] px-10 py-5 text-lg font-bold text-white shadow-2xl transition hover:shadow-[#101828]/20 active:bg-[#1d2939]"
               >
                 <Home className="h-5 w-5" />
-                {t.backHome}
+                Back to Home
               </Link>
             </motion.div>
             

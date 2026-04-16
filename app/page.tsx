@@ -1,23 +1,38 @@
-import { Benefits } from "@/components/landing/Benefits";
-import { BrokerListing } from "@/components/landing/BrokerListing";
-import { FAQ } from "@/components/landing/FAQ";
-import { Hero } from "@/components/landing/Hero";
-import { StatsBar } from "@/components/landing/StatsBar";
-import { defaultLocale, translations, type Locale } from "@/lib/translations";
-import { cookies } from "next/headers";
+import { LandingNav } from "@/components/landing/LandingNav";
+import { HeroSection } from "@/components/landing/HeroSection";
+import { CompaniesSection } from "@/components/landing/CompaniesSection";
+import { BentoSection } from "@/components/landing/BentoSection";
+import { FeaturesSection } from "@/components/landing/FeaturesSection";
+import { ClientsSection } from "@/components/landing/ClientsSection";
+import { FAQSection } from "@/components/landing/FAQSection";
+import { Footer } from "@/components/landing/Footer";
 
-export default async function HomePage() {
-  const cookieStore = await cookies();
-  const locale = (cookieStore.get("locale")?.value as Locale | undefined) ?? defaultLocale;
-  const msgs = translations[locale];
-
+export default function SEOLandingPage() {
   return (
-    <main className="relative flex flex-col min-h-screen bg-white">
-      <Hero messages={msgs} />
-      <StatsBar messages={msgs} />
-      <Benefits messages={msgs} />
-      <BrokerListing messages={msgs} />
-      <FAQ messages={msgs} />
+    <main className="relative min-h-screen bg-[#020103] text-white overflow-hidden">
+      {/* Navigation */}
+      <LandingNav />
+
+      {/* Hero */}
+      <HeroSection />
+
+      {/* Trusted companies */}
+      <CompaniesSection />
+
+      {/* Bento grid */}
+      <BentoSection />
+
+      {/* Features */}
+      <FeaturesSection />
+
+      {/* Testimonials */}
+      <ClientsSection />
+
+      {/* FAQ */}
+      <FAQSection />
+
+      {/* Footer */}
+      <Footer />
     </main>
   );
 }
