@@ -190,3 +190,5 @@ body {
     @apply font-sans;
   }
 }
+
+/* How it works — rebate border trace: animated via Framer motion.path in RebateFlowBorderTrace */
