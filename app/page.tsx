@@ -8,6 +8,7 @@ import { Footer } from "@/components/landing/Footer";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { LandingNav } from "@/components/landing/LandingNav";
+import { TrustMetrics } from "@/components/landing/TrustMetrics";
 
 export default function LandingPage() {
   return (
@@ -28,19 +29,18 @@ export default function LandingPage() {
         <HeroSection />
       </div>
 
-      {/* Trusted companies */}
-      <CompaniesSection />
+      <TrustMetrics />
 
-      {/* Bento grid */}
-      <BentoSection />
+      <HowItWorks />
 
-      {/* Features */}
       <FeaturesSection />
 
       <ComparisonSection />
-      <HowItWorks />
 
-      {/* Testimonials */}
+      <BentoSection />
+
+      <CompaniesSection />
+
       <ClientsSection />
 
       {/* FAQ */}
