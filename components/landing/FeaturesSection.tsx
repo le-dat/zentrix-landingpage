@@ -39,14 +39,10 @@ export function FeaturesSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-[40px] md:text-[48px] font-bold leading-tight mb-4"
+          className="mb-4 text-center text-[40px] font-bold leading-tight md:text-[48px]"
         >
           Why Zentrix
         </motion.h2>
-        <p className="text-white/50 text-lg mb-12 max-w-xl">
-          Differentiated from traditional rebate programs — built for traders who want proof, not promises.
-        </p>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {features.map((feature, i) => (
             <motion.div
