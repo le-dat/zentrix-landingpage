@@ -7,11 +7,8 @@ import { cn } from "@/lib/utils";
 
 export interface RebateFlowBorderTraceProps {
   className?: string;
-  /** True while pointer is over the card — drives both line draws (Framer pathLength). */
   active: boolean;
-  /** Inset from wrapper edge — keep in sync with HowItWorks `p-px` (1px). */
   insetPx?: number;
-  /** Inner card radius — keep in sync with HowItWorks `rounded-[15px]`. */
   cardRadiusPx?: number;
 }
 
@@ -55,7 +52,6 @@ function buildHalfPaths(
   return { pathDown, pathUp, viewBox: `0 0 ${w} ${h}` as const };
 }
 
-/** Border trace draw — shared so flow connectors can start after this finishes. */
 export const REBATE_FLOW_DRAW_DURATION_S = 1.65;
 export const REBATE_FLOW_DRAW_DURATION_MS = Math.round(REBATE_FLOW_DRAW_DURATION_S * 1000);
 export const REBATE_FLOW_DRAW_EASE: [number, number, number, number] = [0.45, 0, 0.25, 1];
@@ -63,10 +59,6 @@ export const REBATE_FLOW_DRAW_EASE: [number, number, number, number] = [0.45, 0,
 const DRAW_DURATION_S = REBATE_FLOW_DRAW_DURATION_S;
 const DRAW_EASE = REBATE_FLOW_DRAW_EASE;
 
-/**
- * Two gradient strokes (top / bottom halves) from mid-left — animated with
- * Framer `pathLength` so both lines run reliably (CSS dash is flaky).
- */
 export function RebateFlowBorderTrace({
   className,
   active,
@@ -113,7 +105,6 @@ export function RebateFlowBorderTrace({
         ease: DRAW_EASE,
       };
 
-  /** One draw 0→1 per hover; resets when `active` is false */
   const lineAnimate =
     !active
       ? { pathLength: 0, opacity: 0 }
