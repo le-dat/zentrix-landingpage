@@ -28,9 +28,9 @@ const metrics = [
 
 export function TrustMetrics() {
   return (
-    <section className="relative py-16 border-y border-white/5 bg-white/[0.02]">
+    <section className="relative box-content bg-black py-[120px] text-white">
       <div className="max-w-[1200px] mx-auto px-6">
-        <p className="text-center text-xs uppercase tracking-[0.2em] text-white/40 mb-10">
+        <p className="mb-10 text-center text-[15px] uppercase tracking-[0.2em] text-white/40">
           Trusted by traders who care where their fees go
         </p>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
