@@ -25,7 +25,7 @@ export function CompaniesSection() {
           transition={{ duration: 0.5 }}
           className="text-center text-sm text-white/50 tracking-widest uppercase mb-12"
         >
-          Trusted by the world&apos;s most innovative teams
+          Partner brokers & integrations
         </motion.p>
 
         {/* Logo grid */}
