@@ -47,9 +47,10 @@ npm run lint     # ESLint
 ## Design
 
 See `docs/spec.md` for the full design specification covering:
+
 - Hero section (LP-01)
 - Trust metrics (LP-02)
-- How it works (LP-03)
+- Zentrix Cashback System Work? (LP-03)
 - Why Zentrix (LP-04)
 - Referral network (LP-05)
 - Integrated brokers (LP-06)
