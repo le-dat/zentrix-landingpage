@@ -45,15 +45,18 @@ export function Footer() {
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="flex flex-col md:flex-row gap-16 mb-16">
           {/* Logo */}
-          <div className="shrink-0">
+          <div className="shrink-0 max-w-[200px]">
             <Image
               src="/zentrix-logo.png"
-              alt="Logo"
+              alt="Zentrix"
               width={127}
               height={10}
               className="object-contain"
-              style={{ height: "auto" }}
+              style={{ width: "auto", height: "auto" }}
             />
+            <p className="mt-4 text-sm text-white/50 leading-relaxed">
+              Rebates from real trading fees — broker to treasury to chain to your wallet.
+            </p>
           </div>
 
           {/* Links grid */}
