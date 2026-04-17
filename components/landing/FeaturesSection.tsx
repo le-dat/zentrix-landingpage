@@ -2,91 +2,52 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  Gauge,
-  ListChecks,
-  Wand2,
-  ChartLine,
-  Target,
-  MousePointerClick,
-  Sparkles,
-  Bell,
-  Files,
-} from "lucide-react";
+import { Building2, Link2, Share2, Wallet } from "lucide-react";
 
 const features = [
   {
-    icon: Gauge,
-    title: "User-friendly dashboard",
-    description: "Perform complex SEO audits and optimizations with a single click.",
-    col: 0,
+    icon: Link2,
+    title: "On-chain transparency",
+    description:
+      "A public smart contract Pool. Every claim transaction has a tx hash verifiable on the block explorer.",
   },
   {
-    icon: ListChecks,
-    title: "Content evaluation",
-    description: "Simple corrections for immediate improvements.",
-    col: 0,
+    icon: Building2,
+    title: "Multi-broker support",
+    description:
+      "Connect multiple brokers under one account. All rebates consolidated in one place.",
   },
   {
-    icon: Wand2,
-    title: "Link Optimization Wizard",
-    description: "Guides you through the process of creating and managing links.",
-    col: 0,
+    icon: Share2,
+    title: "Clear referral network",
+    description:
+      "F1/F2/F3 referral tree with publicly visible rates. No hidden fees, no secret allocations.",
   },
   {
-    icon: ChartLine,
-    title: "Visual reports",
-    description: "Visual insights into your site's performance.",
-    col: 1,
-  },
-  {
-    icon: Target,
-    title: "SEO goal setting",
-    description: "Helps you set and achieve SEO goals with guided assistance.",
-    col: 1,
-  },
-  {
-    icon: MousePointerClick,
-    title: "One-click optimization",
-    description: "Perform complex SEO audits and optimizations with a single click.",
-    col: 1,
-  },
-  {
-    icon: Sparkles,
-    title: "Smart Keyword Generator",
-    description: "Automatic suggestions and the best keywords to target.",
-    col: 2,
-  },
-  {
-    icon: Bell,
-    title: "Automated alerts",
-    description: "Automatic notifications about your SEO health, including quick fixes.",
-    col: 2,
-  },
-  {
-    icon: Files,
-    title: "Competitor reports",
-    description: "Provides insights into competitors' keyword strategies and ranking.",
-    col: 2,
+    icon: Wallet,
+    title: "Easy withdrawals",
+    description:
+      "Claim to your BEP20 wallet with a fixed $0.50 fee per withdrawal. No manual approval required.",
   },
 ];
 
 export function FeaturesSection() {
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section id="why-zentrix" className="relative py-20 overflow-hidden scroll-mt-24">
       <div className="max-w-[1086px] mx-auto px-6">
-        {/* Heading */}
         <motion.h2
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-[48px] font-bold leading-tight mb-16"
+          className="text-[40px] md:text-[48px] font-bold leading-tight mb-4"
         >
-          Elevate your SEO efforts.
+          Why Zentrix
         </motion.h2>
+        <p className="text-white/50 text-lg mb-12 max-w-xl">
+          Differentiated from traditional rebate programs — built for traders who want proof, not promises.
+        </p>
 
-        {/* Features grid - 3 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {features.map((feature, i) => (
             <motion.div
               key={feature.title}
@@ -96,8 +57,8 @@ export function FeaturesSection() {
               className="p-6 rounded-xl bg-black/40 border border-white/5 hover:border-white/10 transition-colors"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-4 h-4 flex items-center justify-center">
-                  <feature.icon className="w-4 h-4 text-white" />
+                <div className="w-10 h-10 rounded-xl bg-[#18CBA8]/10 flex items-center justify-center text-[#18CBA8]">
+                  <feature.icon className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-semibold">{feature.title}</h3>
               </div>
