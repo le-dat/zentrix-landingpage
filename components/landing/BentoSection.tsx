@@ -146,7 +146,7 @@ const MiniChart = () => (
 
 export function BentoSection() {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-20 overflow-hidden">
       {/* Background radial glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#18CBA8]/10 rounded-full blur-[120px] pointer-events-none opacity-30" />
 
