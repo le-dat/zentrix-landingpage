@@ -10,10 +10,6 @@ const faqs = [
     body: "A rebate is a portion of the trading fee (spread/commission) that your broker returns through Zentrix. This money comes from your actual trading volume — not from any other source.",
   },
   {
-    title: "How much does Zentrix charge?",
-    body: "Zentrix charges a platform fee of $0.50–$1.00 per lot traded (varies by broker and asset) and a fixed withdrawal fee of $0.50 per claim. There are no other hidden fees.",
-  },
-  {
     title: "Is KYC required?",
     body: "Yes. KYC is mandatory to withdraw funds, in order to comply with AML regulations and protect your account. The process involves uploading a government-issued ID and a selfie — typically processed within a few business hours.",
   },
