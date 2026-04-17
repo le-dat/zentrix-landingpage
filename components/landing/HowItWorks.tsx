@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Building2, Database, Layers, ShieldCheck, Wallet } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 import { FlowGapConnector } from "@/components/landing/FlowGapConnector";
 import {
@@ -10,204 +10,240 @@ import {
   RebateFlowBorderTrace,
 } from "@/components/landing/RebateFlowBorderTrace";
 
-const steps = [
+interface HowItWorksStep {
+  id: string;
+  title: string;
+  description: string;
+  digit: string;
+  variant: "default" | "highlight";
+}
+
+const steps: HowItWorksStep[] = [
   {
     id: "01",
     title: "Your broker",
-    description: "Fees generated from real volume on MT4 / MT5 platforms.",
-    icon: Building2,
-    variant: "default" as const,
+    description: "MT4 / MT5 volume feeds the rebate pool.",
+    digit: "1",
+    variant: "default",
   },
   {
     id: "02",
     title: "Zentrix Engine",
-    description: "Records volume, validates settlement & updates rebate ledger.",
-    icon: Layers,
-    variant: "highlight" as const,
+    description: "Tracks volume and credits your on-chain balance.",
+    digit: "2",
+    variant: "highlight",
   },
   {
     id: "03",
     title: "On-chain pool",
-    description: "BEP20 smart contract pool — balances & claims are fully verifiable.",
-    icon: Database,
-    variant: "default" as const,
+    description: "BEP20 pool — balances and claims are verifiable.",
+    digit: "3",
+    variant: "default",
   },
   {
     id: "04",
     title: "Your wallet",
-    description: "Withdraw your accumulated rebates whenever you choose.",
-    icon: Wallet,
-    variant: "default" as const,
+    description: "Withdraw rebates whenever you want.",
+    digit: "4",
+    variant: "default",
   },
 ];
 
+const INNER_RADIUS_CLASS = "rounded-[calc(1.5rem-1px)]";
+
+interface HowItWorksStepCardProps {
+  step: HowItWorksStep;
+  index: number;
+  isHovered: boolean;
+  onPointerEnter: () => void;
+  onPointerLeave: () => void;
+}
+
+function HowItWorksStepCard({
+  step,
+  index,
+  isHovered,
+  onPointerEnter,
+  onPointerLeave,
+}: HowItWorksStepCardProps) {
+  const isHighlight = step.variant === "highlight";
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: index * 0.08 }}
+      className="group rebate-flow-card relative h-fit w-full"
+      onHoverStart={onPointerEnter}
+      onHoverEnd={onPointerLeave}
+    >
+      <div className="relative overflow-visible rounded-3xl p-px transition-transform duration-300 ease-out group-hover:-translate-y-1">
+        <RebateFlowBorderTrace
+          active={isHovered}
+          insetPx={1}
+          cardRadiusPx={24}
+        />
+        <div
+          className={`relative z-10 flex min-h-0 flex-col overflow-hidden ${INNER_RADIUS_CLASS} border p-2.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.65),inset_0_1px_0_0_rgba(255,255,255,0.04)] backdrop-blur-md sm:p-3 md:p-3.5 ${
+            isHighlight
+              ? "border-[#18CBA8]/30 bg-[#18CBA8]/[0.08] shadow-[0_0_40px_-18px_rgba(24,203,168,0.22),inset_0_1px_0_0_rgba(24,203,168,0.12)] group-hover:border-[#18CBA8]/40 group-hover:bg-[#18CBA8]/[0.12]"
+              : "border-white/[0.08] bg-[#0c1512]/85"
+          }`}
+        >
+          <div className="relative isolate w-full min-h-[14rem] shrink-0 overflow-hidden sm:min-h-[15.25rem] md:min-h-[16.25rem] lg:min-h-[17.25rem] xl:min-h-[18.25rem]">
+            <span
+              className={`pointer-events-none absolute bottom-0 right-1 z-0 block translate-x-[1%] bg-clip-text text-right text-[9rem] font-bold leading-none text-transparent transition-opacity sm:right-1.5 sm:translate-x-[2%] sm:text-[10.5rem] md:translate-x-[2.5%] md:text-[12rem] lg:translate-x-[3%] lg:text-[13.25rem] xl:translate-x-[3.5%] xl:text-[14rem] 2xl:translate-x-[4%] 2xl:text-[15rem] ${
+                isHighlight
+                  ? "bg-[linear-gradient(180deg,#2dd4bf_0%,#18CBA8_22%,#149f8c_38%,#0d6d5f_50%,#0a4540_68%,#082b28_82%,#020807_100%)] opacity-88 group-hover:opacity-95"
+                  : "bg-[linear-gradient(180deg,#14b8a6_0%,#11827a_26%,#0f6b64_42%,#0c4f4a_52%,#083632_70%,#05211f_86%,#010a09_100%)] opacity-85 group-hover:opacity-92"
+              }`}
+              aria-hidden
+            >
+              {step.digit}
+            </span>
+
+            <div className="absolute bottom-2 left-0 z-20 flex w-[92%] max-w-[15rem] flex-col items-start text-left sm:bottom-2.5 sm:max-w-[16rem] md:bottom-3 md:max-w-[17rem]">
+              <h3
+                className={`text-base font-semibold tracking-tight [text-shadow:0_2px_24px_rgba(0,0,0,0.95),0_1px_3px_rgba(0,0,0,0.85)] md:text-lg ${
+                  isHighlight ? "text-[#e8fffa]" : "text-white"
+                }`}
+              >
+                {step.title}
+              </h3>
+              <p
+                className={`mt-1.5 text-xs leading-relaxed [text-shadow:0_2px_18px_rgba(0,0,0,0.9),0_1px_2px_rgba(0,0,0,0.8)] transition-colors sm:text-sm ${
+                  isHighlight
+                    ? "text-[#c6f7ec] group-hover:text-[#e8fffa]"
+                    : "text-zinc-200 group-hover:text-zinc-100"
+                }`}
+              >
+                {step.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export function HowItWorks() {
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
-  /** Which gap segment (0–2) plays after the card border draw finishes; `null` = idle. */
   const [connectorSegment, setConnectorSegment] = useState<number | null>(null);
   const reduceMotion = useReducedMotion();
+  const connectorTimerRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    if (!hoveredCardId) {
-      setConnectorSegment(null);
-      return;
+  function clearConnectorTimer() {
+    if (connectorTimerRef.current != null) {
+      window.clearTimeout(connectorTimerRef.current);
+      connectorTimerRef.current = null;
     }
-    const idx = steps.findIndex((s) => s.id === hoveredCardId);
+  }
+
+  function scheduleConnectorAfterHover(stepId: string) {
+    clearConnectorTimer();
+    const idx = steps.findIndex((s) => s.id === stepId);
     if (idx < 0 || idx > 2) {
       setConnectorSegment(null);
       return;
     }
-    setConnectorSegment(null);
+
     const delay = reduceMotion ? 0 : REBATE_FLOW_DRAW_DURATION_MS;
-    const t = window.setTimeout(() => setConnectorSegment(idx), delay);
-    return () => clearTimeout(t);
-  }, [hoveredCardId, reduceMotion]);
+    setConnectorSegment(null);
+
+    if (delay === 0) {
+      setConnectorSegment(idx);
+      return;
+    }
+
+    connectorTimerRef.current = window.setTimeout(() => {
+      connectorTimerRef.current = null;
+      setConnectorSegment(idx);
+    }, delay);
+  }
+
+  function handleCardEnter(stepId: string) {
+    setHoveredCardId(stepId);
+    scheduleConnectorAfterHover(stepId);
+  }
+
+  function handleCardLeave() {
+    setHoveredCardId(null);
+    clearConnectorTimer();
+    setConnectorSegment(null);
+  }
 
   return (
     <section
       id="how-it-works"
-      className="relative scroll-mt-24 overflow-hidden py-24 text-zinc-100"
+      className="relative scroll-mt-24 overflow-hidden py-[120px] text-zinc-100"
     >
-      {/* Ambient background (match reference) */}
       <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(39,39,42,0.35),transparent_50%)]"
+        className="pointer-events-none absolute inset-0 -z-30 bg-[#030806]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+        className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(24,203,168,0.12),transparent_55%)]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.35] [background-image:radial-gradient(rgba(255,255,255,0.14)_1px,transparent_1px)] [background-size:20px_20px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,#000_45%,transparent_100%)]"
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-6">
-        {/* Header — classic “How it works” copy */}
-        <div className="mb-24 w-full text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white md:text-5xl">How It Works</h2>
-          <p className="mx-auto max-w-[600px] text-white/60">
-            Just three steps — connect your broker, keep trading as usual, then claim rebates to your wallet
-            when they settle.
-          </p>
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-5 sm:px-6 lg:px-8">
+        <div className="mb-6 w-full text-center md:mb-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.05 }}
+            className="mb-2 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl"
+          >
+            Zentrix Cashback System Work?
+          </motion.h2>
         </div>
 
-        {/* Flow grid */}
         <div className="relative w-full">
-          {/*
-            Desktop: dashed segments only in the gaps between 4 equal columns (gap-6 = 1.5rem).
-            Column width = (100% - 3 * gap) / 4. Gap k starts at k * col + (k - 1) * gap.
-          */}
           <div
-            className="pointer-events-none absolute inset-x-0 top-[44px] z-20 hidden md:block"
+            className="pointer-events-none absolute inset-x-0 top-1/2 z-20 hidden -translate-y-1/2 lg:block"
             aria-hidden
           >
             <FlowGapConnector
               active={connectorSegment === 0}
               className="absolute top-0"
-              style={{ left: "calc((100% - 4.5rem) / 4)" }}
+              style={{ left: "calc((100% - 3rem) / 4)" }}
             />
             <FlowGapConnector
               active={connectorSegment === 1}
               className="absolute top-0"
-              style={{ left: "calc(2 * (100% - 4.5rem) / 4 + 1.5rem)" }}
+              style={{ left: "calc(2 * (100% - 3rem) / 4 + 1rem)" }}
             />
             <FlowGapConnector
               active={connectorSegment === 2}
               className="absolute top-0"
-              style={{ left: "calc(3 * (100% - 4.5rem) / 4 + 3rem)" }}
+              style={{ left: "calc(3 * (100% - 3rem) / 4 + 2rem)" }}
             />
           </div>
-          {/* Mobile: single vertical guide (stacked cards; gap spacing varies with content) */}
           <div
-            className="pointer-events-none absolute bottom-[10%] left-[44px] top-[10%] z-5 w-px border-l border-dashed border-zinc-700/60 md:hidden"
+            className="pointer-events-none absolute bottom-[10%] left-12 top-[10%] z-5 w-px border-l border-dashed border-zinc-700/60 lg:hidden"
             aria-hidden
           />
 
-          <div className="relative z-10 grid grid-cols-1 gap-6 md:grid-cols-4">
-            {steps.map((step, i) => {
-              const Icon = step.icon;
-              const isHighlight = step.variant === "highlight";
-
-              return (
-                <motion.div
-                  key={step.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: i * 0.08 }}
-                  className="group rebate-flow-card relative"
-                  onHoverStart={() => setHoveredCardId(step.id)}
-                  onHoverEnd={() => setHoveredCardId(null)}
-                >
-                  <div className="relative overflow-visible rounded-2xl p-px transition-transform duration-300 ease-out group-hover:-translate-y-1">
-                    <RebateFlowBorderTrace
-                      active={hoveredCardId === step.id}
-                      insetPx={1}
-                      cardRadiusPx={15}
-                    />
-                    <div
-                      className={`relative z-10 flex flex-col rounded-[15px] border p-6 backdrop-blur-md transition-all duration-300 group-hover:border-transparent ${
-                        isHighlight
-                          ? "border-[#18CBA8]/25 bg-[#18CBA8]/[0.08] shadow-[0_0_40px_-15px_rgba(24,203,168,0.2),inset_0_1px_0_0_rgba(24,203,168,0.08)] group-hover:bg-[#18CBA8]/[0.12] group-hover:shadow-[0_0_50px_-15px_rgba(24,203,168,0.28)]"
-                          : "border-white/[0.04] bg-[#0e0e11]/80 shadow-[0_4px_24px_-8px_rgba(0,0,0,0.5),inset_0_1px_0_0_rgba(255,255,255,0.02)] group-hover:bg-[#121216]"
-                      }`}
-                    >
-                  <span
-                    className={`absolute right-6 top-6 text-xs font-medium transition-colors ${
-                      isHighlight
-                        ? "text-[#18CBA8]/35 group-hover:text-[#18CBA8]/60"
-                        : "text-zinc-800 group-hover:text-zinc-500"
-                    }`}
-                  >
-                    {step.id}
-                  </span>
-
-                  <div
-                    className={`mb-6 flex h-10 w-10 items-center justify-center rounded-xl border transition-all duration-300 group-hover:scale-105 ${
-                      isHighlight
-                        ? "border-[#18CBA8]/35 bg-[#18CBA8]/15 text-[#7ee8d3] shadow-[0_0_15px_-3px_rgba(24,203,168,0.25)] group-hover:border-[#18CBA8]/45 group-hover:bg-[#18CBA8]/25 group-hover:text-[#b8ffea]"
-                        : "border-white/[0.05] bg-zinc-900/80 text-zinc-400 shadow-sm group-hover:border-white/[0.08] group-hover:bg-zinc-800 group-hover:text-zinc-100"
-                    }`}
-                  >
-                    <Icon className="h-5 w-5" strokeWidth={1.5} aria-hidden />
-                  </div>
-
-                  <h3
-                    className={`mb-2 text-base font-medium tracking-tight ${
-                      isHighlight ? "text-[#e8fffa]" : "text-zinc-100"
-                    }`}
-                  >
-                    {step.title}
-                  </h3>
-                  <p
-                    className={`text-xs leading-relaxed transition-colors ${
-                      isHighlight
-                        ? "text-[#18CBA8]/70 group-hover:text-[#18CBA8]/85"
-                        : "text-zinc-400/80 group-hover:text-zinc-400"
-                    }`}
-                  >
-                    {step.description}
-                  </p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+          <div className="relative z-10 grid w-full grid-cols-1 items-start gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-4">
+            {steps.map((step, i) => (
+              <HowItWorksStepCard
+                key={step.id}
+                step={step}
+                index={i}
+                isHovered={hoveredCardId === step.id}
+                onPointerEnter={() => handleCardEnter(step.id)}
+                onPointerLeave={handleCardLeave}
+              />
+            ))}
           </div>
         </div>
-
-        {/* Footnote */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.15 }}
-          className="mt-20 flex w-full justify-center"
-        >
-          <div className="inline-flex items-center gap-3 rounded-full border border-white/[0.04] bg-[#0e0e11] px-5 py-2.5 text-zinc-400 shadow-sm transition-colors hover:bg-zinc-900">
-            <ShieldCheck className="h-4 w-4 shrink-0 text-zinc-500" strokeWidth={1.5} aria-hidden />
-            <span className="text-center text-xs font-medium tracking-wide">
-              3-way reconciliation: broker payouts · Zentrix ledger · chain history
-            </span>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
