@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export function ClientsSection() {
+export function TrustTraderSection() {
   return (
     <section className="relative py-20 overflow-hidden">
       <div className="max-w-[990px] mx-auto px-6">
@@ -22,7 +22,8 @@ export function ClientsSection() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-center text-white/60 mb-16 max-w-[480px] mx-auto leading-relaxed"
         >
-          Rebates only matter if you can trust the numbers. Here&apos;s what our users focus on.
+          Rebates only matter if you can trust the numbers. Here&apos;s what our
+          users focus on.
         </motion.p>
 
         <motion.div
@@ -31,14 +32,18 @@ export function ClientsSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="relative flex flex-col md:flex-row items-center gap-12 p-10 rounded-2xl bg-black/40 border border-white/5"
         >
-          <div className="relative w-[217px] h-[217px] shrink-0 rounded-xl bg-white/5" aria-hidden />
+          <div
+            className="relative w-[217px] h-[217px] shrink-0 rounded-xl bg-white/5"
+            aria-hidden
+          />
 
           <div className="absolute top-1/2 left-[15%] -translate-y-1/2 w-[312px] h-[234px] rounded-full bg-[#17695d]/20 blur-[60px] pointer-events-none" />
 
           <div className="flex-1 text-center md:text-left">
             <blockquote className="text-xl leading-relaxed mb-8 text-white/90">
-              &ldquo;I never knew if I was getting the right rebate rate before. Zentrix shows me every single
-              allocation with its status. It&apos;s a completely different level of trust.&rdquo;
+              &ldquo;I never knew if I was getting the right rebate rate before.
+              Zentrix shows me every single allocation with its status.
+              It&apos;s a completely different level of trust.&rdquo;
             </blockquote>
             <div>
               <p className="font-semibold text-white">Alex N.</p>

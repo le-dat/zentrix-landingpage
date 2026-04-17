@@ -4,12 +4,12 @@ import Image from "next/image";
 
 const navLinks = [
   { label: "Why Zentrix", href: "#why-zentrix" },
-  { label: "How it works", href: "#how-it-works" },
+  { label: "How It Works?", href: "#how-it-works" },
   { label: "Compare", href: "#compare" },
   { label: "FAQ", href: "#faq" },
 ];
 
-export function LandingNav() {
+export function Navbar() {
   return (
     <nav className="fixed top-0 z-50 w-full backdrop-blur-md border-b border-white/5">
       <div className="flex items-center justify-between px-6 py-4 max-w-[1200px] mx-auto">
