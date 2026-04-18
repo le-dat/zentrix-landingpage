@@ -6,28 +6,28 @@ import Image from "next/image";
 
 const bentoCards = [
   {
-    id: "seo",
-    title: "SEO goal setting",
-    description: "Helps you set and achieve SEO goals with guided assistance.",
+    id: "pool",
+    title: "Pool & explorer",
+    description: "Track rebate accrual and every on-chain claim with hashes you can verify yourself.",
     image: "/images/glass-ring.png",
     size: "small",
   },
   {
     id: "dashboard",
-    title: "User-friendly dashboard",
-    description: "Perform complex SEO audits and optimizations with a single click.",
+    title: "Rebate dashboard",
+    description: "Volume, settlement status, and balances across all linked brokers in one place.",
     size: "large",
   },
   {
     id: "reports",
-    title: "Visual reports",
-    description: "Visual insights into your site's performance.",
+    title: "Settlement clarity",
+    description: "See when broker payouts landed, when rebates opened for claim, and what you withdrew.",
     size: "large",
   },
   {
-    id: "generator",
-    title: "Smart Keyword Generator",
-    description: "Automatic suggestions and the best keywords to target.",
+    id: "wallet",
+    title: "Wallet claims",
+    description: "Withdraw to your BEP20 wallet with a clear, fixed fee — no opaque approvals.",
     image: "/images/glass-cone.png",
     size: "small",
   },
@@ -43,7 +43,7 @@ const MiniDashboard = () => (
         <div className="w-2 h-2 rounded-full bg-green-500/80" />
       </div>
       <div className="text-[10px] text-white/30 bg-white/5 px-2 py-0.5 rounded-full border border-white/5">
-        website.com
+        zentrix.io
       </div>
     </div>
     {/* Dashboard Content Sidebar and Main */}
@@ -64,7 +64,7 @@ const MiniDashboard = () => (
         <div className="flex-1 rounded-xl bg-white/[0.03] border border-white/5 p-3 flex flex-col gap-2 overflow-hidden">
           <div className="flex items-center justify-between">
             <div className="h-2 w-16 bg-white/20 rounded text-[10px] text-white/40 flex items-center">
-              Visibility
+              Rebates
             </div>
             <div className="h-2 w-8 bg-[#18CBA8]/20 rounded" />
           </div>
@@ -90,7 +90,7 @@ const MiniChart = () => (
   <div className="w-full h-full p-6 relative overflow-hidden flex flex-col">
     <div className="flex items-center justify-between mb-4">
       <div>
-        <div className="text-[10px] text-white/40 uppercase tracking-widest mb-1 font-medium">Traffic</div>
+        <div className="text-[10px] text-white/40 uppercase tracking-widest mb-1 font-medium">Volume</div>
         <div className="flex items-center gap-2">
           <span className="text-2xl font-bold tracking-tight text-white/90">59.8K</span>
           <span className="text-[10px] text-[#18CBA8] font-medium">+10.7%</span>
@@ -146,7 +146,7 @@ const MiniChart = () => (
 
 export function BentoSection() {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-20 overflow-hidden">
       {/* Background radial glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#18CBA8]/10 rounded-full blur-[120px] pointer-events-none opacity-30" />
 
@@ -159,7 +159,7 @@ export function BentoSection() {
           className="text-center mb-20"
         >
           <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight max-w-[800px] mx-auto leading-[1.1]">
-            Harness the power of AI, making search engine optimization intuitive and effective.
+            One place to follow your rebates from broker payout to wallet — transparent by design.
           </h2>
         </motion.div>
 
@@ -177,7 +177,7 @@ export function BentoSection() {
               <div className="relative w-full h-full">
                 <Image
                   src="/images/glass-ring.png"
-                  alt="SEO Goal Setting"
+                  alt="Rebate pool overview"
                   fill
                   className="object-contain drop-shadow-[0_0_30px_rgba(24,203,168,0.2)] group-hover:scale-105 transition-transform duration-700"
                 />
@@ -238,7 +238,7 @@ export function BentoSection() {
               <div className="relative w-full h-full">
                 <Image
                   src="/images/glass-cone.png"
-                  alt="Smart Keyword Generator"
+                  alt="Wallet claim flow"
                   fill
                   className="object-contain drop-shadow-[0_0_30px_rgba(24,203,168,0.2)] group-hover:scale-105 transition-transform duration-700"
                 />

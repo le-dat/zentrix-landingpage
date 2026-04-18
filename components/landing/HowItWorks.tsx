@@ -1,64 +1,246 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { Link2, Play, Wallet } from "lucide-react";
+import { useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Sparkles } from "lucide-react";
 
-const steps = [
+import { FlowGapConnector } from "@/components/landing/FlowGapConnector";
+import {
+  REBATE_FLOW_DRAW_DURATION_MS,
+  RebateFlowBorderTrace,
+} from "@/components/landing/RebateFlowBorderTrace";
+
+interface HowItWorksStep {
+  id: string;
+  title: string;
+  description: string;
+  digit: string;
+  variant: "default" | "highlight";
+}
+
+const steps: HowItWorksStep[] = [
   {
-    title: "Connect Your Broker",
-    description: "Sign up for a Zentrix account, complete KYC, and link your trading account (MT4/MT5).",
-    icon: Link2,
+    id: "01",
+    title: "Your broker",
+    description: "MT4 / MT5 volume feeds the rebate pool.",
+    digit: "1",
+    variant: "default",
   },
   {
-    title: "Trade as Usual",
-    description: "Keep trading on your broker as normal. Zentrix automatically records your volume and calculates your rebates.",
-    icon: Play,
+    id: "02",
+    title: "Zentrix Engine",
+    description: "Tracks volume and credits your on-chain balance.",
+    digit: "2",
+    variant: "highlight",
   },
   {
-    title: "Receive Rebates to Your Wallet",
-    description: "Rebates are allocated to your ledger and you can claim them to your BEP20 wallet at any time.",
-    icon: Wallet,
+    id: "03",
+    title: "On-chain pool",
+    description: "BEP20 pool — balances and claims are verifiable.",
+    digit: "3",
+    variant: "default",
+  },
+  {
+    id: "04",
+    title: "Your wallet",
+    description: "Withdraw rebates whenever you want.",
+    digit: "4",
+    variant: "default",
   },
 ];
 
-export function HowItWorks() {
+const INNER_RADIUS_CLASS = "rounded-[calc(1.5rem-1px)]";
+
+interface HowItWorksStepCardProps {
+  step: HowItWorksStep;
+  index: number;
+  isHovered: boolean;
+  onPointerEnter: () => void;
+  onPointerLeave: () => void;
+}
+
+function HowItWorksStepCard({
+  step,
+  index,
+  isHovered,
+  onPointerEnter,
+  onPointerLeave,
+}: HowItWorksStepCardProps) {
+  const isHighlight = step.variant === "highlight";
+
   return (
-    <section id="how-it-works" className="relative py-24 overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">How It Works</h2>
-          <p className="text-white/60 max-w-[600px] mx-auto">
-            Three simple steps to start earning back from every trade you make.
-          </p>
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: index * 0.08 }}
+      className="group rebate-flow-card relative h-fit w-full"
+      onHoverStart={onPointerEnter}
+      onHoverEnd={onPointerLeave}
+    >
+      <div className="relative overflow-visible rounded-3xl p-px transition-transform duration-300 ease-out group-hover:-translate-y-1">
+        <RebateFlowBorderTrace
+          active={isHovered}
+          insetPx={1}
+          cardRadiusPx={24}
+        />
+        <div
+          className={`relative z-10 flex min-h-0 flex-col overflow-hidden ${INNER_RADIUS_CLASS} border p-2.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.65),inset_0_1px_0_0_rgba(255,255,255,0.04)] backdrop-blur-md sm:p-3 md:p-3.5 ${
+            isHighlight
+              ? "border-[#18CBA8]/30 bg-[#18CBA8]/[0.08] shadow-[0_0_40px_-18px_rgba(24,203,168,0.22),inset_0_1px_0_0_rgba(24,203,168,0.12)] group-hover:border-[#18CBA8]/40 group-hover:bg-[#18CBA8]/[0.12]"
+              : "border-white/[0.08] bg-[#0c1512]/85"
+          }`}
+        >
+          <div className="relative isolate w-full min-h-[14rem] shrink-0 overflow-hidden sm:min-h-[15.25rem] md:min-h-[16.25rem] lg:min-h-[17.25rem] xl:min-h-[18.25rem]">
+            <span
+              className={`pointer-events-none absolute bottom-0 right-1 z-0 block translate-x-[1%] bg-clip-text text-right text-[9rem] font-bold leading-none text-transparent transition-opacity sm:right-1.5 sm:translate-x-[2%] sm:text-[10.5rem] md:translate-x-[2.5%] md:text-[12rem] lg:translate-x-[3%] lg:text-[13.25rem] xl:translate-x-[3.5%] xl:text-[14rem] 2xl:translate-x-[4%] 2xl:text-[15rem] ${
+                isHighlight
+                  ? "bg-[linear-gradient(180deg,#2dd4bf_0%,#18CBA8_22%,#149f8c_38%,#0d6d5f_50%,#0a4540_68%,#082b28_82%,#020807_100%)] opacity-88 group-hover:opacity-95"
+                  : "bg-[linear-gradient(180deg,#14b8a6_0%,#11827a_26%,#0f6b64_42%,#0c4f4a_52%,#083632_70%,#05211f_86%,#010a09_100%)] opacity-85 group-hover:opacity-92"
+              }`}
+              aria-hidden
+            >
+              {step.digit}
+            </span>
+
+            <div className="absolute bottom-2 left-0 z-20 flex w-[92%] max-w-[15rem] flex-col items-start text-left sm:bottom-2.5 sm:max-w-[16rem] md:bottom-3 md:max-w-[17rem]">
+              <h3
+                className={`text-base font-semibold tracking-tight [text-shadow:0_2px_24px_rgba(0,0,0,0.95),0_1px_3px_rgba(0,0,0,0.85)] md:text-lg ${
+                  isHighlight ? "text-[#e8fffa]" : "text-white"
+                }`}
+              >
+                {step.title}
+              </h3>
+              <p
+                className={`mt-1.5 text-xs leading-relaxed [text-shadow:0_2px_18px_rgba(0,0,0,0.9),0_1px_2px_rgba(0,0,0,0.8)] transition-colors sm:text-sm ${
+                  isHighlight
+                    ? "text-[#c6f7ec] group-hover:text-[#e8fffa]"
+                    : "text-zinc-200 group-hover:text-zinc-100"
+                }`}
+              >
+                {step.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export function HowItWorks() {
+  const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
+  const [connectorSegment, setConnectorSegment] = useState<number | null>(null);
+  const reduceMotion = useReducedMotion();
+  const connectorTimerRef = useRef<number | null>(null);
+
+  function clearConnectorTimer() {
+    if (connectorTimerRef.current != null) {
+      window.clearTimeout(connectorTimerRef.current);
+      connectorTimerRef.current = null;
+    }
+  }
+
+  function scheduleConnectorAfterHover(stepId: string) {
+    clearConnectorTimer();
+    const idx = steps.findIndex((s) => s.id === stepId);
+    if (idx < 0 || idx > 2) {
+      setConnectorSegment(null);
+      return;
+    }
+
+    const delay = reduceMotion ? 0 : REBATE_FLOW_DRAW_DURATION_MS;
+    setConnectorSegment(null);
+
+    if (delay === 0) {
+      setConnectorSegment(idx);
+      return;
+    }
+
+    connectorTimerRef.current = window.setTimeout(() => {
+      connectorTimerRef.current = null;
+      setConnectorSegment(idx);
+    }, delay);
+  }
+
+  function handleCardEnter(stepId: string) {
+    setHoveredCardId(stepId);
+    scheduleConnectorAfterHover(stepId);
+  }
+
+  function handleCardLeave() {
+    setHoveredCardId(null);
+    clearConnectorTimer();
+    setConnectorSegment(null);
+  }
+
+  return (
+    <section
+      id="how-it-works"
+      className="relative scroll-mt-24 overflow-hidden py-[120px] text-zinc-100"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 -z-30 bg-[#030806]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(24,203,168,0.12),transparent_55%)]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.35] [background-image:radial-gradient(rgba(255,255,255,0.14)_1px,transparent_1px)] [background-size:20px_20px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,#000_45%,transparent_100%)]"
+        aria-hidden
+      />
+
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-5 sm:px-6 lg:px-8">
+        <div className="mb-6 w-full text-center md:mb-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.05 }}
+            className="mb-2 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl"
+          >
+            Zentrix Cashback System Work?
+          </motion.h2>
         </div>
 
-        <div className="relative">
-          {/* Connecting line (desktop) */}
-          <div className="hidden lg:block absolute top-[44px] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-[#18CBA8]/10 via-[#18CBA8]/40 to-[#18CBA8]/10" />
+        <div className="relative w-full">
+          <div
+            className="pointer-events-none absolute inset-x-0 top-1/2 z-20 hidden -translate-y-1/2 lg:block"
+            aria-hidden
+          >
+            <FlowGapConnector
+              active={connectorSegment === 0}
+              className="absolute top-0"
+              style={{ left: "calc((100% - 3rem) / 4)" }}
+            />
+            <FlowGapConnector
+              active={connectorSegment === 1}
+              className="absolute top-0"
+              style={{ left: "calc(2 * (100% - 3rem) / 4 + 1rem)" }}
+            />
+            <FlowGapConnector
+              active={connectorSegment === 2}
+              className="absolute top-0"
+              style={{ left: "calc(3 * (100% - 3rem) / 4 + 2rem)" }}
+            />
+          </div>
+          <div
+            className="pointer-events-none absolute bottom-[10%] left-12 top-[10%] z-5 w-px border-l border-dashed border-zinc-700/60 lg:hidden"
+            aria-hidden
+          />
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="relative z-10 grid w-full grid-cols-1 items-start gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-4">
             {steps.map((step, i) => (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.2 }}
-                className="relative flex flex-col items-center text-center"
-              >
-                <div className="w-24 h-24 rounded-3xl bg-[#0D0D0D] border border-[#18CBA8]/20 flex items-center justify-center mb-8 relative z-10 shadow-[0_0_20px_rgba(24,203,168,0.1)] group-hover:border-[#18CBA8]/40 transition-colors">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#18CBA8]/10 to-transparent rounded-3xl" />
-                  <step.icon size={32} className="text-[#18CBA8]" />
-                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#18CBA8] text-black font-bold flex items-center justify-center text-sm">
-                    {i + 1}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
-                <p className="text-white/50 leading-relaxed font-light">
-                  {step.description}
-                </p>
-              </motion.div>
+              <HowItWorksStepCard
+                key={step.id}
+                step={step}
+                index={i}
+                isHovered={hoveredCardId === step.id}
+                onPointerEnter={() => handleCardEnter(step.id)}
+                onPointerLeave={handleCardLeave}
+              />
             ))}
           </div>
         </div>

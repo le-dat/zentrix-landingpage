@@ -2,12 +2,29 @@
 
 import Image from "next/image";
 
-const footerLinks = {
+const footerLinks: Record<string, string[]> = {
   Product: ["Features", "Integration", "Updates", "FAQ", "Pricing"],
   Company: ["About", "Blog", "Careers", "Manifesto", "Press", "Contract"],
   Resources: ["Examples", "Community", "Guides", "Docs", "Press"],
   Legal: ["Privacy", "Terms", "Security"],
 };
+
+function FooterLinkColumn({ title, links }: { title: string; links: string[] }) {
+  return (
+    <div className="min-w-[120px]">
+      <h4 className="mb-4 font-semibold">{title}</h4>
+      <ul className="space-y-3">
+        {links.map((link) => (
+          <li key={link}>
+            <span className="cursor-pointer text-sm text-white/60 transition-colors hover:text-white">
+              {link}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 function XIcon({ className }: { className?: string }) {
   return (
@@ -43,76 +60,24 @@ export function Footer() {
   return (
     <section className="relative py-20 border-t border-white/5">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="flex flex-col md:flex-row gap-16 mb-16">
-          {/* Logo */}
-          <div className="shrink-0">
+        <div className="flex flex-col md:flex-row gap-16 mb-16">  
+          <div className="shrink-0 max-w-[200px]">
             <Image
-              src="/zentrix-logo.png"
-              alt="Logo"
+              src="/logo.svg"
+              alt="Zentrix"
               width={127}
               height={10}
               className="object-contain"
-              style={{ height: "auto" }}
+              style={{ width: "auto", height: "auto" }}
             />
           </div>
 
-          {/* Links grid */}
-          <div className="flex justify-end flex-wrap gap-12 flex-1">
-            <div className="min-w-[120px]">
-              <h4 className="font-semibold mb-4">Product</h4>
-              <ul className="space-y-3">
-                {footerLinks.Product.map((link) => (
-                  <li key={link}>
-                    <span className="text-sm text-white/60 hover:text-white transition-colors cursor-pointer">
-                      {link}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="min-w-[120px]">
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-3">
-                {footerLinks.Company.map((link) => (
-                  <li key={link}>
-                    <span className="text-sm text-white/60 hover:text-white transition-colors cursor-pointer">
-                      {link}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="min-w-[120px]">
-              <h4 className="font-semibold mb-4">Resources</h4>
-              <ul className="space-y-3">
-                {footerLinks.Resources.map((link) => (
-                  <li key={link}>
-                    <span className="text-sm text-white/60 hover:text-white transition-colors cursor-pointer">
-                      {link}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="min-w-[120px]">
-              <h4 className="font-semibold mb-4">Legal</h4>
-              <ul className="space-y-3">
-                {footerLinks.Legal.map((link) => (
-                  <li key={link}>
-                    <span className="text-sm text-white/60 hover:text-white transition-colors cursor-pointer">
-                      {link}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="flex flex-1 flex-wrap justify-end gap-12">
+            {Object.entries(footerLinks).map(([title, links]) => (
+              <FooterLinkColumn key={title} title={title} links={links} />
+            ))}
           </div>
         </div>
-
-        {/* Social icons */}
         <div className="flex items-center gap-4">
           {socials.map((social) => (
             <button

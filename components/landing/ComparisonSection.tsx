@@ -34,7 +34,7 @@ const comparisons = [
 
 export function ComparisonSection() {
   return (
-    <section className="relative py-24 overflow-hidden bg-black">
+    <section id="compare" className="relative py-20 overflow-hidden bg-black scroll-mt-24">
       <div className="max-w-[1000px] mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Zentrix vs Traditional</h2>
