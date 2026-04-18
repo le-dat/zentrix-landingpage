@@ -20,9 +20,9 @@ const footerLinks: Record<string, string[]> = {
 
 function FooterLinkColumn({ title, links }: { title: string; links: string[] }) {
   return (
-    <div className="min-w-[120px]">
-      <h4 className="mb-4 font-semibold">{title}</h4>
-      <ul className="space-y-3">
+    <div className="min-w-[120px] flex-1">
+      <h4 className="mb-3 md:mb-4 font-semibold text-sm md:text-base">{title}</h4>
+      <ul className="space-y-2 md:space-y-3">
         {links.map((link) => (
           <li key={link}>
             <span className="cursor-pointer text-sm text-white/60 transition-colors hover:text-white">
@@ -48,7 +48,7 @@ export function Footer() {
   return (
     <section className="relative py-20 border-t border-white/5">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="flex flex-col md:flex-row gap-16 mb-16">  
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 mb-8 md:mb-16">
           <div className="shrink-0 max-w-[200px]">
             <Image
               src="/logo.svg"
@@ -60,13 +60,13 @@ export function Footer() {
             />
           </div>
 
-          <div className="flex flex-1 flex-wrap justify-end gap-12">
+          <div className="flex flex-1 flex-wrap gap-8 md:justify-end md:gap-12">
             {Object.entries(footerLinks).map(([title, links]) => (
               <FooterLinkColumn key={title} title={title} links={links} />
             ))}
           </div>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-center md:justify-start gap-4">
           {socials.map((social) => (
             <a
               key={social.label}
