@@ -85,15 +85,15 @@ function HowItWorksStepCard({
           cardRadiusPx={24}
         />
         <div
-          className={`relative z-10 flex min-h-0 flex-col overflow-hidden ${INNER_RADIUS_CLASS} border p-2.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.65),inset_0_1px_0_0_rgba(255,255,255,0.04)] backdrop-blur-md sm:p-3 md:p-3.5 ${
+          className={`relative z-10 flex min-h-0 flex-col overflow-hidden ${INNER_RADIUS_CLASS} border p-2.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.65),inset_0_1px_0_0_rgba(255,255,255,0.04)] backdrop-blur-md md:p-3.5 ${
             isHighlight
               ? "border-[#18CBA8]/30 bg-[#18CBA8]/[0.08] shadow-[0_0_40px_-18px_rgba(24,203,168,0.22),inset_0_1px_0_0_rgba(24,203,168,0.12)] group-hover:border-[#18CBA8]/40 group-hover:bg-[#18CBA8]/[0.12]"
               : "border-white/[0.08] bg-[#0c1512]/85"
           }`}
         >
-          <div className="relative isolate w-full min-h-[14rem] shrink-0 overflow-hidden sm:min-h-[15.25rem] md:min-h-[16.25rem] lg:min-h-[17.25rem] xl:min-h-[18.25rem]">
+          <div className="relative isolate w-full min-h-[14rem] shrink-0 overflow-hidden md:min-h-[16.25rem]">
             <span
-              className={`pointer-events-none absolute bottom-0 right-1 z-0 block translate-x-[1%] bg-clip-text text-right text-[9rem] font-bold leading-none text-transparent transition-opacity sm:right-1.5 sm:translate-x-[2%] sm:text-[10.5rem] md:translate-x-[2.5%] md:text-[12rem] lg:translate-x-[3%] lg:text-[13.25rem] xl:translate-x-[3.5%] xl:text-[14rem] 2xl:translate-x-[4%] 2xl:text-[15rem] ${
+              className={`pointer-events-none absolute bottom-0 right-1 z-0 block translate-x-[1%] bg-clip-text text-right text-[9rem] font-bold leading-none text-transparent transition-opacity md:translate-x-[2.5%] md:text-[12rem] ${
                 isHighlight
                   ? "bg-[linear-gradient(180deg,#2dd4bf_0%,#18CBA8_22%,#149f8c_38%,#0d6d5f_50%,#0a4540_68%,#082b28_82%,#020807_100%)] opacity-88 group-hover:opacity-95"
                   : "bg-[linear-gradient(180deg,#14b8a6_0%,#11827a_26%,#0f6b64_42%,#0c4f4a_52%,#083632_70%,#05211f_86%,#010a09_100%)] opacity-85 group-hover:opacity-92"
@@ -103,7 +103,7 @@ function HowItWorksStepCard({
               {step.digit}
             </span>
 
-            <div className="absolute bottom-2 left-0 z-20 flex w-[92%] max-w-[15rem] flex-col items-start text-left sm:bottom-2.5 sm:max-w-[16rem] md:bottom-3 md:max-w-[17rem]">
+            <div className="absolute bottom-2 left-0 z-20 flex w-[92%] max-w-[15rem] flex-col items-start text-left md:bottom-3 md:max-w-[17rem]">
               <h3
                 className={`text-base font-semibold tracking-tight [text-shadow:0_2px_24px_rgba(0,0,0,0.95),0_1px_3px_rgba(0,0,0,0.85)] md:text-lg ${
                   isHighlight ? "text-[#e8fffa]" : "text-white"
@@ -112,7 +112,7 @@ function HowItWorksStepCard({
                 {step.title}
               </h3>
               <p
-                className={`mt-1.5 text-xs leading-relaxed [text-shadow:0_2px_18px_rgba(0,0,0,0.9),0_1px_2px_rgba(0,0,0,0.8)] transition-colors sm:text-sm ${
+                className={`mt-1.5 text-xs leading-relaxed [text-shadow:0_2px_18px_rgba(0,0,0,0.9),0_1px_2px_rgba(0,0,0,0.8)] transition-colors md:text-sm ${
                   isHighlight
                     ? "text-[#c6f7ec] group-hover:text-[#e8fffa]"
                     : "text-zinc-200 group-hover:text-zinc-100"
@@ -192,14 +192,14 @@ export function HowItWorks() {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-5 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-5 md:px-6">
         <div className="mb-6 w-full text-center md:mb-8">
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.05 }}
-            className="mb-2 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl"
+            className="mb-2 text-2xl font-bold tracking-tight text-white md:text-4xl"
           >
             Zentrix Cashback System Work?
           </motion.h2>
@@ -207,7 +207,7 @@ export function HowItWorks() {
 
         <div className="relative w-full">
           <div
-            className="pointer-events-none absolute inset-x-0 top-1/2 z-20 hidden -translate-y-1/2 lg:block"
+            className="pointer-events-none absolute inset-x-0 top-1/2 z-20 hidden -translate-y-1/2 md:block"
             aria-hidden
           >
             <FlowGapConnector
@@ -227,11 +227,11 @@ export function HowItWorks() {
             />
           </div>
           <div
-            className="pointer-events-none absolute bottom-[10%] left-12 top-[10%] z-5 w-px border-l border-dashed border-zinc-700/60 lg:hidden"
+            className="pointer-events-none absolute bottom-[10%] left-12 top-[10%] z-5 w-px border-l border-dashed border-zinc-700/60 md:hidden"
             aria-hidden
           />
 
-          <div className="relative z-10 grid w-full grid-cols-1 items-start gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-4">
+          <div className="relative z-10 grid w-full grid-cols-1 items-start gap-4 md:grid-cols-2 md:gap-5">
             {steps.map((step, i) => (
               <HowItWorksStepCard
                 key={step.id}

@@ -41,7 +41,7 @@ export function FAQSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-[36px] font-bold mb-4 text-center"
+          className="text-[28px] md:text-[36px] font-bold mb-4 text-center"
         >
           Frequently asked questions
         </motion.h2>

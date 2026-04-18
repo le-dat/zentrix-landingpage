@@ -30,7 +30,7 @@ export function TrustTraderSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative flex flex-col md:flex-row items-center gap-12 p-10 rounded-2xl bg-black/40 border border-white/5"
+          className="relative flex flex-col md:flex-row items-center gap-12 p-6 md:p-10 rounded-2xl bg-black/40 border border-white/5"
         >
           <div
             className="relative w-[217px] h-[217px] shrink-0 rounded-xl bg-white/5"
@@ -40,7 +40,7 @@ export function TrustTraderSection() {
           <div className="absolute top-1/2 left-[15%] -translate-y-1/2 w-[312px] h-[234px] rounded-full bg-[#17695d]/20 blur-[60px] pointer-events-none" />
 
           <div className="flex-1 text-center md:text-left">
-            <blockquote className="text-xl leading-relaxed mb-8 text-white/90">
+            <blockquote className="text-lg leading-relaxed mb-8 text-white/90">
               &ldquo;I never knew if I was getting the right rebate rate before.
               Zentrix shows me every single allocation with its status.
               It&apos;s a completely different level of trust.&rdquo;

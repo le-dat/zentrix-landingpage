@@ -41,13 +41,13 @@ export function SkeletonCard() {
 
 export function SkeletonHero() {
   return (
-    <div className="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-white dark:bg-[#101828]">
+    <div className="relative pt-40 pb-20 md:pt-56 md:pb-32 overflow-hidden bg-white dark:bg-[#101828]">
       {/* Background skeletons */}
       <Skeleton className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full opacity-20" />
       <Skeleton className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full opacity-20" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           {/* Left: Text Content */}
           <div className="space-y-6">
             <Skeleton className="h-16 w-full max-w-lg rounded-lg" />
@@ -130,7 +130,7 @@ export function SkeletonBrokerCard() {
 
 export function SkeletonBrokerListing({ count = 6 }: { count?: number }) {
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid md:grid-cols-2 md:grid-cols-3 gap-6">
       {Array.from({ length: count }).map((_, i) => (
         <SkeletonBrokerCard key={i} />
       ))}
