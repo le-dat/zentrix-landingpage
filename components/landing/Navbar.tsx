@@ -3,25 +3,24 @@
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Why Zentrix", href: "#why-zentrix" },
-  { label: "How It Works?", href: "#how-it-works" },
+  { label: "How It Works", href: "#how-it-works" },
   { label: "Compare", href: "#compare" },
   { label: "FAQ", href: "#faq" },
+  // { label: "Why Zentrix", href: "#why-zentrix" },
 ];
 
 export function Navbar() {
   return (
-    <nav className="fixed top-0 z-50 w-full backdrop-blur-md border-b border-white/5">
+    <nav className="fixed top-0 z-50 w-full backdrop-blur-md">
       <div className="flex items-center justify-between px-6 py-4 max-w-[1200px] mx-auto">
         <a href="#" className="shrink-0">
           <Image
-            src="/zentrix-logo.png"
+            src="/logo.svg"
             alt="Zentrix"
             width={127}
             height={10}
             priority
             className="object-contain"
-            style={{ width: "auto", height: "auto" }}
           />
         </a>
 

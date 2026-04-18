@@ -63,7 +63,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row gap-16 mb-16">  
           <div className="shrink-0 max-w-[200px]">
             <Image
-              src="/zentrix-logo.png"
+              src="/logo.svg"
               alt="Zentrix"
               width={127}
               height={10}

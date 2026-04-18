@@ -25,7 +25,7 @@ export function HeroSection() {
     "text-[2rem] leading-[1.03] sm:text-5xl sm:leading-[1.02] md:text-6xl md:leading-[1.02] lg:text-6xl";
 
   return (
-    <section className="relative mt-[82px] min-h-[1165px] overflow-hidden">
+    <section className="relative pt-[82px] min-h-[1165px] overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06]"
         aria-hidden
@@ -59,7 +59,7 @@ export function HeroSection() {
             Fee Cashback Platform
           </span>
           <span
-            className={`mt-1 block max-w-[1200px] text-[2rem] leading-[75px] sm:text-5xl sm:leading-[75px] md:text-6xl md:leading-[75px] lg:text-6xl lg:leading-[75px] ${heroGradientLineClass} sm:mt-1.5 md:mt-2`}
+            className={`mt-1 tracking-[-1.5px] block max-w-[1200px] text-[2rem] leading-[75px] sm:text-5xl sm:leading-[75px] md:text-6xl md:leading-[75px] lg:text-6xl lg:leading-[75px] ${heroGradientLineClass} sm:mt-1.5 md:mt-2`}
           >
             Up to 95% Trading Fee Rebates
           </span>
@@ -67,7 +67,7 @@ export function HeroSection() {
 
         <motion.p
           {...fadeUpMotion(0.2)}
-          className="mt-7 max-w-[560px] px-4 text-center text-base leading-relaxed text-white/85 sm:text-lg md:mt-8"
+          className="mt-7 max-w-[560px] px-4 text-center text-base leading-relaxed text-white/85 sm:text-lg md:mt-6"
         >
           Zentrix standardizes the rebate flow from your broker directly to your
           wallet.
@@ -75,7 +75,7 @@ export function HeroSection() {
 
         <motion.div
           {...fadeUpMotion(0.3)}
-          className="mt-8 flex flex-col items-center gap-4 sm:flex-row md:mt-9"
+          className="mt-8 flex flex-col items-center gap-4 sm:flex-row md:mt-6"
         >
           <button
             type="button"
