@@ -69,8 +69,11 @@ export function RebateFlowBorderTrace({
   const svgRef = useRef<SVGSVGElement>(null);
   const [size, setSize] = useState({ w: 100, h: 100 });
   const reduceMotion = useReducedMotion();
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    if (reduceMotion) return;
+
     function update() {
       const svg = svgRef.current;
       const box = svg?.parentElement;
@@ -87,10 +90,16 @@ export function RebateFlowBorderTrace({
     if (!svg?.parentElement) return;
 
     update();
-    const ro = new ResizeObserver(() => update());
+    const ro = new ResizeObserver(() => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(update);
+    });
     ro.observe(svg.parentElement);
-    return () => ro.disconnect();
-  }, []);
+    return () => {
+      ro.disconnect();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [reduceMotion]);
 
   const { pathDown, pathUp, viewBox } = buildHalfPaths(size.w, size.h, insetPx, cardRadiusPx);
 

@@ -212,3 +212,21 @@ body {
     scroll-behavior: smooth;
   }
 }
+
+/* Performance: disable backdrop-filter on mobile for GPU savings */
+@media (max-width: 768px) {
+  .backdrop-blur-md,
+  .backdrop-blur-sm {
+    backdrop-filter: none !important;
+  }
+}
+
+/* Performance: pause continuous animations when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-shimmer-slide,
+  .animate-spin-around,
+  .animate-marquee,
+  .animate-marquee-vertical {
+    animation-play-state: paused !important;
+  }
+}

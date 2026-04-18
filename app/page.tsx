@@ -5,7 +5,12 @@ import { HeroSection } from "@/components/landing/HeroSection";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Navbar } from "@/components/landing/Navbar";
 import { TrustTraderSection } from "@/components/landing/TrustTraderSection";
-import WorldMap from "@/components/ui/world-map";
+import dynamic from "next/dynamic";
+
+const WorldMap = dynamic(() => import("@/components/ui/world-map"), {
+  ssr: false,
+  loading: () => <div className="h-[1000px]" />,
+});
 
 export default function LandingPage() {
   return (

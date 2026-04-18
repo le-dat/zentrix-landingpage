@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
@@ -131,8 +131,15 @@ function HowItWorksStepCard({
 export function HowItWorks() {
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
   const [connectorSegment, setConnectorSegment] = useState<number | null>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const reduceMotion = useReducedMotion();
   const connectorTimerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    setIsTouchDevice(
+      "ontouchstart" in window || navigator.maxTouchPoints > 0
+    );
+  }, []);
 
   function clearConnectorTimer() {
     if (connectorTimerRef.current != null) {
@@ -142,6 +149,7 @@ export function HowItWorks() {
   }
 
   function scheduleConnectorAfterHover(stepId: string) {
+    if (reduceMotion) return;
     clearConnectorTimer();
     const idx = steps.findIndex((s) => s.id === stepId);
     if (idx < 0 || idx > 2) {
@@ -149,7 +157,7 @@ export function HowItWorks() {
       return;
     }
 
-    const delay = reduceMotion ? 0 : REBATE_FLOW_DRAW_DURATION_MS;
+    const delay = isTouchDevice ? 0 : REBATE_FLOW_DRAW_DURATION_MS;
     setConnectorSegment(null);
 
     if (delay === 0) {
@@ -164,6 +172,7 @@ export function HowItWorks() {
   }
 
   function handleCardEnter(stepId: string) {
+    if (isTouchDevice) return;
     setHoveredCardId(stepId);
     scheduleConnectorAfterHover(stepId);
   }

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type MotionProps } from "framer-motion";
+import { motion, type MotionProps, useReducedMotion } from "framer-motion";
 import { TrustMetrics } from "./TrustMetrics";
 
 const heroGradientLineClass =
@@ -10,12 +10,13 @@ function fadeUpMotion(
   delay: number,
   opts?: { y?: number; duration?: number },
 ): Pick<MotionProps, "initial" | "animate" | "transition"> {
+  const reduceMotion = useReducedMotion();
   const y = opts?.y ?? 20;
   const duration = opts?.duration ?? 0.5;
   return {
-    initial: { opacity: 0, y },
+    initial: { opacity: 0, y: reduceMotion ? 0 : y },
     animate: { opacity: 1, y: 0 },
-    transition: { duration, delay },
+    transition: { duration: reduceMotion ? 0 : duration, delay },
   };
 }
 

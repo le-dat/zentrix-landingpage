@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useMemo } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import DottedMap from "dotted-map";
 
 interface MapProps {
@@ -19,6 +19,7 @@ export default function WorldMap({
   className,
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
+  const reduceMotion = useReducedMotion();
   
   const svgMap = useMemo(() => {
     const map = new DottedMap({ height: 100, grid: "diagonal" });
@@ -67,17 +68,17 @@ export default function WorldMap({
                 fill="none"
                 stroke="url(#path-gradient)"
                 strokeWidth="1"
-                initial={{
-                  pathLength: 0,
-                }}
-                animate={{
-                  pathLength: 1,
-                }}
-                transition={{
-                  duration: 1,
-                  delay: 0.5 * i,
-                  ease: "easeOut",
-                }}
+                {...(reduceMotion
+                  ? { initial: { pathLength: 1 }, animate: { pathLength: 1 } }
+                  : {
+                      initial: { pathLength: 0 },
+                      animate: { pathLength: 1 },
+                      transition: {
+                        duration: 1,
+                        delay: 0.5 * i,
+                        ease: "easeOut",
+                      },
+                    })}
                 key={`start-upper-${i}`}
               ></motion.path>
             </g>
@@ -105,27 +106,10 @@ export default function WorldMap({
               <circle
                 cx={projectPoint(dot.start.lat, dot.start.lng).x}
                 cy={projectPoint(dot.start.lat, dot.start.lng).y}
-                r="2"
+                r="4"
                 fill={lineColor}
-                opacity="0.5"
-              >
-                <animate
-                  attributeName="r"
-                  from="2"
-                  to="8"
-                  dur="1.5s"
-                  begin="0s"
-                  repeatCount="indefinite"
-                />
-                <animate
-                  attributeName="opacity"
-                  from="0.5"
-                  to="0"
-                  dur="1.5s"
-                  begin="0s"
-                  repeatCount="indefinite"
-                />
-              </circle>
+                opacity="0.25"
+              />
             </g>
             <g key={`end-${i}`}>
               <circle
@@ -137,27 +121,10 @@ export default function WorldMap({
               <circle
                 cx={projectPoint(dot.end.lat, dot.end.lng).x}
                 cy={projectPoint(dot.end.lat, dot.end.lng).y}
-                r="2"
+                r="4"
                 fill={lineColor}
-                opacity="0.5"
-              >
-                <animate
-                  attributeName="r"
-                  from="2"
-                  to="8"
-                  dur="1.5s"
-                  begin="0s"
-                  repeatCount="indefinite"
-                />
-                <animate
-                  attributeName="opacity"
-                  from="0.5"
-                  to="0"
-                  dur="1.5s"
-                  begin="0s"
-                  repeatCount="indefinite"
-                />
-              </circle>
+                opacity="0.25"
+              />
             </g>
           </g>
         ))}
