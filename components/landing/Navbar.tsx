@@ -13,6 +13,18 @@ const navLinks = [
 export function Navbar() {
   const scrolled = useScrolled(100);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const elem = document.getElementById(targetId);
+    if (elem) {
+      window.scrollTo({
+        top: elem.offsetTop - 80, // Offset for fixed navbar
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <nav
       className={cn(
@@ -21,7 +33,14 @@ export function Navbar() {
       )}
     >
       <div className="flex items-center justify-between px-6 py-4 max-w-[1200px] mx-auto">
-        <a href="#" className="shrink-0">
+        <a 
+          href="#" 
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="shrink-0"
+        >
           <Image
             src="/logo.svg"
             alt="Zentrix"
@@ -37,6 +56,7 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => handleScroll(e, link.href)}
               className="px-4 py-2 text-sm text-white/70 hover:text-emerald-400 transition-colors"
             >
               {link.label}
