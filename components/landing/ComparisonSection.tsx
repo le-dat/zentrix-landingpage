@@ -44,16 +44,16 @@ export function ComparisonSection() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
+          <table className="w-full border-collapse min-w-[600px]">
             <thead>
               <tr className="border-b border-white/10">
-                <th className="py-6 px-4 text-left text-sm font-semibold text-white/40 uppercase tracking-widest">
+                <th className="py-4 px-3 md:py-6 md:px-4 text-left text-xs md:text-sm font-semibold text-white/40 uppercase tracking-widest">
                   Criteria
                 </th>
                 <th className="py-6 px-4 text-left text-sm font-semibold bg-[#18CBA8]/10 text-[#18CBA8] uppercase tracking-widest rounded-t-2xl">
                   Zentrix
                 </th>
-                <th className="py-6 px-4 text-left text-sm font-semibold text-white/40 uppercase tracking-widest">
+                <th className="py-4 px-3 md:py-6 md:px-4 text-left text-xs md:text-sm font-semibold text-white/40 uppercase tracking-widest">
                   Traditional Rebate
                 </th>
               </tr>
@@ -68,14 +68,14 @@ export function ComparisonSection() {
                   transition={{ duration: 0.3, delay: i * 0.05 }}
                   className="border-b border-white/5 group"
                 >
-                  <td className="py-8 px-4 text-white font-medium">{item.criteria}</td>
-                  <td className="py-8 px-4 text-white text-sm bg-[#18CBA8]/5 font-semibold border-x border-[#18CBA8]/10">
+                  <td className="py-6 px-3 md:py-8 md:px-4 text-white text-sm md:text-base font-medium">{item.criteria}</td>
+                  <td className="py-6 px-3 md:py-8 md:px-4 text-xs md:text-sm bg-[#18CBA8]/5 font-semibold border-x border-[#18CBA8]/10">
                     <div className="flex items-start gap-2">
                       <Check className="w-4 h-4 shrink-0 text-[#18CBA8] mt-1" />
                       {item.zentrix}
                     </div>
                   </td>
-                  <td className="py-8 px-4 text-white/40 text-sm">
+                  <td className="py-6 px-3 md:py-8 md:px-4 text-xs md:text-sm text-white/40">
                     <div className="flex items-start gap-2">
                       <X className="w-4 h-4 shrink-0 text-red-500/50 mt-1" />
                       {item.traditional}
