@@ -21,7 +21,11 @@ export default function Error({
 
         <h1 className="text-2xl font-bold text-white mb-3">Something went wrong</h1>
 
-        <p className="text-white/50 mb-8">An unexpected error occurred.</p>
+        <p className="text-white/50 mb-8">
+          {process.env.NODE_ENV === "development"
+            ? error.message || "An unexpected error occurred."
+            : "An unexpected error occurred. Please try again later or contact support if the problem persists."}
+        </p>
 
         <div className="flex gap-4 justify-center">
           <button

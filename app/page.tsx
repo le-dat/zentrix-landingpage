@@ -17,27 +17,27 @@ export default function LandingPage() {
           dots={[
             {
               start: { lat: 64.2008, lng: -149.4937 }, // Alaska
-              end: { lat: 34.0522, lng: -118.2437 },   // LA
+              end: { lat: 34.0522, lng: -118.2437 }, // LA
             },
             {
               start: { lat: 23.5505, lng: -46.6333 }, // Sao Paulo
-              end: { lat: 1.3521, lng: 103.8198 },    // Singapore
+              end: { lat: 1.3521, lng: 103.8198 }, // Singapore
             },
             {
               start: { lat: 51.5074, lng: -0.1278 }, // London
-              end: { lat: 25.2048, lng: 55.2708 },   // Dubai
+              end: { lat: 25.2048, lng: 55.2708 }, // Dubai
             },
             {
               start: { lat: 35.6895, lng: 139.6917 }, // Tokyo
-              end: { lat: -33.8688, lng: 151.2093 },  // Sydney
+              end: { lat: -33.8688, lng: 151.2093 }, // Sydney
             },
             {
               start: { lat: 40.7128, lng: -74.006 }, // New York
-              end: { lat: 48.8566, lng: 2.3522 },    // Paris
+              end: { lat: 48.8566, lng: 2.3522 }, // Paris
             },
             {
               start: { lat: 1.3521, lng: 103.8198 }, // Singapore
-              end: { lat: 35.6895, lng: 139.6917 },  // Tokyo
+              end: { lat: 35.6895, lng: 139.6917 }, // Tokyo
             },
           ]}
         />
@@ -58,7 +58,6 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.8)_0%,transparent_80%)] pointer-events-none mix-blend-screen" />
         <HeroSection />
       </div>
-      {/* <PartnerSection /> */}
       <HowItWorks />
       <ComparisonSection />
       {/* <BentoSection /> */}

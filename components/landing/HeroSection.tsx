@@ -24,7 +24,7 @@ export function HeroSection() {
     "text-[2rem] leading-[1.03] sm:text-5xl sm:leading-[1.02] md:text-6xl md:leading-[1.02] lg:text-6xl";
 
   return (
-    <section className="relative pt-[82px] min-h-[900px] md:min-h-[1200px] overflow-hidden flex flex-col items-center">
+    <section className="relative pt-[82px] min-h-[800px] overflow-hidden flex flex-col items-center">
       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-transparent via-transparent to-[#020103]" />
 
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.03]" aria-hidden>
@@ -77,8 +77,8 @@ export function HeroSection() {
             Get started
           </button>
         </motion.div>
-
         <TrustMetrics />
+        {/* <PartnerSection /> */}
       </div>
 
       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#020103] via-transparent to-transparent" />
