@@ -138,6 +138,27 @@ export function SkeletonBrokerListing({ count = 6 }: { count?: number }) {
   );
 }
 
+export function SkeletonFAQSection() {
+  return (
+    <section className="relative py-20 overflow-hidden scroll-mt-24">
+      <div className="max-w-[826px] mx-auto px-6">
+        <Skeleton className="h-10 w-64 mx-auto mb-4" />
+        <Skeleton className="h-4 w-80 mx-auto mb-12" />
+        <div className="flex flex-col gap-3">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div key={i} className="rounded-xl bg-black/40 border border-white/5 overflow-hidden p-6 space-y-4">
+              <div className="flex items-center justify-between">
+                <Skeleton className="h-5 w-3/4" />
+                <Skeleton className="w-5 h-5 rounded-full" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function SkeletonFAQ() {
   return (
     <div className="space-y-4 max-w-3xl mx-auto">

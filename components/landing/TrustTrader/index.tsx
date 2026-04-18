@@ -2,8 +2,11 @@
 
 import React from "react";
 import { motion } from "motion/react";
+import { testimonials } from "./data";
 
-export function TrustTraderSection() {
+export default function TrustTraderSection() {
+  const t = testimonials[0];
+
   return (
     <section className="relative py-20 overflow-hidden">
       <div className="max-w-[990px] mx-auto px-6">
@@ -41,13 +44,11 @@ export function TrustTraderSection() {
 
           <div className="flex-1 text-center md:text-left">
             <blockquote className="text-lg leading-relaxed mb-8 text-white/90">
-              &ldquo;I never knew if I was getting the right rebate rate before.
-              Zentrix shows me every single allocation with its status.
-              It&apos;s a completely different level of trust.&rdquo;
+              &ldquo;{t.quote}&rdquo;
             </blockquote>
             <div>
-              <p className="font-semibold text-white">Alex N.</p>
-              <p className="text-sm text-white/60">IB · Multi-broker</p>
+              <p className="font-semibold text-white">{t.name}</p>
+              <p className="text-sm text-white/60">{t.role}</p>
             </div>
           </div>
         </motion.div>

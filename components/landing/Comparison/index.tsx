@@ -3,41 +3,16 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Check, X } from "lucide-react";
+import { comparisons } from "./data";
 
-const comparisons = [
-  {
-    criteria: "Liquidity Transparency",
-    traditional: "Internal balance, hard to verify externally",
-    zentrix: "On-chain Pool, verifiable on explorer",
-  },
-  {
-    criteria: "Fund Flow",
-    traditional: "Internal transfers, non-public batches",
-    zentrix: "Broker → Treasury → Pool → Wallet",
-  },
-  {
-    criteria: "Reconciliation",
-    traditional: "Mostly internal reporting",
-    zentrix: "Broker + Ledger + Chain (3-way)",
-  },
-  {
-    criteria: "Referral Allocation",
-    traditional: "Limited audit tools",
-    zentrix: "Ref tree + policy + public log",
-  },
-  {
-    criteria: "Withdrawals",
-    traditional: "Manual approval process",
-    zentrix: "On-chain claim, fixed fee",
-  },
-];
-
-export function ComparisonSection() {
+export default function ComparisonSection() {
   return (
     <section id="compare" className="relative py-24 overflow-hidden bg-black">
       <div className="max-w-[1000px] mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Zentrix vs Traditional</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+            Zentrix vs Traditional
+          </h2>
           <p className="text-white/50 text-lg">
             See how we are redefining transparency in the rebate industry.
           </p>
@@ -68,7 +43,9 @@ export function ComparisonSection() {
                   transition={{ duration: 0.3, delay: i * 0.05 }}
                   className="border-b border-white/5 group"
                 >
-                  <td className="py-6 px-3 md:py-8 md:px-4 text-white text-sm md:text-base font-medium">{item.criteria}</td>
+                  <td className="py-6 px-3 md:py-8 md:px-4 text-white text-sm md:text-base font-medium">
+                    {item.criteria}
+                  </td>
                   <td className="py-6 px-3 md:py-8 md:px-4 text-xs md:text-sm bg-[#18CBA8]/5 font-semibold border-x border-[#18CBA8]/10">
                     <div className="flex items-start gap-2">
                       <Check className="w-4 h-4 shrink-0 text-[#18CBA8] mt-1" />

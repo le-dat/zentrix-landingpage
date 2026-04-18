@@ -1,31 +1,17 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
-
-import { FaLinkedin } from "react-icons/fa";
-import {
-  SiFacebook,
-  SiInstagram,
-  SiTelegram,
-  SiThreads,
-  SiX,
-} from "react-icons/si";
-
-const footerLinks: Record<string, string[]> = {
-  Product: ["Features", "Integration", "Updates", "FAQ", "Pricing"],
-  Company: ["About", "Blog", "Careers", "Manifesto", "Press", "Contract"],
-  Resources: ["Examples", "Community", "Guides", "Docs", "Press"],
-  Legal: ["Privacy", "Terms", "Security"],
-};
+import { footerLinks, socials } from "./data";
 
 function FooterLinkColumn({ title, links }: { title: string; links: string[] }) {
   return (
-    <div className="min-w-[120px] flex-1">
-      <h4 className="mb-3 md:mb-4 font-semibold text-sm md:text-base">{title}</h4>
-      <ul className="space-y-2 md:space-y-3">
+    <div className="flex-1 md:flex-initial min-w-[140px]">
+      <h4 className="mb-4 font-semibold text-sm text-white/90">{title}</h4>
+      <ul className="space-y-3">
         {links.map((link) => (
           <li key={link}>
-            <span className="cursor-pointer text-sm text-white/60 transition-colors hover:text-white">
+            <span className="cursor-pointer text-sm text-white/50 transition-colors duration-200 hover:text-white/80">
               {link}
             </span>
           </li>
@@ -35,21 +21,12 @@ function FooterLinkColumn({ title, links }: { title: string; links: string[] }) 
   );
 }
 
-const socials = [
-  { Icon: SiFacebook, label: "Facebook", href: "https://www.facebook.com/zentrix6868" },
-  { Icon: SiX, label: "X", href: "https://x.com/Zentrixfund" },
-  { Icon: SiInstagram, label: "Instagram", href: "https://www.instagram.com/zentrixfund" },
-  { Icon: SiThreads, label: "Threads", href: "https://www.threads.com/@zentrixfund" },
-  { Icon: FaLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/zentrix6886" },
-  { Icon: SiTelegram, label: "Telegram", href: "https://t.me/zentrix6868" },
-];
-
-export function Footer() {
+export default function Footer() {
   return (
     <section className="relative py-20 border-t border-white/5">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 mb-8 md:mb-16">
-          <div className="shrink-0 max-w-[200px]">
+          <div className="shrink-0 max-w-[140px] md:max-w-[200px]">
             <Image
               src="/logo.svg"
               alt="Zentrix"
@@ -60,7 +37,7 @@ export function Footer() {
             />
           </div>
 
-          <div className="flex flex-1 flex-wrap gap-8 md:justify-end md:gap-12">
+          <div className="flex flex-1 justify-center gap-12 md:justify-end md:gap-16">
             {Object.entries(footerLinks).map(([title, links]) => (
               <FooterLinkColumn key={title} title={title} links={links} />
             ))}

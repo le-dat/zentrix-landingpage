@@ -1,16 +1,12 @@
 "use client";
 
+import React from "react";
 import { useScrolled } from "@/hooks/useScrolled";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { navLinks, ctaText } from "./data";
 
-const navLinks = [
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Compare", href: "#compare" },
-  { label: "FAQ", href: "#faq" },
-];
-
-export function Navbar() {
+export default function Navbar() {
   const scrolled = useScrolled(100);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -19,7 +15,7 @@ export function Navbar() {
     const elem = document.getElementById(targetId);
     if (elem) {
       window.scrollTo({
-        top: elem.offsetTop - 80, // Offset for fixed navbar
+        top: elem.offsetTop - 80,
         behavior: "smooth",
       });
     }
@@ -29,12 +25,12 @@ export function Navbar() {
     <nav
       className={cn(
         `fixed top-0 z-50 w-full transition-all duration-300 `,
-        scrolled ? "backdrop-blur-md" : "bg-transparent",
+        scrolled ? "backdrop-blur-lg md:backdrop-blur-md" : "bg-transparent",
       )}
     >
       <div className="flex items-center justify-between px-6 py-4 max-w-[1200px] mx-auto">
-        <a 
-          href="#" 
+        <a
+          href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -68,7 +64,7 @@ export function Navbar() {
           type="button"
           className="px-5 py-2 rounded-full bg-emerald-500 text-black font-semibold text-sm hover:bg-emerald-400 transition-all hover:shadow-[0_0_15px_rgba(16,185,129,0.4)]"
         >
-          Get started
+          {ctaText}
         </button>
       </div>
     </nav>

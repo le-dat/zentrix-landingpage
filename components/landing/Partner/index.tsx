@@ -3,18 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 
-const partners = [
-  { name: "Binance", image: "/binance.png" },
-  { name: "Kucoin", image: "/kucoin.png" },
-  { name: "Bitget", image: "/bitget.png" },
-  { name: "Bybit", image: "/bybit.png" },
-  { name: "OKX", image: "/okx.png" },
-  { name: "Huobi", image: "/huobi.png" },
-  { name: "Gate.io", image: "/gate.io.png" },
-  { name: "Bitfinex", image: "/bitfinex.png" },
-];
-
-export function PartnerSection() {
+export default function PartnerSection() {
   return (
     <section className="relative">
       <div className="flex flex-col gap-4">

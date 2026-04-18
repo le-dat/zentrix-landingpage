@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type MotionProps, useReducedMotion } from "motion/react";
-import { TrustMetrics } from "./TrustMetrics";
+import TrustMetrics from "./TrustMetrics/index";
 
 const heroGradientLineClass =
   "bg-[linear-gradient(180deg,rgba(0,0,0,1)_0%,rgba(255,255,255,1)_0%,rgba(74,222,128,1)_66%)] bg-clip-text text-transparent";
