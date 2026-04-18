@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type MotionProps, useReducedMotion } from "framer-motion";
+import { motion, type MotionProps, useReducedMotion } from "motion/react";
 import { TrustMetrics } from "./TrustMetrics";
 
 const heroGradientLineClass =

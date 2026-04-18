@@ -6,10 +6,42 @@ import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Navbar } from "@/components/landing/Navbar";
 import { TrustTraderSection } from "@/components/landing/TrustTraderSection";
 import dynamic from "next/dynamic";
+import {
+  SkeletonNavbar,
+  SkeletonHeroSection,
+  SkeletonHowItWorks,
+  SkeletonComparisonSection,
+  SkeletonTrustTrader,
+  SkeletonFooter,
+} from "@/components/ui/skeleton";
 
 const WorldMap = dynamic(() => import("@/components/ui/world-map"), {
   ssr: false,
   loading: () => <div className="h-[1000px]" />,
+});
+
+const Navbar = dynamic(() => import("@/components/landing/Navbar").then((m) => m.Navbar), {
+  loading: () => <SkeletonNavbar />,
+});
+
+const HeroSection = dynamic(() => import("@/components/landing/HeroSection").then((m) => m.HeroSection), {
+  loading: () => <SkeletonHeroSection />,
+});
+
+const HowItWorks = dynamic(() => import("@/components/landing/HowItWorks").then((m) => m.HowItWorks), {
+  loading: () => <SkeletonHowItWorks />,
+});
+
+const ComparisonSection = dynamic(() => import("@/components/landing/ComparisonSection").then((m) => m.ComparisonSection), {
+  loading: () => <SkeletonComparisonSection />,
+});
+
+const TrustTraderSection = dynamic(() => import("@/components/landing/TrustTraderSection").then((m) => m.TrustTraderSection), {
+  loading: () => <SkeletonTrustTrader />,
+});
+
+const Footer = dynamic(() => import("@/components/landing/Footer").then((m) => m.Footer), {
+  loading: () => <SkeletonFooter />,
 });
 
 export default function LandingPage() {

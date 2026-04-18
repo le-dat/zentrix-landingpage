@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "motion/react";
 import { Sparkles } from "lucide-react";
 
 import { FlowGapConnector } from "@/components/landing/FlowGapConnector";
