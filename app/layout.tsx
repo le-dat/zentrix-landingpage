@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { CombinedProviderWrapper } from "@/components/ui/CombinedProviderWrapper";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,7 +24,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" className={cn(inter.variable, "h-full antialiased")} suppressHydrationWarning>
       <body className="min-h-full flex flex-col font-sans">
         <CombinedProviderWrapper>{children}</CombinedProviderWrapper>
       </body>

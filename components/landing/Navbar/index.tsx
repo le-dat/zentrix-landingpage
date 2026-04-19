@@ -88,22 +88,25 @@ export default function Navbar() {
             aria-label="Toggle language"
           >
             <div
-              className={`absolute top-0.5 bottom-0.5 w-[52px] rounded-full bg-emerald-500/20 transition-transform duration-200 ${
+              className={cn(
+                "absolute top-0.5 bottom-0.5 w-[52px] rounded-full bg-emerald-500/20 transition-transform duration-200",
                 locale === "vi" ? "translate-x-[54px]" : "translate-x-[2px]"
-              }`}
+              )}
             />
             <div
-              className={`relative z-10 flex-1 flex items-center justify-center gap-1 h-full transition-colors duration-200 ${
+              className={cn(
+                "relative z-10 flex-1 flex items-center justify-center gap-1 h-full transition-colors duration-200",
                 locale === "en" ? "text-emerald-400" : "text-white/50"
-              }`}
+              )}
             >
               <span className="text-sm">🇬🇧</span>
               <span className="text-xs font-medium uppercase">EN</span>
             </div>
             <div
-              className={`relative z-10 flex-1 flex items-center justify-center gap-1 h-full transition-colors duration-200 ${
+              className={cn(
+                "relative z-10 flex-1 flex items-center justify-center gap-1 h-full transition-colors duration-200",
                 locale === "vi" ? "text-emerald-400" : "text-white/50"
-              }`}
+              )}
             >
               <span className="text-sm">🇻🇳</span>
               <span className="text-xs font-medium uppercase">VI</span>
@@ -128,22 +131,25 @@ export default function Navbar() {
             aria-label="Toggle language"
           >
             <div
-              className={`absolute top-0.5 bottom-0.5 w-[42px] rounded-full bg-emerald-500/20 transition-transform duration-200 ${
+              className={cn(
+                "absolute top-0.5 bottom-0.5 w-[42px] rounded-full bg-emerald-500/20 transition-transform duration-200",
                 locale === "vi" ? "translate-x-[44px]" : "translate-x-[2px]"
-              }`}
+              )}
             />
             <div
-              className={`relative z-10 flex-1 flex items-center justify-center gap-0.5 h-full transition-colors duration-200 ${
+              className={cn(
+                "relative z-10 flex-1 flex items-center justify-center gap-0.5 h-full transition-colors duration-200",
                 locale === "en" ? "text-emerald-400" : "text-white/50"
-              }`}
+              )}
             >
               <span className="text-xs">🇬🇧</span>
               <span className="text-[10px] font-medium uppercase">EN</span>
             </div>
             <div
-              className={`relative z-10 flex-1 flex items-center justify-center gap-0.5 h-full transition-colors duration-200 ${
+              className={cn(
+                "relative z-10 flex-1 flex items-center justify-center gap-0.5 h-full transition-colors duration-200",
                 locale === "vi" ? "text-emerald-400" : "text-white/50"
-              }`}
+              )}
             >
               <span className="text-xs">🇻🇳</span>
               <span className="text-[10px] font-medium uppercase">VI</span>

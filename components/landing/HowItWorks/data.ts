@@ -12,7 +12,7 @@ export const steps: HowItWorksStep[] = [
     titleKey: "howItWorks.steps.broker",
     descriptionKey: "howItWorks.steps.brokerDesc",
     digit: "1",
-    variant: "default",
+    variant: "highlight",
   },
   {
     id: "02",
@@ -26,14 +26,14 @@ export const steps: HowItWorksStep[] = [
     titleKey: "howItWorks.steps.pool",
     descriptionKey: "howItWorks.steps.poolDesc",
     digit: "3",
-    variant: "default",
+    variant: "highlight",
   },
   {
     id: "04",
     titleKey: "howItWorks.steps.wallet",
     descriptionKey: "howItWorks.steps.walletDesc",
     digit: "4",
-    variant: "default",
+    variant: "highlight",
   },
 ];
 
@@ -46,8 +46,7 @@ export const highlightColors = {
   borderHover: "group-hover:border-[#18CBA8]/40",
   bg: "bg-[#18CBA8]/[0.08]",
   bgHover: "group-hover:bg-[#18CBA8]/[0.12]",
-  shadow:
-    "shadow-[0_0_40px_-18px_rgba(24,203,168,0.22),inset_0_1px_0_0_rgba(24,203,168,0.12)]",
+  shadow: "shadow-[0_0_40px_-18px_rgba(24,203,168,0.22),inset_0_1px_0_0_rgba(24,203,168,0.12)]",
   shadowHover:
     "group-hover:shadow-[0_0_40px_-18px_rgba(24,203,168,0.28),inset_0_1px_0_0_rgba(24,203,168,0.16)]",
   digitGradient:

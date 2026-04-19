@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { faqs } from "./data";
 import { useLanguage } from "@/context/LanguageContext";
+import { cn } from "@/lib/utils";
 
 export default function FAQSection() {
   const { t } = useLanguage();
@@ -36,9 +37,10 @@ export default function FAQSection() {
               >
                 <span className="text-sm font-medium pr-4">{t(faq.titleKey)}</span>
                 <ChevronDown
-                  className={`w-5 h-5 shrink-0 transition-transform duration-300 ${
+                  className={cn(
+                    "w-5 h-5 shrink-0 transition-transform duration-300",
                     openIndex === i ? "rotate-180" : ""
-                  }`}
+                  )}
                 />
               </button>
               {openIndex === i && (
