@@ -12,7 +12,7 @@ export default function ComparisonSection() {
     <section id="compare" className="relative py-24 overflow-hidden bg-black">
       <div className="max-w-[1000px] mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-[1.6rem] md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-[1.6rem] md:text-4xl font-bold text-white mb-4">
             {t("comparison.title")}
           </h2>
           <p className="text-white/50 text-sm">

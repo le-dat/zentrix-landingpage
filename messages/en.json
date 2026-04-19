@@ -76,7 +76,7 @@
     "role4": "Scalper · MT5",
     "quote5": "Having all brokers in one dashboard is convenient. Everything is organized.",
     "role5": "Portfolio Manager",
-    "quote6": "Withdrawal was fast. Claimed my rewards and received BNB the same day.",
+    "quote6": "Withdrawal was fast. Claimed my rewards and received USDT/USDC the same day.",
     "role6": "Swing Trader"
   },
   "faq": {
@@ -90,7 +90,7 @@
       "pool": "What is the on-chain Pool? Is my money safe?",
       "poolBody": "The Pool is where your rebates are held on-chain. We only add funds once they're verified from the broker, and you can track everything on BSCScan.",
       "receive": "How long does it take to receive my rebates?",
-      "receiveBody": "We track your trades as you go. Once the broker settles their weekly or monthly payouts, your rebates are confirmed and ready to claim.",
+      "receiveBody": "We track your trades as you go. Once the broker settles their payouts, your rebates are confirmed and ready to claim.",
       "mlm": "Is Zentrix an MLM scheme?",
       "mlmBody": "Not at all. Your earnings come strictly from the trading volume of people you refer. You never have to buy anything to participate.",
       "multiple": "Can I connect multiple brokers?",
@@ -131,6 +131,12 @@
     "emailPlaceholder": "Enter your email",
     "notifyMe": "Notify Me",
     "beFirst": "Be the first to know when we launch",
+    "successMessage": "You're on the list! We'll notify you when we launch.",
+    "successTitle": "You're In!",
+    "errorTitle": "Something Went Wrong",
+    "errorMessage": "Failed to subscribe. Please try again.",
+    "done": "Done",
+    "tryAgain": "Try Again",
     "infoModal": {
       "aboutUs": {
         "title": "About Us",
