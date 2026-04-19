@@ -131,6 +131,12 @@
     "emailPlaceholder": "Nhập email của bạn",
     "notifyMe": "Thông Báo Cho Tôi",
     "beFirst": "Là người đầu tiên biết khi chúng tôi ra mắt",
+    "successMessage": "Bạn đã được thêm vào danh sách! Chúng tôi sẽ thông báo khi ra mắt.",
+    "successTitle": "Hoàn Tất!",
+    "errorTitle": "Đã Xảy Ra Lỗi",
+    "errorMessage": "Không thể đăng ký. Vui lòng thử lại.",
+    "done": "Xong",
+    "tryAgain": "Thử Lại",
     "infoModal": {
       "aboutUs": {
         "title": "Về Chúng Tôi",

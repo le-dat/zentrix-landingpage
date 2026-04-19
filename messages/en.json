@@ -131,6 +131,12 @@
     "emailPlaceholder": "Enter your email",
     "notifyMe": "Notify Me",
     "beFirst": "Be the first to know when we launch",
+    "successMessage": "You're on the list! We'll notify you when we launch.",
+    "successTitle": "You're In!",
+    "errorTitle": "Something Went Wrong",
+    "errorMessage": "Failed to subscribe. Please try again.",
+    "done": "Done",
+    "tryAgain": "Try Again",
     "infoModal": {
       "aboutUs": {
         "title": "About Us",

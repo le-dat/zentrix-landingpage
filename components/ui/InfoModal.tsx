@@ -52,7 +52,7 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
 
       {/* Modal */}
       <div
-        className="relative w-full max-w-4xl max-h-[90vh] sm:max-h-[85vh] bg-gradient-to-b from-zinc-900 to-black border border-white/10 rounded-xl sm:rounded-2xl shadow-2xl shadow-black/50 animate-in zoom-in-95 fade-in duration-200 flex flex-col overflow-hidden"
+        className="relative w-full max-w-4xl h-full max-h-screen md:max-h-[90vh] bg-gradient-to-b from-zinc-900 to-black border border-white/10 rounded-xl sm:rounded-2xl shadow-2xl shadow-black/50 animate-in zoom-in-95 fade-in duration-200 flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Glow effect */}
@@ -61,7 +61,6 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
         {/* Header */}
         <div className="px-4 py-3 sm:px-6 sm:py-5 border-b border-white/10 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2 sm:gap-3">
-            <div className="w-1 h-5 sm:h-6 bg-gradient-to-b from-teal-400 to-teal-600 rounded-full" />
             <h3 className="text-base sm:text-lg md:text-xl font-bold text-white">{title}</h3>
           </div>
           <button
@@ -76,7 +75,8 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
 
         {/* Content - Scrollable */}
         <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-6">
-          <div className="text-sm sm:text-base text-zinc-300 leading-relaxed space-y-4
+          <div
+            className="text-sm sm:text-base text-zinc-300 leading-relaxed space-y-4
                        prose prose-invert prose-base max-w-none
                        prose-headings:text-white prose-headings:font-semibold prose-headings:mb-3
                        prose-p:text-zinc-300 prose-p:leading-7
@@ -86,10 +86,9 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
                        prose-hr:border-white/10
                        prose-blockquote:border-l-teal-500 prose-blockquote:text-zinc-400
                        prose-code:text-teal-300 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
-                       prose-pre:bg-zinc-950 prose-pre:border prose-pre:border-white/10">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {content}
-            </ReactMarkdown>
+                       prose-pre:bg-zinc-950 prose-pre:border prose-pre:border-white/10"
+          >
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
           </div>
         </div>
       </div>
