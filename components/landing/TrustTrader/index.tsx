@@ -12,10 +12,10 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
     <div
       className={cn(
-        "flex-shrink-0 w-[300px] md:w-[360px]",
-        "p-5 rounded-xl",
-        "bg-black/40 border border-white/5",
-        "mx-2"
+        "flex-shrink-0 w-[280px] md:w-[340px]",
+        "p-4 rounded-xl",
+        "bg-black/40 border border-white/10",
+        "mx-1"
       )}
     >
       <blockquote className="text-sm leading-relaxed mb-4 text-white/90">
