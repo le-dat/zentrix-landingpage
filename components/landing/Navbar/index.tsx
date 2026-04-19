@@ -78,31 +78,31 @@ export default function Navbar() {
           <button
             type="button"
             onClick={toggleLocale}
-            className="relative flex items-center h-8 w-[120px] rounded-full border border-white/10 bg-black/20 overflow-hidden hover:border-white/20 transition-colors"
+            className="relative flex items-center h-8 w-[108px] rounded-full border border-white/10 bg-black/20 overflow-hidden hover:border-white/20 transition-colors"
             aria-label="Toggle language"
           >
             {/* Sliding background */}
             <div
-              className={`absolute top-1 bottom-1 w-[56px] rounded-full bg-emerald-500/20 transition-transform duration-200 ${
-                locale === "vi" ? "translate-x-[58px]" : "translate-x-[4px]"
+              className={`absolute top-0.5 bottom-0.5 w-[52px] rounded-full bg-emerald-500/20 transition-transform duration-200 ${
+                locale === "vi" ? "translate-x-[54px]" : "translate-x-[2px]"
               }`}
             />
             {/* EN option */}
             <div
-              className={`relative z-10 flex items-center gap-1.5 px-4 py-1.5 rounded-full transition-colors duration-200 ${
+              className={`relative z-10 flex-1 flex items-center justify-center gap-1 h-full transition-colors duration-200 ${
                 locale === "en" ? "text-emerald-400" : "text-white/50"
               }`}
             >
-              <span className="text-base">🇬🇧</span>
+              <span className="text-sm">🇬🇧</span>
               <span className="text-xs font-medium uppercase">EN</span>
             </div>
             {/* VI option */}
             <div
-              className={`relative z-10 flex items-center gap-1.5 px-4 py-1.5 rounded-full transition-colors duration-200 ${
+              className={`relative z-10 flex-1 flex items-center justify-center gap-1 h-full transition-colors duration-200 ${
                 locale === "vi" ? "text-emerald-400" : "text-white/50"
               }`}
             >
-              <span className="text-base">🇻🇳</span>
+              <span className="text-sm">🇻🇳</span>
               <span className="text-xs font-medium uppercase">VI</span>
             </div>
           </button>
