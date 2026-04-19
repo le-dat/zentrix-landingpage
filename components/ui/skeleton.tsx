@@ -131,15 +131,15 @@ export function SkeletonBrokerListing({ count = 6 }: { count?: number }) {
 
 export function SkeletonFAQSection() {
   return (
-    <section className="relative py-20 overflow-hidden scroll-mt-24">
+    <section id="faq" className="relative py-16 md:py-20 overflow-hidden scroll-mt-24">
       <div className="max-w-[826px] mx-auto px-6">
-        <Skeleton className="h-10 w-64 mx-auto mb-4" />
-        <Skeleton className="h-4 w-80 mx-auto mb-12" />
+        <Skeleton className="h-[1.6rem] md:h-10 w-64 mx-auto mb-4" />
+        <Skeleton className="h-4 md:h-6 w-80 mx-auto mb-12 max-w-lg" />
         <div className="flex flex-col gap-3">
           {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className="rounded-xl bg-black/40 border border-white/5 overflow-hidden p-6 space-y-4">
-              <div className="flex items-center justify-between">
-                <Skeleton className="h-5 w-3/4" />
+            <div key={i} className="rounded-xl bg-black/40 border border-white/5 overflow-hidden">
+              <div className="flex items-center justify-between p-4 md:p-6">
+                <Skeleton className="h-4 md:h-5 w-3/4" />
                 <Skeleton className="w-5 h-5 rounded-full" />
               </div>
             </div>
@@ -168,23 +168,38 @@ export function SkeletonFAQ() {
 }
 
 export function SkeletonBentoGrid() {
-  const sizes = [
-    { cols: "col-span-2", rows: "row-span-2" },
-    { cols: "", rows: "" },
-    { cols: "", rows: "" },
-    { cols: "", rows: "row-span-2" },
-    { cols: "col-span-2", rows: "" },
-  ];
-
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
-      {sizes.map((size, i) => (
-        <Skeleton
-          key={i}
-          className={`${size.cols} ${size.rows} rounded-3xl`}
-        />
-      ))}
-    </div>
+    <section className="relative py-16 md:py-20 overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        <Skeleton className="h-[1.6rem] md:h-[3rem] w-full max-w-[800px] mx-auto mb-20 text-center" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="md:col-span-1 h-[480px] rounded-3xl bg-[#0D0D0D] border border-white/5 overflow-hidden">
+            <div className="p-8">
+              <Skeleton className="h-5 md:h-6 w-2/3 mb-2" />
+              <Skeleton className="h-3 md:h-4 w-4/5" />
+            </div>
+          </div>
+          <div className="md:col-span-2 h-[480px] rounded-3xl bg-[#0D0D0D] border border-white/5 overflow-hidden">
+            <div className="p-8">
+              <Skeleton className="h-5 md:h-6 w-2/3 mb-2" />
+              <Skeleton className="h-3 md:h-4 w-4/5" />
+            </div>
+          </div>
+          <div className="md:col-span-2 h-[480px] rounded-3xl bg-[#0D0D0D] border border-white/5 overflow-hidden">
+            <div className="p-8">
+              <Skeleton className="h-5 md:h-6 w-2/3 mb-2" />
+              <Skeleton className="h-3 md:h-4 w-4/5" />
+            </div>
+          </div>
+          <div className="md:col-span-1 h-[480px] rounded-3xl bg-[#0D0D0D] border border-white/5 overflow-hidden">
+            <div className="p-8">
+              <Skeleton className="h-5 md:h-6 w-2/3 mb-2" />
+              <Skeleton className="h-3 md:h-4 w-4/5" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -225,13 +240,15 @@ export function SkeletonNavbar() {
   return (
     <nav className="fixed top-0 z-50 w-full px-6 py-4">
       <div className="flex items-center justify-between max-w-[1200px] mx-auto">
-        <Skeleton className="w-28 h-8 rounded" />
-        <div className="hidden md:flex items-center gap-1">
+        <Skeleton className="w-[127px] h-[34px]" />
+        <div className="hidden md:flex items-center gap-1 border rounded-full border-white/10 p-1.5 bg-black/20">
+          <Skeleton className="w-20 h-8 rounded-full" />
+          <Skeleton className="w-20 h-8 rounded-full" />
           <Skeleton className="w-20 h-8 rounded-full" />
           <Skeleton className="w-20 h-8 rounded-full" />
           <Skeleton className="w-20 h-8 rounded-full" />
         </div>
-        <Skeleton className="w-24 h-9 rounded-full" />
+        <Skeleton className="w-24 h-9 rounded-full bg-emerald-500" />
       </div>
     </nav>
   );
@@ -239,20 +256,25 @@ export function SkeletonNavbar() {
 
 export function SkeletonHeroSection() {
   return (
-    <section className="relative pt-[82px] min-h-[800px] overflow-hidden flex flex-col items-center">
-      <div className="relative z-10 flex flex-col items-center pt-20 px-4 w-full max-w-[1200px]">
-        <Skeleton className="h-10 w-[280px] rounded-full mb-10" />
-        <div className="text-center space-y-6 w-full max-w-[800px]">
-          <Skeleton className="h-20 w-full" />
-          <Skeleton className="h-20 w-full" />
-          <Skeleton className="h-6 w-3/4 mx-auto" />
+    <section className="relative pt-[70px] min-h-[680px] md:pt-[82px] md:min-h-[800px] overflow-hidden flex flex-col items-center">
+      <div className="relative z-10 flex flex-col items-center pt-12 md:pt-20 px-4 w-full max-w-[1200px]">
+        {/* Badge */}
+        <Skeleton className="h-8 w-[280px] rounded-full mb-6 md:mb-10" />
+        {/* Heading */}
+        <div className="text-center space-y-6 w-full max-w-[1200px]">
+          <Skeleton className="h-[1.6rem] md:h-[4.5rem] w-full max-w-[800px] mx-auto" />
+          <Skeleton className="h-[1.6rem] md:h-[4.5rem] w-full max-w-[800px] mx-auto" />
         </div>
-        <div className="flex gap-4 mt-8">
-          <Skeleton className="h-14 w-40 rounded-full" />
+        {/* Description */}
+        <Skeleton className="h-5 md:h-7 w-full max-w-[560px] mt-5 md:mt-7" />
+        {/* CTA */}
+        <div className="mt-6 md:mt-8">
+          <Skeleton className="h-12 md:h-14 w-40 md:w-48 rounded-full" />
         </div>
-        <div className="flex flex-wrap justify-center gap-3 mt-12">
+        {/* TrustMetrics */}
+        <div className="mt-12 flex flex-wrap justify-center gap-3">
           {[1, 2, 3, 4].map((i) => (
-            <Skeleton key={i} className="h-10 w-32 rounded-md" />
+            <Skeleton key={i} className="h-9 md:h-10 w-auto px-4 rounded-md" />
           ))}
         </div>
       </div>
@@ -262,15 +284,15 @@ export function SkeletonHeroSection() {
 
 export function SkeletonHowItWorks() {
   return (
-    <section className="relative scroll-mt-24 overflow-hidden py-[120px]">
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center px-5">
-        <Skeleton className="h-10 w-64 mb-6" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full mt-8">
+    <section className="relative scroll-mt-24 overflow-hidden py-16 md:py-24 text-zinc-100">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center px-5 md:px-6">
+        <Skeleton className="h-[1.6rem] md:h-10 w-64 mb-6 md:mb-8" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 w-full mt-8">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="rounded-3xl border border-white/5 bg-[#0c1512]/85 p-3.5 space-y-4">
-              <Skeleton className="h-48 w-full rounded-xl" />
-              <Skeleton className="h-6 w-2/3" />
-              <Skeleton className="h-4 w-3/4" />
+            <div key={i} className="rounded-3xl border border-white/5 bg-[#0c1512]/85 p-2.5 md:p-3.5 space-y-4">
+              <Skeleton className="h-[14rem] md:h-[16.25rem] w-full rounded-xl" />
+              <Skeleton className="h-5 md:h-6 w-2/3" />
+              <Skeleton className="h-3 md:h-4 w-3/4" />
             </div>
           ))}
         </div>
@@ -281,24 +303,27 @@ export function SkeletonHowItWorks() {
 
 export function SkeletonComparisonSection() {
   return (
-    <section className="relative py-20 overflow-hidden">
-      <div className="max-w-[990px] mx-auto px-6">
-        <Skeleton className="h-12 w-64 mx-auto mb-12" />
-        <div className="rounded-2xl border border-white/5 bg-black/40 overflow-hidden">
-          <div className="flex gap-4 px-4 py-4 border-b border-white/5">
-            <Skeleton className="h-4 w-1/4" />
-            <Skeleton className="h-4 w-1/4" />
-            <Skeleton className="h-4 w-1/4" />
-            <Skeleton className="h-4 w-1/4" />
-          </div>
-          {[1, 2, 3, 4, 5].map((i) => (
-            <div key={i} className="flex gap-4 px-4 py-5 border-b border-white/5">
-              <Skeleton className="h-6 w-1/4" />
-              <Skeleton className="h-6 w-1/4" />
-              <Skeleton className="h-6 w-1/4" />
-              <Skeleton className="h-6 w-1/4" />
+    <section id="compare" className="relative py-16 md:py-24 overflow-hidden bg-black">
+      <div className="max-w-[1000px] mx-auto px-6">
+        <div className="text-center mb-16">
+          <Skeleton className="h-[1.6rem] md:h-[3rem] w-64 mx-auto mb-4" />
+          <Skeleton className="h-4 md:h-6 w-80 mx-auto" />
+        </div>
+        <div className="overflow-x-auto">
+          <div className="min-w-[600px] rounded-2xl border border-white/5 bg-black/40 overflow-hidden">
+            <div className="flex gap-4 px-3 py-4 md:px-4 md:py-6 border-b border-white/10">
+              <Skeleton className="h-3 md:h-4 w-1/4" />
+              <Skeleton className="h-3 md:h-4 w-1/4" />
+              <Skeleton className="h-3 md:h-4 w-1/4" />
             </div>
-          ))}
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className="flex gap-4 px-3 py-6 md:px-4 md:py-8 border-b border-white/5">
+                <Skeleton className="h-4 md:h-6 w-1/4" />
+                <Skeleton className="h-4 md:h-6 w-1/4" />
+                <Skeleton className="h-4 md:h-6 w-1/4" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -307,18 +332,18 @@ export function SkeletonComparisonSection() {
 
 export function SkeletonTrustTrader() {
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-16 md:py-20 overflow-hidden">
       <div className="max-w-[990px] mx-auto px-6">
-        <Skeleton className="h-10 w-48 mx-auto mb-4" />
-        <Skeleton className="h-6 w-80 mx-auto mb-16" />
-        <div className="flex flex-col md:flex-row items-center gap-12 p-6 md:p-10 rounded-2xl bg-black/40 border border-white/5">
-          <Skeleton className="w-[217px] h-[217px] shrink-0 rounded-xl" />
+        <Skeleton className="h-[1.6rem] w-48 mx-auto mb-4" />
+        <Skeleton className="h-4 md:h-6 w-80 mx-auto mb-16" />
+        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 p-6 md:p-10 rounded-2xl bg-black/40 border border-white/5">
+          <Skeleton className="w-[140px] md:w-[217px] h-[140px] md:h-[217px] shrink-0 rounded-xl" />
           <div className="flex-1 space-y-4 text-center md:text-left">
-            <Skeleton className="h-6 w-full" />
-            <Skeleton className="h-6 w-3/4" />
-            <Skeleton className="h-6 w-2/3" />
-            <Skeleton className="h-4 w-24 mt-8" />
-            <Skeleton className="h-4 w-20" />
+            <Skeleton className="h-4 md:h-6 w-full" />
+            <Skeleton className="h-4 md:h-6 w-3/4" />
+            <Skeleton className="h-4 md:h-6 w-2/3" />
+            <Skeleton className="h-3 md:h-4 w-24 mt-4 md:mt-8" />
+            <Skeleton className="h-3 md:h-4 w-20" />
           </div>
         </div>
       </div>
@@ -332,12 +357,16 @@ export function SkeletonPartnerSection() {
       <div className="flex flex-col gap-4 px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[1, 2, 3, 4].map((i) => (
-            <Skeleton key={i} className="h-[98px] rounded-lg" />
+            <div key={i} className="h-[98px] rounded-lg bg-white/5 border border-white/5 flex items-center justify-center">
+              <Skeleton className="w-[155px] h-[34px] rounded" />
+            </div>
           ))}
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[1, 2, 3, 4].map((i) => (
-            <Skeleton key={i} className="h-[98px] rounded-lg" />
+            <div key={i} className="h-[98px] rounded-lg bg-white/5 border border-white/5 flex items-center justify-center">
+              <Skeleton className="w-[155px] h-[34px] rounded" />
+            </div>
           ))}
         </div>
       </div>
@@ -347,26 +376,26 @@ export function SkeletonPartnerSection() {
 
 export function SkeletonFooter() {
   return (
-    <footer className="relative py-16 overflow-hidden">
+    <footer className="relative py-16 md:py-20 border-t border-white/5">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="flex flex-col md:flex-row gap-16 mb-16">
-          <div className="space-y-4 flex-1">
-            <Skeleton className="h-8 w-28" />
-            <Skeleton className="h-4 w-48" />
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 mb-8 md:mb-16">
+          <div className="shrink-0 max-w-[140px] md:max-w-[200px]">
+            <Skeleton className="h-10 w-[127px]" />
+            <Skeleton className="h-4 w-32 mt-4" />
             <div className="flex gap-4 pt-4">
-              <Skeleton className="h-10 w-10 rounded-full" />
-              <Skeleton className="h-10 w-10 rounded-full" />
-              <Skeleton className="h-10 w-10 rounded-full" />
+              <Skeleton className="h-6 w-6 rounded-full" />
+              <Skeleton className="h-6 w-6 rounded-full" />
+              <Skeleton className="h-6 w-6 rounded-full" />
             </div>
           </div>
-          <div className="flex gap-16">
-            <div className="space-y-4">
+          <div className="flex flex-1 justify-center gap-12 md:justify-end md:gap-16">
+            <div className="space-y-3 md:space-y-4">
               <Skeleton className="h-4 w-20" />
               <Skeleton className="h-3 w-16" />
               <Skeleton className="h-3 w-16" />
               <Skeleton className="h-3 w-16" />
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               <Skeleton className="h-4 w-20" />
               <Skeleton className="h-3 w-16" />
               <Skeleton className="h-3 w-16" />
@@ -374,8 +403,7 @@ export function SkeletonFooter() {
             </div>
           </div>
         </div>
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <Skeleton className="h-4 w-48" />
+        <div className="flex items-center justify-center md:justify-start">
           <Skeleton className="h-4 w-32" />
         </div>
       </div>
