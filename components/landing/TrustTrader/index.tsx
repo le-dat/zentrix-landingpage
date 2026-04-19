@@ -49,17 +49,27 @@ export default function TrustTraderSection() {
           {t("trustTrader.subtitle")}
         </p>
 
-        <div className="animate-fade-up space-y-4" style={{ animationDelay: "200ms" }}>
-          <Marquee pauseOnHover>
-            {testimonialsRow1.map((testimonial, i) => (
-              <TestimonialCard key={`row1-${i}`} testimonial={testimonial} />
-            ))}
-          </Marquee>
-          <Marquee reverse pauseOnHover>
-            {testimonialsRow2.map((testimonial, i) => (
-              <TestimonialCard key={`row2-${i}`} testimonial={testimonial} />
-            ))}
-          </Marquee>
+        <div className="animate-fade-up space-y-4 relative" style={{ animationDelay: "200ms" }}>
+          {/* Row 1 */}
+          <div className="relative">
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#020103] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#020103] to-transparent z-10 pointer-events-none" />
+            <Marquee pauseOnHover>
+              {testimonialsRow1.map((testimonial, i) => (
+                <TestimonialCard key={`row1-${i}`} testimonial={testimonial} />
+              ))}
+            </Marquee>
+          </div>
+          {/* Row 2 */}
+          <div className="relative">
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#020103] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#020103] to-transparent z-10 pointer-events-none" />
+            <Marquee reverse pauseOnHover>
+              {testimonialsRow2.map((testimonial, i) => (
+                <TestimonialCard key={`row2-${i}`} testimonial={testimonial} />
+              ))}
+            </Marquee>
+          </div>
         </div>
       </div>
     </section>
