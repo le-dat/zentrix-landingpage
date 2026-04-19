@@ -36,7 +36,7 @@ export default function TrustTraderSection() {
     <section className="relative py-20 overflow-hidden">
       <div className="max-w-[990px] mx-auto px-6">
         <h2
-          className="animate-fade-up text-[1.6rem] font-bold mb-4 text-center"
+          className="animate-fade-up text-[1.6rem] md:text-4xl font-bold mb-4 text-center"
           style={{ animationDelay: "0ms" }}
         >
           {t("trustTrader.title")}
