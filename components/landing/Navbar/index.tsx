@@ -5,9 +5,11 @@ import { useScrolled } from "@/hooks/useScrolled";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { navLinks, ctaText } from "./data";
+import { useComingSoonModal } from "@/components/ui/ModalContext";
 
 export default function Navbar() {
   const scrolled = useScrolled(100);
+  const { openComingSoon } = useComingSoonModal();
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -62,6 +64,7 @@ export default function Navbar() {
 
         <button
           type="button"
+          onClick={openComingSoon}
           className="px-5 py-2 rounded-full bg-emerald-500 text-black font-semibold text-sm hover:bg-emerald-400 transition-all hover:shadow-[0_0_15px_rgba(16,185,129,0.4)]"
         >
           {ctaText}

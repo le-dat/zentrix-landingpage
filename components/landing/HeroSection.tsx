@@ -1,8 +1,11 @@
 "use client";
 
 import TrustMetrics from "./TrustMetrics/index";
+import { useComingSoonModal } from "@/components/ui/ModalContext";
 
 export function HeroSection() {
+  const { openComingSoon } = useComingSoonModal();
+
   return (
     <section className="relative pt-[70px] min-h-[680px] md:pt-[82px] md:min-h-[800px] overflow-hidden flex flex-col items-center">
       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-transparent via-transparent to-[#020103]" />
@@ -48,6 +51,7 @@ export function HeroSection() {
         >
           <button
             type="button"
+            onClick={openComingSoon}
             className="rounded-full bg-white px-6 py-3 text-base font-semibold text-black shadow-xl transition-colors hover:bg-white/90 md:px-8 md:py-4 md:text-lg"
           >
             Get started

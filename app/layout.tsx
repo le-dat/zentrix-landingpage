@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ModalProviderWrapper } from "@/components/ui/ModalProviderWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,7 +24,9 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        <ModalProviderWrapper>{children}</ModalProviderWrapper>
+      </body>
     </html>
   );
 }
