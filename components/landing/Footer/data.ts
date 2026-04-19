@@ -12,7 +12,21 @@ export const socials: Social[] = [
   { Icon: SiTelegram, labelKey: "footer.socials.telegram", href: "https://t.me/zentrix6868" },
 ];
 
+export type FooterLinkItem = {
+  key: string;
+  labelKey: string;
+  modalContentKey?: "modal.infoModal.aboutUs" | "modal.infoModal.privacyPolicy" | "modal.infoModal.riskWarning";
+};
+
 export const footerLinkCategories = [
   { titleKey: "footer.resources", linksKey: "footer.resourcesLinks" },
   { titleKey: "footer.legal", linksKey: "footer.legalLinks" },
+];
+
+export const legalLinksItems: FooterLinkItem[] = [
+  { key: "privacyPolicy", labelKey: "footer.privacyPolicy", modalContentKey: "modal.infoModal.privacyPolicy" },
+  { key: "termsOfService", labelKey: "footer.termsOfService" },
+  { key: "security", labelKey: "footer.security" },
+  { key: "aboutUs", labelKey: "footer.aboutUs", modalContentKey: "modal.infoModal.aboutUs" },
+  { key: "riskWarning", labelKey: "footer.riskWarning", modalContentKey: "modal.infoModal.riskWarning" },
 ];
