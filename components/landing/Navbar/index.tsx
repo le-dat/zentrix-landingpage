@@ -11,7 +11,7 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function Navbar() {
   const scrolled = useScrolled(100);
   const { openComingSoon } = useComingSoonModal();
-  const { locale, setLocale, t } = useLanguage();
+  const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -25,10 +25,6 @@ export default function Navbar() {
         behavior: "smooth",
       });
     }
-  };
-
-  const toggleLocale = () => {
-    setLocale(locale === "en" ? "vi" : "en");
   };
 
   const navItems = [
@@ -81,39 +77,6 @@ export default function Navbar() {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-2">
-          {/* Language Switcher */}
-          <button
-            type="button"
-            onClick={toggleLocale}
-            className="relative flex items-center h-8 w-[108px] rounded-full border border-white/10 bg-black/20 overflow-hidden hover:border-white/20 hover:cursor-pointer transition-colors"
-            aria-label="Toggle language"
-          >
-            <div
-              className={cn(
-                "absolute top-0.5 bottom-0.5 w-[52px] rounded-full bg-emerald-500/20 transition-transform duration-200",
-                locale === "vi" ? "translate-x-[54px]" : "translate-x-[2px]"
-              )}
-            />
-            <div
-              className={cn(
-                "relative z-10 flex-1 flex items-center justify-center gap-1 h-full transition-colors duration-200",
-                locale === "en" ? "text-emerald-400" : "text-white/50"
-              )}
-            >
-              <span className="text-sm">🇬🇧</span>
-              <span className="text-xs font-medium uppercase">EN</span>
-            </div>
-            <div
-              className={cn(
-                "relative z-10 flex-1 flex items-center justify-center gap-1 h-full transition-colors duration-200",
-                locale === "vi" ? "text-emerald-400" : "text-white/50"
-              )}
-            >
-              <span className="text-sm">🇻🇳</span>
-              <span className="text-xs font-medium uppercase">VI</span>
-            </div>
-          </button>
-
           <button
             type="button"
             onClick={openComingSoon}
@@ -125,38 +88,6 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden items-center gap-2">
-          <button
-            type="button"
-            onClick={toggleLocale}
-            className="relative flex items-center h-8 w-[88px] rounded-full border border-white/10 bg-black/20 overflow-hidden hover:border-white/20 hover:cursor-pointer transition-colors"
-            aria-label="Toggle language"
-          >
-            <div
-              className={cn(
-                "absolute top-0.5 bottom-0.5 w-[42px] rounded-full bg-emerald-500/20 transition-transform duration-200",
-                locale === "vi" ? "translate-x-[44px]" : "translate-x-[2px]"
-              )}
-            />
-            <div
-              className={cn(
-                "relative z-10 flex-1 flex items-center justify-center gap-0.5 h-full transition-colors duration-200",
-                locale === "en" ? "text-emerald-400" : "text-white/50"
-              )}
-            >
-              <span className="text-xs">🇬🇧</span>
-              <span className="text-[10px] font-medium uppercase">EN</span>
-            </div>
-            <div
-              className={cn(
-                "relative z-10 flex-1 flex items-center justify-center gap-0.5 h-full transition-colors duration-200",
-                locale === "vi" ? "text-emerald-400" : "text-white/50"
-              )}
-            >
-              <span className="text-xs">🇻🇳</span>
-              <span className="text-[10px] font-medium uppercase">VI</span>
-            </div>
-          </button>
-
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
