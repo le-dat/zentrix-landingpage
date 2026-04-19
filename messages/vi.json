@@ -48,19 +48,19 @@
     "items": {
       "liquidity": "Tính Minh Bạch Thanh Khoản",
       "liquidityTraditional": "Số dư nội bộ, khó xác minh bên ngoài",
-      "liquidityZentrix": "Quỹ on-chain, verify trên explorer được",
+      "liquidityZentrix": "Quỹ on-chain, kiểm tra được trên explorer",
       "fundFlow": "Dòng Tiền",
       "fundFlowTraditional": "Chuyển khoản nội bộ, không công khai",
-      "fundFlowZentrix": "Broker → Treasury → Pool → Ví",
+      "fundFlowZentrix": "Broker → Kho bạc → Quỹ → Ví",
       "reconciliation": "Đối soát",
       "reconciliationTraditional": "Chủ yếu báo cáo nội bộ",
-      "reconciliationZentrix": "Broker + Sổ cái + Chain (3-way)",
+      "reconciliationZentrix": "Broker + Sổ cái + Chuỗi (3-way)",
       "referral": "Phân bổ Giới thiệu",
-      "referralTraditional": "Công cụ audit hạn chế",
-      "referralZentrix": "Cây ref + policy + log công khai",
+      "referralTraditional": "Công cụ kiểm toán hạn chế",
+      "referralZentrix": "Cây giới thiệu + chính sách + nhật ký công khai",
       "withdrawals": "Rút tiền",
       "withdrawalsTraditional": "Quy trình phê duyệt thủ công",
-      "withdrawalsZentrix": "Claim on-chain, phí cố định"
+      "withdrawalsZentrix": "Yêu cầu on-chain, phí cố định"
     }
   },
   "trustTrader": {
