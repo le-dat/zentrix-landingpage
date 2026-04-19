@@ -66,9 +66,18 @@
   "trustTrader": {
     "title": "Trusted by Traders",
     "subtitle": "Real stories from real traders",
-    "quote": "I never knew if I was getting the right rebate rate before. Zentrix shows me every single allocation with its status. It's a completely different level of trust.",
-    "name": "Alex N.",
-    "role": "IB · Multi-broker"
+    "quote1": "I was losing money on fees without even knowing it. Now I get cashback every month.",
+    "role1": "IB · Multi-broker",
+    "quote2": "Simple and works as promised. The on-chain thing is cool, I can check my balance anytime.",
+    "role2": "Forex Trader · 5 years",
+    "quote3": "No more unclear rebate statements. I know exactly what I'm getting and when.",
+    "role3": "Prop Trader",
+    "quote4": "Tried it for 3 months, already earned more than my previous setup. Pretty solid.",
+    "role4": "Scalper · MT5",
+    "quote5": "Having all brokers in one dashboard is convenient. Everything is organized.",
+    "role5": "Portfolio Manager",
+    "quote6": "Withdrawal was fast. Claimed my rewards and received BNB the same day.",
+    "role6": "Swing Trader"
   },
   "faq": {
     "title": "Frequently asked questions",

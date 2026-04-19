@@ -1,12 +1,36 @@
 "use client";
 
 import React from "react";
-import { testimonials } from "./data";
+import { testimonialsRow1, testimonialsRow2, Testimonial } from "./data";
 import { useLanguage } from "@/context/LanguageContext";
+import { Marquee } from "@/components/ui/marquee";
+import { cn } from "@/lib/utils";
+
+function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+  const { t } = useLanguage();
+
+  return (
+    <div
+      className={cn(
+        "flex-shrink-0 w-[300px] md:w-[360px]",
+        "p-5 rounded-xl",
+        "bg-black/40 border border-white/5",
+        "mx-2"
+      )}
+    >
+      <blockquote className="text-sm leading-relaxed mb-4 text-white/90">
+        &ldquo;{t(testimonial.quoteKey)}&rdquo;
+      </blockquote>
+      <div>
+        <p className="font-semibold text-white">{testimonial.name}</p>
+        <p className="text-sm text-white/60">{t(testimonial.roleKey)}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function TrustTraderSection() {
   const { t } = useLanguage();
-  const testimonial = testimonials[0];
 
   return (
     <section className="relative py-20 overflow-hidden">
@@ -25,26 +49,17 @@ export default function TrustTraderSection() {
           {t("trustTrader.subtitle")}
         </p>
 
-        <div
-          className="animate-fade-up relative flex flex-col md:flex-row items-center gap-12 p-6 md:p-10 rounded-2xl bg-black/40 border border-white/5"
-          style={{ animationDelay: "200ms" }}
-        >
-          <div
-            className="relative w-[217px] h-[217px] shrink-0 rounded-xl bg-white/5"
-            aria-hidden
-          />
-
-          <div className="absolute top-1/2 left-[15%] -translate-y-1/2 w-[312px] h-[234px] rounded-full bg-[#17695d]/20 blur-[60px] pointer-events-none" />
-
-          <div className="flex-1 text-center md:text-left">
-            <blockquote className="text-sm leading-relaxed mb-8 text-white/90">
-              &ldquo;{t(testimonial.quoteKey)}&rdquo;
-            </blockquote>
-            <div>
-              <p className="font-semibold text-white">{testimonial.name}</p>
-              <p className="text-sm text-white/60">{t(testimonial.roleKey)}</p>
-            </div>
-          </div>
+        <div className="animate-fade-up space-y-4" style={{ animationDelay: "200ms" }}>
+          <Marquee pauseOnHover>
+            {testimonialsRow1.map((testimonial, i) => (
+              <TestimonialCard key={`row1-${i}`} testimonial={testimonial} />
+            ))}
+          </Marquee>
+          <Marquee reverse pauseOnHover>
+            {testimonialsRow2.map((testimonial, i) => (
+              <TestimonialCard key={`row2-${i}`} testimonial={testimonial} />
+            ))}
+          </Marquee>
         </div>
       </div>
     </section>

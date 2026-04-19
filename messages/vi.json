@@ -66,9 +66,18 @@
   "trustTrader": {
     "title": "Được Tin Tưởng Bởi Nhà Giao Dịch",
     "subtitle": "Câu chuyện thật từ nhà giao dịch thật",
-    "quote": "Trước đây tôi không biết mình có nhận đúng hoàn tiền không. Zentrix cho tôi thấy mọi khoản phân bổ cùng trạng thái. Đó là một mức độ tin cậy hoàn toàn khác.",
-    "name": "Alex N.",
-    "role": "IB · Đa broker"
+    "quote1": "Tôi đã mất tiền phí mà không biết. Giờ tôi nhận được cashback mỗi tháng.",
+    "role1": "IB · Đa broker",
+    "quote2": "Đơn giản và hoạt động đúng như quảng cáo. Cái on-chain này hay, tôi kiểm tra số dư bất kỳ lúc nào.",
+    "role2": "Nhà giao dịch Forex · 5 năm",
+    "quote3": "Không còn báo cáo hoàn tiền mù mờ nữa. Tôi biết chính xác mình nhận được gì và khi nào.",
+    "role3": "Prop Trader",
+    "quote4": "Dùng thử 3 tháng, đã kiếm được nhiều hơn trước. Khá ổn.",
+    "role4": "Scalper · MT5",
+    "quote5": "Có tất cả broker trên một dashboard tiện lắm. Mọi thứ gọn gàng.",
+    "role5": "Quản lý Danh Mục",
+    "quote6": "Rút tiền nhanh. Claim thưởng xong nhận được BNB trong ngày.",
+    "role6": "Swing Trader"
   },
   "faq": {
     "title": "Câu hỏi thường gặp",
