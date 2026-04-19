@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -211,4 +212,40 @@ body {
     @apply font-sans;
     scroll-behavior: smooth;
   }
+}
+
+/* Performance: disable backdrop-filter on mobile for GPU savings */
+@media (max-width: 768px) {
+  .backdrop-blur-md,
+  .backdrop-blur-sm {
+    backdrop-filter: none !important;
+  }
+}
+
+/* Performance: pause continuous animations when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-shimmer-slide,
+  .animate-spin-around,
+  .animate-marquee,
+  .animate-marquee-vertical,
+  .animate-fade-up {
+    animation-play-state: paused !important;
+  }
+}
+
+/* Fade up animation for removing motion/react */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease-out forwards;
+  opacity: 0;
 }
