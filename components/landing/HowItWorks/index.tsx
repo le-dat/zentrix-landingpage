@@ -62,7 +62,7 @@ function HowItWorksStepCard({
 
             <div className="absolute bottom-2 left-0 z-20 flex w-[92%] max-w-[15rem] flex-col items-start text-left md:bottom-3 md:max-w-[17rem]">
               <h3
-                className={`text-base font-semibold tracking-tight text-white md:text-lg ${titleClass}`}
+                className={`text-sm font-semibold tracking-tight text-white md:text-lg ${titleClass}`}
                 style={{ textShadow: "0 2px 24px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.85)" }}
               >
                 {step.title}
@@ -152,7 +152,7 @@ export default function HowItWorks() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-5 md:px-6">
         <div className="animate-fade-up mb-6 w-full text-center md:mb-8" style={{ animationDelay: "50ms" }}>
-          <h2 className="mb-2 text-2xl font-bold tracking-tight text-white md:text-4xl">
+          <h2 className="mb-2 text-[1.6rem] font-bold tracking-tight text-white md:text-4xl">
             Zentrix Cashback System Work?
           </h2>
         </div>

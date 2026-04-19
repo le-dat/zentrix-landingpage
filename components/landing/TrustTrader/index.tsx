@@ -10,14 +10,14 @@ export default function TrustTraderSection() {
     <section className="relative py-20 overflow-hidden">
       <div className="max-w-[990px] mx-auto px-6">
         <h2
-          className="animate-fade-up text-[36px] font-bold mb-4 text-center"
+          className="animate-fade-up text-[1.6rem] font-bold mb-4 text-center"
           style={{ animationDelay: "0ms" }}
         >
           What traders say
         </h2>
 
         <p
-          className="animate-fade-up text-center text-white/60 mb-16 max-w-[480px] mx-auto leading-relaxed"
+          className="animate-fade-up text-center text-white/60 mb-16 max-w-[480px] mx-auto leading-relaxed text-sm"
           style={{ animationDelay: "100ms" }}
         >
           Rebates only matter if you can trust the numbers. Here&apos;s what our
@@ -36,7 +36,7 @@ export default function TrustTraderSection() {
           <div className="absolute top-1/2 left-[15%] -translate-y-1/2 w-[312px] h-[234px] rounded-full bg-[#17695d]/20 blur-[60px] pointer-events-none" />
 
           <div className="flex-1 text-center md:text-left">
-            <blockquote className="text-lg leading-relaxed mb-8 text-white/90">
+            <blockquote className="text-sm leading-relaxed mb-8 text-white/90">
               &ldquo;{t.quote}&rdquo;
             </blockquote>
             <div>

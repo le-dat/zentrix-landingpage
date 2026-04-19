@@ -155,7 +155,7 @@ export default function BentoSection() {
           className="animate-fade-up text-center mb-20"
           style={{ animationDelay: "0ms" }}
         >
-          <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight max-w-[800px] mx-auto leading-[1.1]">
+          <h2 className="text-[1.6rem] md:text-5xl font-semibold text-white tracking-tight max-w-[800px] mx-auto leading-[1.1]">
             One place to follow your rebates from broker payout to wallet —
             transparent by design.
           </h2>
@@ -180,7 +180,7 @@ export default function BentoSection() {
               </div>
             </div>
             <div className="p-8 pt-0">
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-base font-semibold text-white mb-2">
                 {bentoCards[0].title}
               </h3>
               <p className="text-sm text-white/50 leading-relaxed font-light">
@@ -198,7 +198,7 @@ export default function BentoSection() {
               <MiniDashboard />
             </div>
             <div className="p-8">
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-base font-semibold text-white mb-2">
                 {bentoCards[1].title}
               </h3>
               <p className="text-sm text-white/50 leading-relaxed font-light max-w-[400px]">
@@ -216,7 +216,7 @@ export default function BentoSection() {
               <MiniChart />
             </div>
             <div className="p-8">
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-base font-semibold text-white mb-2">
                 {bentoCards[2].title}
               </h3>
               <p className="text-sm text-white/50 leading-relaxed font-light max-w-[400px]">
@@ -243,7 +243,7 @@ export default function BentoSection() {
               </div>
             </div>
             <div className="p-8 pt-0">
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-base font-semibold text-white mb-2">
                 {bentoCards[3].title}
               </h3>
               <p className="text-sm text-white/50 leading-relaxed font-light">
