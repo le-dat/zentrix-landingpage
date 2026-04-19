@@ -16,9 +16,9 @@ export default function FooterLinkColumn({
   if (!legalLinksItems) return null;
 
   return (
-    <div className="flex-1 md:flex-initial min-w-[140px]">
-      <h4 className="mb-4 font-semibold text-sm text-white/90">{title}</h4>
-      <ul className="space-y-3">
+    <div className="min-w-[140px]">
+      <h4 className="mb-3 md:mb-4 font-semibold text-sm text-white/90">{title}</h4>
+      <ul className="space-y-2 md:space-y-3">
         {legalLinksItems.map((item) => (
           <li key={item.key}>
             <button

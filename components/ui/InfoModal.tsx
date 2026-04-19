@@ -2,6 +2,8 @@
 
 import React, { useEffect } from "react";
 import { X } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface InfoModalProps {
@@ -42,7 +44,7 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 md:p-4"
+      className="fixed inset-0 z-[100] flex"
       onClick={onClose}
     >
       {/* Backdrop */}
@@ -50,10 +52,10 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
 
       {/* Modal */}
       <div
-        className="relative w-full max-w-[340px] md:max-w-lg lg:max-w-2xl max-h-[80vh] animate-fade-up"
+        className="relative w-full h-full md:h-auto md:max-w-[340px] md:max-h-[80vh] md:mx-auto md:my-auto md:rounded-2xl lg:md:rounded-3xl animate-fade-up"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="rounded-2xl md:rounded-3xl bg-black/90 border border-white/10 overflow-hidden shadow-2xl flex flex-col max-h-[80vh]">
+        <div className="h-full md:h-auto md:max-h-[80vh] bg-black/90 border-white/10 overflow-hidden shadow-2xl flex flex-col md:rounded-2xl lg:md:rounded-3xl">
           {/* Header */}
           <div className="relative px-4 py-4 md:px-6 md:py-5 border-b border-white/5 flex items-center justify-between shrink-0">
             <h3 className="text-base md:text-lg font-bold text-white pr-8">{title}</h3>
@@ -68,9 +70,18 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
           </div>
 
           {/* Content - Scrollable */}
-          <div className="relative px-4 py-4 md:px-6 md:py-5 overflow-y-auto">
-            <div className="text-sm md:text-base text-white/70 leading-relaxed whitespace-pre-line">
-              {content}
+          <div className="flex-1 overflow-y-auto px-4 py-4 md:px-6 md:py-5">
+            <div className="text-sm md:text-base text-white/70 leading-relaxed space-y-4
+                         prose prose-invert prose-sm md:prose-base max-w-none
+                         prose-headings:text-white prose-headings:font-bold
+                         prose-p:text-white/70 prose-p:leading-relaxed
+                         prose-strong:text-white prose-strong:font-semibold
+                         prose-li:text-white/70 prose-li:leading-relaxed
+                         prose-a:text-teal prose-a:no-underline hover:prose-a:underline
+                         prose-hr:border-white/10">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {content}
+              </ReactMarkdown>
             </div>
           </div>
         </div>
