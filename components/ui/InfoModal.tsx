@@ -52,7 +52,7 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
 
       {/* Modal */}
       <div
-        className="relative w-full h-full md:h-auto md:max-w-[340px] md:max-h-[80vh] md:mx-auto md:my-auto md:rounded-2xl lg:md:rounded-3xl animate-fade-up"
+        className="relative w-full h-full md:h-auto md:max-w-[1200px] md:mx-auto md:my-auto md:rounded-2xl lg:md:rounded-3xl animate-fade-up"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="h-full md:h-auto md:max-h-[80vh] bg-black/90 border-white/10 overflow-hidden shadow-2xl flex flex-col md:rounded-2xl lg:md:rounded-3xl">
