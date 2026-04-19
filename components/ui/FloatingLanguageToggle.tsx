@@ -20,27 +20,25 @@ export default function FloatingLanguageToggle() {
     >
       <div
         className={cn(
-          "absolute top-1 bottom-1 w-[56px] rounded-full bg-emerald-500/20 transition-transform duration-200",
+          "absolute top-1 bottom-1 w-[56px] rounded-full bg-emerald-500/30 transition-transform duration-200",
           locale === "vi" ? "translate-x-[60px]" : "translate-x-[2px]"
         )}
       />
       <div
         className={cn(
-          "relative z-10 flex-1 flex items-center justify-center gap-1.5 h-full transition-colors duration-200",
-          locale === "en" ? "text-emerald-400" : "text-white/50"
+          "relative z-10 flex-1 flex items-center justify-center h-full transition-colors duration-200",
+          locale === "en" ? "text-white font-semibold tracking-wide" : "text-white/50 font-normal tracking-wide"
         )}
       >
-        <span className="text-sm">🇬🇧</span>
-        <span className="text-xs font-medium uppercase">EN</span>
+        EN
       </div>
       <div
         className={cn(
-          "relative z-10 flex-1 flex items-center justify-center gap-1.5 h-full transition-colors duration-200",
-          locale === "vi" ? "text-emerald-400" : "text-white/50"
+          "relative z-10 flex-1 flex items-center justify-center h-full transition-colors duration-200",
+          locale === "vi" ? "text-white font-semibold tracking-wide" : "text-white/50 font-normal tracking-wide"
         )}
       >
-        <span className="text-sm">🇻🇳</span>
-        <span className="text-xs font-medium uppercase">VI</span>
+        VI
       </div>
     </button>
   );
