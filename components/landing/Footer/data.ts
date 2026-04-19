@@ -19,14 +19,13 @@ export type FooterLinkItem = {
 };
 
 export const footerLinkCategories = [
-  { titleKey: "footer.resources", linksKey: "footer.resourcesLinks" },
-  { titleKey: "footer.legal", linksKey: "footer.legalLinks" },
+  { titleKey: "footer.legal" },
 ];
 
 export const legalLinksItems: FooterLinkItem[] = [
   { key: "privacyPolicy", labelKey: "footer.privacyPolicy", modalContentKey: "modal.infoModal.privacyPolicy" },
-  { key: "termsOfService", labelKey: "footer.termsOfService" },
-  { key: "security", labelKey: "footer.security" },
+  // { key: "termsOfService", labelKey: "footer.termsOfService" },
+  // { key: "security", labelKey: "footer.security" },
   { key: "aboutUs", labelKey: "footer.aboutUs", modalContentKey: "modal.infoModal.aboutUs" },
   { key: "riskWarning", labelKey: "footer.riskWarning", modalContentKey: "modal.infoModal.riskWarning" },
 ];

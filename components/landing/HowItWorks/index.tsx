@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { FlowGapConnector } from "@/components/landing/FlowGapConnector";
 import { RebateFlowBorderTrace } from "@/components/landing/RebateFlowBorderTrace";
 import { REBATE_FLOW_DRAW_DURATION_MS } from "@/constants/animation";
@@ -87,15 +87,12 @@ export default function HowItWorks() {
   const { t } = useLanguage();
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
   const [connectorSegment, setConnectorSegment] = useState<number | null>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const connectorTimerRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    setIsTouchDevice(
+  const [isTouchDevice] = useState(
+    () =>
       typeof window !== "undefined" &&
-        ("ontouchstart" in window || navigator.maxTouchPoints > 0),
-    );
-  }, []);
+      ("ontouchstart" in window || navigator.maxTouchPoints > 0),
+  );
+  const connectorTimerRef = useRef<number | null>(null);
 
   function clearConnectorTimer() {
     if (connectorTimerRef.current != null) {

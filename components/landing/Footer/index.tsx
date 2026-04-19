@@ -1,56 +1,9 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { socials, footerLinkCategories, legalLinksItems } from "./data";
 import { useLanguage } from "@/context/LanguageContext";
-import { useInfoModal } from "@/components/ui/ModalContext";
-
-function FooterLinkColumn({ titleKey, linksKey }: { titleKey: string; linksKey: string }) {
-  const { t } = useLanguage();
-  const { openInfoModal } = useInfoModal();
-  const links = t(linksKey) as unknown as string[];
-  const title = t(titleKey);
-
-  if (!Array.isArray(links)) return null;
-
-  const isLegal = titleKey === "footer.legal";
-
-  return (
-    <div className="flex-1 md:flex-initial min-w-[140px]">
-      <h4 className="mb-4 font-semibold text-sm text-white/90">{title}</h4>
-      <ul className="space-y-3">
-        {links.map((link, index) => {
-          if (isLegal && legalLinksItems[index]) {
-            const item = legalLinksItems[index];
-            return (
-              <li key={item.key}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (item.modalContentKey) {
-                      openInfoModal(item.modalContentKey);
-                    }
-                  }}
-                  className="cursor-pointer text-sm text-white/50 transition-colors duration-200 hover:text-white/80 text-left"
-                >
-                  {link}
-                </button>
-              </li>
-            );
-          }
-          return (
-            <li key={link}>
-              <span className="cursor-pointer text-sm text-white/50 transition-colors duration-200 hover:text-white/80">
-                {link}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
+import Image from "next/image";
+import { footerLinkCategories, socials } from "./data";
+import FooterLinkColumn from "./FooterLinkColumn";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -72,7 +25,7 @@ export default function Footer() {
 
           <div className="flex flex-1 justify-center gap-12 md:justify-end md:gap-16">
             {footerLinkCategories.map((cat) => (
-              <FooterLinkColumn key={cat.titleKey} titleKey={cat.titleKey} linksKey={cat.linksKey} />
+              <FooterLinkColumn key={cat.titleKey} titleKey={cat.titleKey} />
             ))}
           </div>
         </div>

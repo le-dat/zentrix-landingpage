@@ -54,14 +54,9 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
         onClick={(e) => e.stopPropagation()}
       >
         <div className="rounded-2xl md:rounded-3xl bg-black/90 border border-white/10 overflow-hidden shadow-2xl flex flex-col max-h-[80vh]">
-          {/* Glow effect */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1/2 bg-[#18CBA8]/10 rounded-full blur-[80px] pointer-events-none" />
-
           {/* Header */}
           <div className="relative px-4 py-4 md:px-6 md:py-5 border-b border-white/5 flex items-center justify-between shrink-0">
-            <h3 className="text-base md:text-lg font-bold text-white pr-8">
-              {title}
-            </h3>
+            <h3 className="text-base md:text-lg font-bold text-white pr-8">{title}</h3>
             <button
               type="button"
               onClick={onClose}
