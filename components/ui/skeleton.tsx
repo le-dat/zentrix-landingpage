@@ -9,7 +9,7 @@ interface SkeletonProps {
 export function Skeleton({ className }: SkeletonProps) {
   return (
     <div
-      className={cn("animate-pulse rounded-xl bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 bg-[length:200%_100%]", className)}
+      className={cn("animate-pulse rounded-xl bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-[length:200%_100%]", className)}
     />
   );
 }
@@ -18,7 +18,7 @@ export function Skeleton({ className }: SkeletonProps) {
 
 export function SkeletonCard() {
   return (
-    <div className="rounded-3xl bg-white dark:bg-[#101828] border border-gray-100 dark:border-white/10 p-6 space-y-4">
+    <div className="rounded-3xl bg-[#101828] border border-white/10 p-6 space-y-4">
       <div className="flex items-center gap-4">
         <Skeleton className="w-12 h-12 rounded-full" />
         <div className="space-y-2 flex-1">
@@ -37,7 +37,7 @@ export function SkeletonCard() {
 
 export function SkeletonHero() {
   return (
-    <div className="relative pt-40 pb-20 md:pt-56 md:pb-32 overflow-hidden bg-white dark:bg-[#101828]">
+    <div className="relative pt-40 pb-20 md:pt-56 md:pb-32 overflow-hidden bg-[#101828]">
       <Skeleton className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full opacity-20" />
       <Skeleton className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full opacity-20" />
 
@@ -71,7 +71,7 @@ export function SkeletonTable({ rows = 5 }: { rows?: number }) {
         <Skeleton className="h-4 w-[25%] rounded" />
       </div>
       {Array.from({ length: rows }).map((_, i) => (
-        <div key={i} className="flex gap-4 px-4 py-4 bg-white dark:bg-white/5 rounded-xl">
+        <div key={i} className="flex gap-4 px-4 py-4 bg-white/5 rounded-xl">
           <Skeleton className="h-10 w-[15%] rounded" />
           <Skeleton className="h-10 w-[25%] rounded" />
           <Skeleton className="h-10 w-[20%] rounded" />
@@ -87,7 +87,7 @@ export function SkeletonStats() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {Array.from({ length: 4 }).map((_, i) => (
-        <div key={i} className="p-6 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 space-y-3">
+        <div key={i} className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
           <Skeleton className="h-4 w-1/2 rounded" />
           <Skeleton className="h-8 w-3/4 rounded" />
           <Skeleton className="h-3 w-1/3 rounded" />
@@ -99,7 +99,7 @@ export function SkeletonStats() {
 
 export function SkeletonBrokerCard() {
   return (
-    <div className="p-6 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+    <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
       <div className="flex items-center gap-4 mb-4">
         <Skeleton className="w-16 h-16 rounded-xl" />
         <div className="space-y-2 flex-1">
@@ -154,7 +154,7 @@ export function SkeletonFAQ() {
   return (
     <div className="space-y-4 max-w-3xl mx-auto">
       {Array.from({ length: 5 }).map((_, i) => (
-        <div key={i} className="p-6 rounded-2xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 space-y-4">
+        <div key={i} className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
           <div className="flex items-center justify-between">
             <Skeleton className="h-6 w-3/4 rounded" />
             <Skeleton className="w-8 h-8 rounded-full" />
