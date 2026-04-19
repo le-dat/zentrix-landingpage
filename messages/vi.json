@@ -76,7 +76,7 @@
     "role4": "Scalper · MT5",
     "quote5": "Có tất cả broker trên một dashboard tiện lắm. Mọi thứ gọn gàng.",
     "role5": "Quản lý Danh Mục",
-    "quote6": "Rút tiền nhanh. Claim thưởng xong nhận được BNB trong ngày.",
+    "quote6": "Rút tiền nhanh. Claim thưởng xong nhận được USDT/USDC trong ngày.",
     "role6": "Swing Trader"
   },
   "faq": {
@@ -90,7 +90,7 @@
       "pool": "Quỹ on-chain là gì? Tiền của tôi có an toàn không?",
       "poolBody": "Quỹ là nơi hoàn tiền của bạn được giữ on-chain. Chúng tôi chỉ thêm tiền khi đã xác minh được từ broker, và bạn có thể theo dõi mọi thứ trên BSCScan.",
       "receive": "Nhận hoàn tiền mất bao lâu?",
-      "receiveBody": "Chúng tôi theo dõi giao dịch của bạn liên tục. Khi broker quyết toán các khoản thanh toán hàng tuần hoặc hàng tháng, hoàn tiền của bạn được xác nhận và sẵn sàng để claim.",
+      "receiveBody": "Chúng tôi theo dõi giao dịch của bạn liên tục. Khi broker quyết toán các khoản thanh toán, hoàn tiền của bạn được xác nhận và sẵn sàng để claim.",
       "mlm": "Zentrix có phải là scheme MLM không?",
       "mlmBody": "Không hề. Thu nhập của bạn đến hoàn toàn từ khối lượng giao dịch của những người bạn giới thiệu. Bạn không phải mua bất cứ thứ gì để tham gia.",
       "multiple": "Tôi có thể kết nối nhiều broker không?",
