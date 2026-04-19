@@ -161,7 +161,7 @@ export function RebateFlowBorderTrace({
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={strokeW}
-        className={`trace-draw ${active ? "active" : ""}`}
+        className={cn("trace-draw", active ? "active" : "")}
         style={{ opacity: active ? 1 : 0 }}
       />
       <path
@@ -171,7 +171,7 @@ export function RebateFlowBorderTrace({
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={strokeW}
-        className={`trace-draw ${active ? "active" : ""}`}
+        className={cn("trace-draw", active ? "active" : "")}
         style={{ opacity: active ? 1 : 0 }}
       />
     </svg>

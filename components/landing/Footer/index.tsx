@@ -9,7 +9,7 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative py-12 md:py-20 border-t border-white/5">
+    <section id="contact" className="relative py-12 md:py-20 border-t border-white/5">
       <div className="max-w-[1200px] mx-auto px-4 md:px-6">
         {/* Logo + Links: vertical stack on mobile */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 mb-8 md:mb-16">

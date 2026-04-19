@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { cn } from "@/lib/utils";
 
 interface MapProps {
   dots?: Array<{
@@ -31,7 +32,7 @@ export default function WorldMap({
   };
 
   return (
-    <div className={`w-full relative font-sans ${className}`}>
+    <div className={cn("w-full relative font-sans", className)}>
       <img
         src="/world-map.svg"
         className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] pointer-events-none select-none"

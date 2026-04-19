@@ -15,7 +15,7 @@ export default function TrustMetrics() {
             return (
               <div
                 key={m.labelKey}
-                className="flex items-center gap-2 rounded-md border border-white/10 bg-white/5 px-4 py-2"
+                className="flex items-center gap-2 rounded-md border border-white/10 bg-white/5 px-4 py-2 hover:bg-gradient-to-r hover:from-emerald-500/20 hover:to-teal-500/20 hover:border-emerald-500/30 transition-all duration-300 cursor-default"
               >
                 <Icon className="h-4 w-4 text-emerald-400" aria-hidden />
                 <span className="text-sm font-semibold">{m.value}</span>
