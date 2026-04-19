@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export default function FAQSection() {
   const { t } = useLanguage();
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openItems, setOpenItems] = useState<boolean[]>(new Array(faqs.length).fill(false));
 
   return (
     <section id="faq" className="relative py-20 overflow-hidden scroll-mt-24">
@@ -19,38 +19,46 @@ export default function FAQSection() {
         >
           {t("faq.title")}
         </h2>
-        <p className="animate-fade-up text-center text-white/50 text-sm mb-12 max-w-lg mx-auto" style={{ animationDelay: "100ms" }}>
+        <p
+          className="animate-fade-up text-center text-white/50 text-sm mb-12 max-w-lg mx-auto"
+          style={{ animationDelay: "100ms" }}
+        >
           {t("faq.subtitle")}
         </p>
 
         <div className="flex flex-col gap-3">
           {faqs.map((faq, i) => (
-            <div
+            <button
               key={faq.titleKey}
-              className="animate-fade-up rounded-xl bg-black/40 border border-white/5 overflow-hidden"
+              className="animate-fade-up rounded-xl bg-black/40 group border border-white/5 overflow-hidden transition-all duration-300 hover:bg-white/5"
               style={{ animationDelay: `${i * 50}ms` }}
+              type="button"
+              onClick={() => {
+                const newOpenItems = [...openItems];
+                newOpenItems[i] = !newOpenItems[i];
+                setOpenItems(newOpenItems);
+              }}
             >
-              <button
-                type="button"
-                onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 hover:cursor-pointer transition-colors"
-              >
+              <div className="w-full flex items-center justify-between p-6 text-left cursor-pointer">
                 <span className="text-sm font-medium pr-4">{t(faq.titleKey)}</span>
                 <ChevronDown
                   className={cn(
-                    "w-5 h-5 shrink-0 transition-transform duration-300",
-                    openIndex === i ? "rotate-180" : ""
+                    "w-5 h-5 shrink-0 transition-all duration-300 ease-out text-white/60 group-hover:text-white",
+                    openItems[i] ? "rotate-180" : "",
                   )}
                 />
-              </button>
-              {openIndex === i && (
-                <div className="overflow-hidden">
-                  <div className="px-6 pb-6 text-xs text-white/60 leading-relaxed">
-                    {t(faq.bodyKey)}
-                  </div>
+              </div>
+              <div
+                className={cn(
+                  "overflow-hidden transition-all duration-300 ease-in-out",
+                  openItems[i] ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
+                )}
+              >
+                <div className="px-6 pb-6 text-xs text-white/60 leading-relaxed text-left">
+                  {t(faq.bodyKey)}
                 </div>
-              )}
-            </div>
+              </div>
+            </button>
           ))}
         </div>
       </div>
