@@ -2,12 +2,6 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
-import { twMerge } from "tailwind-merge";
-import { clsx, type ClassValue } from "clsx";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 export default function Error({
   error,
