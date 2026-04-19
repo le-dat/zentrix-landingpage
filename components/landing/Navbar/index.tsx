@@ -35,6 +35,7 @@ export default function Navbar() {
     { href: "#how-it-works", label: t("nav.howItWorks") },
     { href: "#compare", label: t("nav.compare") },
     { href: "#faq", label: t("nav.faq") },
+    { href: "#contact", label: t("nav.contact") },
   ];
 
   return (
