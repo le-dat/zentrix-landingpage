@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "motion/react";
 import Image from "next/image";
 import { bentoCards } from "./data";
 
@@ -47,12 +46,14 @@ const MiniDashboard = () => (
           </div>
           <div className="flex-1 flex items-end gap-1.5 mt-2">
             {[40, 60, 45, 70, 55, 80, 65, 45, 60].map((h, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ height: 0 }}
-                animate={{ height: `${h}%` }}
-                transition={{ duration: 0.8, delay: 0.5 + i * 0.1 }}
-                className="flex-1 bg-[#18CBA8]/20 rounded-t-sm"
+                className="flex-1 bg-[#18CBA8]/20 rounded-t-sm animate-bar"
+                style={{
+                  height: `${h}%`,
+                  animationDelay: `${500 + i * 100}ms`,
+                  animationFillMode: "forwards"
+                }}
               />
             ))}
           </div>
@@ -99,23 +100,20 @@ const MiniChart = () => (
             strokeOpacity="0.03"
           />
         ))}
-        <motion.path
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
+        <path
           d="M0 120 L50 115 L100 130 L150 90 L200 110 L250 120 L300 100 L350 110 L400 95"
           fill="none"
           stroke="#18CBA8"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          className="animate-draw-path"
         />
-        <motion.path
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2, delay: 0.5 }}
+        <path
           d="M0 120 L50 115 L100 130 L150 90 L200 110 L250 120 L300 100 L350 110 L400 95 V150 H0 Z"
           fill="url(#chartGradient)"
+          className="animate-fade-in"
+          style={{ animationDelay: "500ms" }}
         />
       </svg>
     </div>
@@ -125,29 +123,48 @@ const MiniChart = () => (
 export default function BentoSection() {
   return (
     <section className="relative py-20 overflow-hidden">
+      <style>{`
+        .animate-bar {
+          animation: growBar 0.8s ease-out forwards;
+          opacity: 0;
+        }
+        @keyframes growBar {
+          from { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+          to { opacity: 1; transform: scaleY(1); transform-origin: bottom; }
+        }
+        .animate-draw-path {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          animation: drawPath 1.5s ease-in-out forwards;
+        }
+        @keyframes drawPath {
+          to { stroke-dashoffset: 0; }
+        }
+        .animate-fade-in {
+          opacity: 0;
+          animation: fadeIn 2s ease-out forwards;
+        }
+        @keyframes fadeIn {
+          to { opacity: 1; }
+        }
+      `}</style>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#18CBA8]/10 rounded-full blur-[120px] pointer-events-none opacity-30" />
 
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+        <div
+          className="animate-fade-up text-center mb-20"
+          style={{ animationDelay: "0ms" }}
         >
           <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight max-w-[800px] mx-auto leading-[1.1]">
             One place to follow your rebates from broker payout to wallet —
             transparent by design.
           </h2>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="md:col-span-1 group relative bg-[#0D0D0D] rounded-3xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500 h-[480px] flex flex-col"
+          <div
+            className="animate-fade-up md:col-span-1 group relative bg-[#0D0D0D] rounded-3xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500 h-[480px] flex flex-col"
+            style={{ animationDelay: "100ms" }}
           >
             <div className="relative flex-1 flex items-center justify-center p-12">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#18CBA8]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -170,14 +187,11 @@ export default function BentoSection() {
                 {bentoCards[0].description}
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="md:col-span-2 group relative bg-[#0D0D0D] rounded-3xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500 h-[480px] flex flex-col"
+          <div
+            className="animate-fade-up md:col-span-2 group relative bg-[#0D0D0D] rounded-3xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500 h-[480px] flex flex-col"
+            style={{ animationDelay: "150ms" }}
           >
             <div className="relative flex-1 mt-8 ml-8 rounded-tl-3xl bg-[#0d2a24]/20 border-t border-l border-white/10 overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(24,203,168,0.1),transparent_70%)]" />
@@ -191,14 +205,11 @@ export default function BentoSection() {
                 {bentoCards[1].description}
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="md:col-span-2 group relative bg-[#0D0D0D] rounded-3xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500 h-[480px] flex flex-col"
+          <div
+            className="animate-fade-up md:col-span-2 group relative bg-[#0D0D0D] rounded-3xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500 h-[480px] flex flex-col"
+            style={{ animationDelay: "200ms" }}
           >
             <div className="relative flex-1 mt-8 ml-8 rounded-tl-3xl bg-[#0d2a24]/20 border-t border-l border-white/10 overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(24,203,168,0.1),transparent_70%)]" />
@@ -212,14 +223,11 @@ export default function BentoSection() {
                 {bentoCards[2].description}
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="md:col-span-1 group relative bg-[#0D0D0D] rounded-3xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500 h-[480px] flex flex-col"
+          <div
+            className="animate-fade-up md:col-span-1 group relative bg-[#0D0D0D] rounded-3xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500 h-[480px] flex flex-col"
+            style={{ animationDelay: "250ms" }}
           >
             <div className="relative flex-1 flex items-center justify-center p-12">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#18CBA8]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -242,7 +250,7 @@ export default function BentoSection() {
                 {bentoCards[3].description}
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

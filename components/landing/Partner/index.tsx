@@ -1,17 +1,14 @@
 "use client";
 
 import React from "react";
-import { motion } from "motion/react";
 
 export default function PartnerSection() {
   return (
     <section className="relative">
       <div className="flex flex-col gap-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+        <div
+          className="animate-fade-up grid grid-cols-2 md:grid-cols-4 gap-4"
+          style={{ animationDelay: "100ms" }}
         >
           {[0, 1, 2, 3].map((i) => (
             <div
@@ -21,13 +18,11 @@ export default function PartnerSection() {
               <div className="w-[155px] h-[34px] bg-white/10 rounded" />
             </div>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+        <div
+          className="animate-fade-up grid grid-cols-2 md:grid-cols-4 gap-4"
+          style={{ animationDelay: "200ms" }}
         >
           {[0, 1, 2, 3].map((i) => (
             <div
@@ -37,7 +32,7 @@ export default function PartnerSection() {
               <div className="w-[155px] h-[34px] bg-white/10 rounded" />
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

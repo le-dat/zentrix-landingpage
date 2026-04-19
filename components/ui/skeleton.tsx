@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface SkeletonProps {
@@ -9,11 +8,8 @@ interface SkeletonProps {
 
 export function Skeleton({ className }: SkeletonProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0.6 }}
-      animate={{ opacity: [0.6, 1, 0.6] }}
-      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-      className={cn("rounded-xl bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 bg-[length:200%_100%]", className)}
+    <div
+      className={cn("animate-pulse rounded-xl bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 bg-[length:200%_100%]", className)}
     />
   );
 }
@@ -42,13 +38,11 @@ export function SkeletonCard() {
 export function SkeletonHero() {
   return (
     <div className="relative pt-40 pb-20 md:pt-56 md:pb-32 overflow-hidden bg-white dark:bg-[#101828]">
-      {/* Background skeletons */}
       <Skeleton className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full opacity-20" />
       <Skeleton className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full opacity-20" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-          {/* Left: Text Content */}
           <div className="space-y-6">
             <Skeleton className="h-16 w-full max-w-lg rounded-lg" />
             <Skeleton className="h-6 w-full max-w-xl rounded-lg" />
@@ -59,7 +53,6 @@ export function SkeletonHero() {
             </div>
           </div>
 
-          {/* Right: Video Placeholder */}
           <Skeleton className="aspect-video rounded-3xl" />
         </div>
       </div>
@@ -70,7 +63,6 @@ export function SkeletonHero() {
 export function SkeletonTable({ rows = 5 }: { rows?: number }) {
   return (
     <div className="space-y-3">
-      {/* Header */}
       <div className="flex gap-4 px-4 py-3">
         <Skeleton className="h-4 w-[15%] rounded" />
         <Skeleton className="h-4 w-[25%] rounded" />
@@ -78,7 +70,6 @@ export function SkeletonTable({ rows = 5 }: { rows?: number }) {
         <Skeleton className="h-4 w-[15%] rounded" />
         <Skeleton className="h-4 w-[25%] rounded" />
       </div>
-      {/* Rows */}
       {Array.from({ length: rows }).map((_, i) => (
         <div key={i} className="flex gap-4 px-4 py-4 bg-white dark:bg-white/5 rounded-xl">
           <Skeleton className="h-10 w-[15%] rounded" />
@@ -200,46 +191,31 @@ export function SkeletonBentoGrid() {
 // Full page loading overlay
 export function LoadingOverlay({ message = "Loading..." }: { message?: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#101828]/80 backdrop-blur-sm"
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#101828]/80 backdrop-blur-sm animate-fade-in"
     >
       <div className="text-center space-y-6">
-        {/* Animated logo placeholder */}
         <div className="relative w-20 h-20 mx-auto">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            className="w-full h-full rounded-full border-4 border-teal/30 border-t-teal"
-          />
+          <div className="w-full h-full rounded-full border-4 border-teal/30 border-t-teal animate-spin" />
           <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-              className="w-4 h-4 rounded-full bg-teal"
-            />
+            <div className="w-4 h-4 rounded-full bg-teal animate-pulse" />
           </div>
         </div>
 
-        {/* Loading message */}
         <div className="space-y-2">
           <p className="text-white font-semibold text-lg">{message}</p>
           <div className="flex items-center justify-center gap-1">
             {[0, 1, 2].map((i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0.3 }}
-                animate={{ opacity: [0.3, 1, 0.3] }}
-                transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
-                className="w-2 h-2 rounded-full bg-teal"
+                className="w-2 h-2 rounded-full bg-teal animate-bounce"
+                style={{ animationDelay: `${i * 0.2}s` }}
               />
             ))}
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

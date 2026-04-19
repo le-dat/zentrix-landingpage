@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { useReducedMotion } from "motion/react";
+import { useRef } from "react";
 
 interface MapProps {
   dots?: Array<{
@@ -18,7 +17,6 @@ export default function WorldMap({
   className,
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const reduceMotion = useReducedMotion();
 
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
@@ -47,10 +45,22 @@ export default function WorldMap({
         viewBox="0 0 800 400"
         className="w-full h-full absolute inset-0 pointer-events-none select-none"
       >
+        <style>{`
+          .map-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawPath 1s ease-out forwards;
+          }
+          .map-path:nth-child(1) { animation-delay: 0.5s; }
+          .map-path:nth-child(2) { animation-delay: 1s; }
+          .map-path:nth-child(3) { animation-delay: 1.5s; }
+          @keyframes drawPath {
+            to { stroke-dashoffset: 0; }
+          }
+        `}</style>
         {dots.map((dot, i) => {
           const startPoint = projectPoint(dot.start.lat, dot.start.lng);
           const endPoint = projectPoint(dot.end.lat, dot.end.lng);
-          const pathLength = 1000;
           return (
             <g key={`path-group-${i}`}>
               <path
@@ -58,14 +68,7 @@ export default function WorldMap({
                 fill="none"
                 stroke="url(#path-gradient)"
                 strokeWidth="1"
-                strokeDasharray={pathLength}
-                strokeDashoffset={reduceMotion ? 0 : pathLength}
-                style={{
-                  transition: reduceMotion
-                    ? "none"
-                    : `stroke-dashoffset 1s ease-out ${0.5 * i}s`,
-                }}
-                key={`start-upper-${i}`}
+                className="map-path"
               />
             </g>
           );

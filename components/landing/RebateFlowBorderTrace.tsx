@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
-
 import { cn } from "@/lib/utils";
 
 export interface RebateFlowBorderTraceProps {
@@ -28,9 +26,6 @@ function buildHalfPaths(
   const yt = inset;
   const yb = h - inset;
 
-  // Arc sweep: bottom half traverses each bottom corner opposite to the usual
-  // clockwise rounded-rect convention, so use sweep 0 on bottom-left & bottom-right
-  // to keep the 90° bulge on the outside (avoids “broken” / pinched corners).
   const pathDown = [
     `M ${xl} ${midY}`,
     `L ${xl} ${yb - r}`,
@@ -57,7 +52,6 @@ export const REBATE_FLOW_DRAW_DURATION_MS = Math.round(REBATE_FLOW_DRAW_DURATION
 export const REBATE_FLOW_DRAW_EASE: [number, number, number, number] = [0.45, 0, 0.25, 1];
 
 const DRAW_DURATION_S = REBATE_FLOW_DRAW_DURATION_S;
-const DRAW_EASE = REBATE_FLOW_DRAW_EASE;
 
 export function RebateFlowBorderTrace({
   className,
@@ -68,12 +62,9 @@ export function RebateFlowBorderTrace({
   const gradId = useId().replace(/:/g, "");
   const svgRef = useRef<SVGSVGElement>(null);
   const [size, setSize] = useState({ w: 100, h: 100 });
-  const reduceMotion = useReducedMotion();
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (reduceMotion) return;
-
     let resizeTimer: ReturnType<typeof setTimeout> | null = null;
 
     function update() {
@@ -105,27 +96,13 @@ export function RebateFlowBorderTrace({
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       if (resizeTimer) clearTimeout(resizeTimer);
     };
-  }, [reduceMotion]);
+  }, []);
 
   const { pathDown, pathUp, viewBox } = buildHalfPaths(size.w, size.h, insetPx, cardRadiusPx);
 
   const strokeW = 2;
   const trackW = 1.2;
   const trackColor = "rgba(24, 203, 168, 0.3)";
-
-  const lineTransition = reduceMotion
-    ? { duration: 0 }
-    : {
-        duration: DRAW_DURATION_S,
-        ease: DRAW_EASE,
-      };
-
-  const lineAnimate =
-    !active
-      ? { pathLength: 0, opacity: 0 }
-      : reduceMotion
-        ? { pathLength: 1, opacity: 1 }
-        : { pathLength: 1, opacity: 1 };
 
   return (
     <svg
@@ -138,6 +115,19 @@ export function RebateFlowBorderTrace({
       preserveAspectRatio="xMidYMid meet"
       aria-hidden
     >
+      <style>{`
+        .trace-path {
+          transition: opacity 0.2s;
+        }
+        .trace-draw {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          transition: stroke-dashoffset ${DRAW_DURATION_S}s ease-out, opacity 0.2s;
+        }
+        .trace-draw.active {
+          stroke-dashoffset: 0;
+        }
+      `}</style>
       <defs>
         <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#18CBA8" />
@@ -145,7 +135,7 @@ export function RebateFlowBorderTrace({
         </linearGradient>
       </defs>
 
-      <motion.g initial={false} animate={{ opacity: active ? 1 : 0 }} transition={{ duration: 0.2 }}>
+      <g className="trace-path" style={{ opacity: active ? 1 : 0 }}>
         <path
           d={pathDown}
           fill="none"
@@ -162,35 +152,27 @@ export function RebateFlowBorderTrace({
           strokeLinejoin="round"
           strokeWidth={trackW}
         />
-      </motion.g>
+      </g>
 
-      <motion.path
+      <path
         d={pathDown}
         fill="none"
         stroke={`url(#${gradId})`}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={strokeW}
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={lineAnimate}
-        transition={{
-          pathLength: lineTransition,
-          opacity: { duration: 0.2 },
-        }}
+        className={`trace-draw ${active ? "active" : ""}`}
+        style={{ opacity: active ? 1 : 0 }}
       />
-      <motion.path
+      <path
         d={pathUp}
         fill="none"
         stroke={`url(#${gradId})`}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={strokeW}
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={lineAnimate}
-        transition={{
-          pathLength: lineTransition,
-          opacity: { duration: 0.2 },
-        }}
+        className={`trace-draw ${active ? "active" : ""}`}
+        style={{ opacity: active ? 1 : 0 }}
       />
     </svg>
   );

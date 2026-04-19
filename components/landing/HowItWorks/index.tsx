@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { motion, useReducedMotion } from "motion/react";
 import { FlowGapConnector } from "@/components/landing/FlowGapConnector";
 import { RebateFlowBorderTrace } from "@/components/landing/RebateFlowBorderTrace";
 import { REBATE_FLOW_DRAW_DURATION_MS } from "@/constants/animation";
@@ -42,14 +41,11 @@ function HowItWorksStepCard({
   const descClass = `${colors.descText} ${colors.descTextHover}`;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.45, delay: index * 0.08 }}
-      className="group rebate-flow-card relative h-fit w-full"
-      onHoverStart={onPointerEnter}
-      onHoverEnd={onPointerLeave}
+    <div
+      className="animate-fade-up group rebate-flow-card relative h-fit w-full"
+      style={{ animationDelay: `${index * 80}ms` }}
+      onMouseEnter={onPointerEnter}
+      onMouseLeave={onPointerLeave}
     >
       <div className="relative overflow-visible rounded-3xl p-px transition-transform duration-300 ease-out group-hover:-translate-y-1">
         <RebateFlowBorderTrace active={isHovered} insetPx={1} cardRadiusPx={24} />
@@ -81,7 +77,7 @@ function HowItWorksStepCard({
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -89,7 +85,6 @@ export default function HowItWorks() {
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
   const [connectorSegment, setConnectorSegment] = useState<number | null>(null);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const reduceMotion = useReducedMotion();
   const connectorTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -107,8 +102,6 @@ export default function HowItWorks() {
   }
 
   function scheduleConnectorUpdate(stepId: string) {
-    if (reduceMotion) return;
-
     const idx = steps.findIndex((s) => s.id === stepId);
     if (idx < 0 || idx > 2) {
       setConnectorSegment(null);
@@ -158,16 +151,10 @@ export default function HowItWorks() {
       />
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-5 md:px-6">
-        <div className="mb-6 w-full text-center md:mb-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: 0.05 }}
-            className="mb-2 text-2xl font-bold tracking-tight text-white md:text-4xl"
-          >
+        <div className="animate-fade-up mb-6 w-full text-center md:mb-8" style={{ animationDelay: "50ms" }}>
+          <h2 className="mb-2 text-2xl font-bold tracking-tight text-white md:text-4xl">
             Zentrix Cashback System Work?
-          </motion.h2>
+          </h2>
         </div>
 
         <div className="relative w-full">

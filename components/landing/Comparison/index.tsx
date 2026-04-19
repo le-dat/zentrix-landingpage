@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "motion/react";
 import { Check, X } from "lucide-react";
 import { comparisons } from "./data";
 
@@ -35,13 +34,10 @@ export default function ComparisonSection() {
             </thead>
             <tbody>
               {comparisons.map((item, i) => (
-                <motion.tr
+                <tr
                   key={item.criteria}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className="border-b border-white/5 group"
+                  className="animate-fade-up border-b border-white/5 group"
+                  style={{ animationDelay: `${i * 50}ms` }}
                 >
                   <td className="py-6 px-3 md:py-8 md:px-4 text-white text-sm md:text-base font-medium">
                     {item.criteria}
@@ -58,7 +54,7 @@ export default function ComparisonSection() {
                       {item.traditional}
                     </div>
                   </td>
-                </motion.tr>
+                </tr>
               ))}
               <tr>
                 <td />

@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "motion/react";
 import { testimonials } from "./data";
 
 export default function TrustTraderSection() {
@@ -10,30 +9,24 @@ export default function TrustTraderSection() {
   return (
     <section className="relative py-20 overflow-hidden">
       <div className="max-w-[990px] mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-[36px] font-bold mb-4 text-center"
+        <h2
+          className="animate-fade-up text-[36px] font-bold mb-4 text-center"
+          style={{ animationDelay: "0ms" }}
         >
           What traders say
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-center text-white/60 mb-16 max-w-[480px] mx-auto leading-relaxed"
+        <p
+          className="animate-fade-up text-center text-white/60 mb-16 max-w-[480px] mx-auto leading-relaxed"
+          style={{ animationDelay: "100ms" }}
         >
           Rebates only matter if you can trust the numbers. Here&apos;s what our
           users focus on.
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative flex flex-col md:flex-row items-center gap-12 p-6 md:p-10 rounded-2xl bg-black/40 border border-white/5"
+        <div
+          className="animate-fade-up relative flex flex-col md:flex-row items-center gap-12 p-6 md:p-10 rounded-2xl bg-black/40 border border-white/5"
+          style={{ animationDelay: "200ms" }}
         >
           <div
             className="relative w-[217px] h-[217px] shrink-0 rounded-xl bg-white/5"
@@ -51,7 +44,7 @@ export default function TrustTraderSection() {
               <p className="text-sm text-white/60">{t.role}</p>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
