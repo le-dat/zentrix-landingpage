@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef, useMemo } from "react";
-import { motion, useReducedMotion } from "motion/react";
-import DottedMap from "dotted-map";
+import { useRef, useEffect } from "react";
+import { useReducedMotion } from "motion/react";
 
 interface MapProps {
   dots?: Array<{
@@ -20,16 +19,6 @@ export default function WorldMap({
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const reduceMotion = useReducedMotion();
-  
-  const svgMap = useMemo(() => {
-    const map = new DottedMap({ height: 100, grid: "diagonal" });
-    return map.getSVG({
-      radius: 0.22,
-      color: "rgba(255, 255, 255, 0.2)",
-      shape: "circle",
-      backgroundColor: "transparent",
-    });
-  }, []);
 
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
@@ -46,7 +35,7 @@ export default function WorldMap({
   return (
     <div className={`w-full relative font-sans ${className}`}>
       <img
-        src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
+        src="/world-map.svg"
         className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] pointer-events-none select-none"
         alt="world map"
         height="495"
@@ -61,26 +50,23 @@ export default function WorldMap({
         {dots.map((dot, i) => {
           const startPoint = projectPoint(dot.start.lat, dot.start.lng);
           const endPoint = projectPoint(dot.end.lat, dot.end.lng);
+          const pathLength = 1000;
           return (
             <g key={`path-group-${i}`}>
-              <motion.path
+              <path
                 d={createCurvedPath(startPoint, endPoint)}
                 fill="none"
                 stroke="url(#path-gradient)"
                 strokeWidth="1"
-                {...(reduceMotion
-                  ? { initial: { pathLength: 1 }, animate: { pathLength: 1 } }
-                  : {
-                      initial: { pathLength: 0 },
-                      animate: { pathLength: 1 },
-                      transition: {
-                        duration: 1,
-                        delay: 0.5 * i,
-                        ease: "easeOut",
-                      },
-                    })}
+                strokeDasharray={pathLength}
+                strokeDashoffset={reduceMotion ? 0 : pathLength}
+                style={{
+                  transition: reduceMotion
+                    ? "none"
+                    : `stroke-dashoffset 1s ease-out ${0.5 * i}s`,
+                }}
                 key={`start-upper-${i}`}
-              ></motion.path>
+              />
             </g>
           );
         })}

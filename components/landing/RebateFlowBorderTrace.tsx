@@ -74,6 +74,8 @@ export function RebateFlowBorderTrace({
   useEffect(() => {
     if (reduceMotion) return;
 
+    let resizeTimer: ReturnType<typeof setTimeout> | null = null;
+
     function update() {
       const svg = svgRef.current;
       const box = svg?.parentElement;
@@ -91,13 +93,17 @@ export function RebateFlowBorderTrace({
 
     update();
     const ro = new ResizeObserver(() => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(update);
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        rafRef.current = requestAnimationFrame(update);
+      }, 100);
     });
     ro.observe(svg.parentElement);
     return () => {
       ro.disconnect();
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (resizeTimer) clearTimeout(resizeTimer);
     };
   }, [reduceMotion]);
 
