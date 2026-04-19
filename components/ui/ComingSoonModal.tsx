@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import { X } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ComingSoonModalProps {
   isOpen: boolean;
@@ -9,6 +10,8 @@ interface ComingSoonModalProps {
 }
 
 export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
+  const { t } = useLanguage();
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -80,12 +83,12 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
 
             {/* Title */}
             <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-1.5 md:mb-2 lg:mb-3">
-              Coming Soon!
+              {t("modal.comingSoon")}
             </h3>
 
             {/* Description */}
             <p className="text-[11px] md:text-sm lg:text-base text-white/60 leading-relaxed mb-4 md:mb-5 lg:mb-6 max-w-[260px]">
-              We are working hard to bring you the best trading fee rebate experience. Stay tuned!
+              {t("modal.comingSoonDesc")}
             </p>
 
             {/* Email signup placeholder */}
@@ -93,18 +96,18 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
               <div className="flex flex-col gap-2">
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t("modal.emailPlaceholder")}
                   className="w-full px-4 py-2.5 md:py-3 rounded-full bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-[#18CBA8]/50 transition-colors"
                 />
                 <button
                   type="button"
                   className="w-full px-5 py-2.5 md:px-6 md:py-3 rounded-full bg-emerald-500 text-black font-semibold text-sm hover:bg-emerald-400 transition-colors"
                 >
-                  Notify Me
+                  {t("modal.notifyMe")}
                 </button>
               </div>
               <p className="text-[10px] md:text-[11px] text-white/40">
-                Be the first to know when we launch
+                {t("modal.beFirst")}
               </p>
             </div>
           </div>

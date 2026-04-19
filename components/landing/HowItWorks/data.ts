@@ -1,7 +1,7 @@
 export interface HowItWorksStep {
   id: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   digit: string;
   variant: "default" | "highlight";
 }
@@ -9,29 +9,29 @@ export interface HowItWorksStep {
 export const steps: HowItWorksStep[] = [
   {
     id: "01",
-    title: "Your broker",
-    description: "MT4 / MT5 volume feeds the rebate pool.",
+    titleKey: "howItWorks.steps.broker",
+    descriptionKey: "howItWorks.steps.brokerDesc",
     digit: "1",
     variant: "default",
   },
   {
     id: "02",
-    title: "Zentrix Engine",
-    description: "Tracks volume and credits your on-chain balance.",
+    titleKey: "howItWorks.steps.engine",
+    descriptionKey: "howItWorks.steps.engineDesc",
     digit: "2",
     variant: "highlight",
   },
   {
     id: "03",
-    title: "On-chain pool",
-    description: "BEP20 pool — balances and claims are verifiable.",
+    titleKey: "howItWorks.steps.pool",
+    descriptionKey: "howItWorks.steps.poolDesc",
     digit: "3",
     variant: "default",
   },
   {
     id: "04",
-    title: "Your wallet",
-    description: "Withdraw rebates whenever you want.",
+    titleKey: "howItWorks.steps.wallet",
+    descriptionKey: "howItWorks.steps.walletDesc",
     digit: "4",
     variant: "default",
   },

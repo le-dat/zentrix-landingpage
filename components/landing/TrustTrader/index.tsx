@@ -2,9 +2,11 @@
 
 import React from "react";
 import { testimonials } from "./data";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function TrustTraderSection() {
-  const t = testimonials[0];
+  const { t } = useLanguage();
+  const testimonial = testimonials[0];
 
   return (
     <section className="relative py-20 overflow-hidden">
@@ -13,15 +15,14 @@ export default function TrustTraderSection() {
           className="animate-fade-up text-[1.6rem] font-bold mb-4 text-center"
           style={{ animationDelay: "0ms" }}
         >
-          What traders say
+          {t("trustTrader.title")}
         </h2>
 
         <p
           className="animate-fade-up text-center text-white/60 mb-16 max-w-[480px] mx-auto leading-relaxed text-sm"
           style={{ animationDelay: "100ms" }}
         >
-          Rebates only matter if you can trust the numbers. Here&apos;s what our
-          users focus on.
+          {t("trustTrader.subtitle")}
         </p>
 
         <div
@@ -37,11 +38,11 @@ export default function TrustTraderSection() {
 
           <div className="flex-1 text-center md:text-left">
             <blockquote className="text-sm leading-relaxed mb-8 text-white/90">
-              &ldquo;{t.quote}&rdquo;
+              &ldquo;{t(testimonial.quoteKey)}&rdquo;
             </blockquote>
             <div>
-              <p className="font-semibold text-white">{t.name}</p>
-              <p className="text-sm text-white/60">{t.role}</p>
+              <p className="font-semibold text-white">{testimonial.name}</p>
+              <p className="text-sm text-white/60">{t(testimonial.roleKey)}</p>
             </div>
           </div>
         </div>

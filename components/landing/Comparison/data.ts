@@ -1,33 +1,33 @@
 export interface ComparisonItem {
-  criteria: string;
-  traditional: string;
-  zentrix: string;
+  criteriaKey: string;
+  traditionalKey: string;
+  zentrixKey: string;
 }
 
 export const comparisons: ComparisonItem[] = [
   {
-    criteria: "Liquidity Transparency",
-    traditional: "Internal balance, hard to verify externally",
-    zentrix: "On-chain Pool, verifiable on explorer",
+    criteriaKey: "comparison.items.liquidity",
+    traditionalKey: "comparison.items.liquidityTraditional",
+    zentrixKey: "comparison.items.liquidityZentrix",
   },
   {
-    criteria: "Fund Flow",
-    traditional: "Internal transfers, non-public batches",
-    zentrix: "Broker → Treasury → Pool → Wallet",
+    criteriaKey: "comparison.items.fundFlow",
+    traditionalKey: "comparison.items.fundFlowTraditional",
+    zentrixKey: "comparison.items.fundFlowZentrix",
   },
   {
-    criteria: "Reconciliation",
-    traditional: "Mostly internal reporting",
-    zentrix: "Broker + Ledger + Chain (3-way)",
+    criteriaKey: "comparison.items.reconciliation",
+    traditionalKey: "comparison.items.reconciliationTraditional",
+    zentrixKey: "comparison.items.reconciliationZentrix",
   },
   {
-    criteria: "Referral Allocation",
-    traditional: "Limited audit tools",
-    zentrix: "Ref tree + policy + public log",
+    criteriaKey: "comparison.items.referral",
+    traditionalKey: "comparison.items.referralTraditional",
+    zentrixKey: "comparison.items.referralZentrix",
   },
   {
-    criteria: "Withdrawals",
-    traditional: "Manual approval process",
-    zentrix: "On-chain claim, fixed fee",
+    criteriaKey: "comparison.items.withdrawals",
+    traditionalKey: "comparison.items.withdrawalsTraditional",
+    zentrixKey: "comparison.items.withdrawalsZentrix",
   },
 ];

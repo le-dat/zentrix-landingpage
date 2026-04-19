@@ -2,9 +2,16 @@
 
 import React from "react";
 import Image from "next/image";
-import { footerLinks, socials } from "./data";
+import { socials, footerLinkCategories } from "./data";
+import { useLanguage } from "@/context/LanguageContext";
 
-function FooterLinkColumn({ title, links }: { title: string; links: string[] }) {
+function FooterLinkColumn({ titleKey, linksKey }: { titleKey: string; linksKey: string }) {
+  const { t } = useLanguage();
+  const links = t(linksKey) as unknown as string[];
+  const title = t(titleKey);
+
+  if (!Array.isArray(links)) return null;
+
   return (
     <div className="flex-1 md:flex-initial min-w-[140px]">
       <h4 className="mb-4 font-semibold text-sm text-white/90">{title}</h4>
@@ -22,6 +29,8 @@ function FooterLinkColumn({ title, links }: { title: string; links: string[] }) 
 }
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative py-20 border-t border-white/5">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -38,20 +47,20 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-1 justify-center gap-12 md:justify-end md:gap-16">
-            {Object.entries(footerLinks).map(([title, links]) => (
-              <FooterLinkColumn key={title} title={title} links={links} />
+            {footerLinkCategories.map((cat) => (
+              <FooterLinkColumn key={cat.titleKey} titleKey={cat.titleKey} linksKey={cat.linksKey} />
             ))}
           </div>
         </div>
         <div className="flex items-center justify-center md:justify-start gap-4">
           {socials.map((social) => (
             <a
-              key={social.label}
+              key={social.labelKey}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
               className="w-6 h-6 flex items-center justify-center text-white/60 hover:text-white transition-colors"
-              aria-label={social.label}
+              aria-label={t(social.labelKey)}
             >
               <social.Icon className="w-5 h-5" />
             </a>

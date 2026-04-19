@@ -1,14 +1,13 @@
 export interface Testimonial {
-  quote: string;
+  quoteKey: string;
   name: string;
-  role: string;
+  roleKey: string;
 }
 
 export const testimonials: Testimonial[] = [
   {
-    quote:
-      "I never knew if I was getting the right rebate rate before. Zentrix shows me every single allocation with its status. It's a completely different level of trust.",
+    quoteKey: "trustTrader.quote",
     name: "Alex N.",
-    role: "IB · Multi-broker",
+    roleKey: "trustTrader.role",
   },
 ];

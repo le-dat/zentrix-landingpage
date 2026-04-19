@@ -31,7 +31,7 @@ export interface FooterLinkGroup {
 
 export interface Social {
   Icon: React.ComponentType<{ className?: string }>;
-  label: string;
+  labelKey: string;
   href: string;
 }
 

@@ -3,13 +3,13 @@ import type { LucideIcon } from "lucide-react";
 
 export interface TrustMetric {
   value: string;
-  label: string;
+  labelKey: string;
   icon: LucideIcon;
 }
 
 export const metrics: TrustMetric[] = [
-  { value: "$12.4M+", label: "Volume", icon: BarChart3 },
-  { value: "8,200+", label: "Traders", icon: Users },
-  { value: "14", label: "Brokers", icon: Building2 },
-  { value: "$680K+", label: "Rebates", icon: Wallet },
+  { value: "$12.4M+", labelKey: "trustMetrics.volume", icon: BarChart3 },
+  { value: "8,200+", labelKey: "trustMetrics.traders", icon: Users },
+  { value: "14", labelKey: "trustMetrics.brokers", icon: Building2 },
+  { value: "$680K+", labelKey: "trustMetrics.rebates", icon: Wallet },
 ];

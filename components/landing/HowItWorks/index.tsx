@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { FlowGapConnector } from "@/components/landing/FlowGapConnector";
 import { RebateFlowBorderTrace } from "@/components/landing/RebateFlowBorderTrace";
 import { REBATE_FLOW_DRAW_DURATION_MS } from "@/constants/animation";
+import { useLanguage } from "@/context/LanguageContext";
 import {
   steps,
   CARD_INNER_RADIUS,
@@ -29,6 +30,7 @@ function HowItWorksStepCard({
   onPointerEnter,
   onPointerLeave,
 }: HowItWorksStepCardProps) {
+  const { t } = useLanguage();
   const isHighlight = step.variant === "highlight";
   const colors = isHighlight ? highlightColors : defaultColors;
 
@@ -65,13 +67,13 @@ function HowItWorksStepCard({
                 className={`text-sm font-semibold tracking-tight text-white md:text-lg ${titleClass}`}
                 style={{ textShadow: "0 2px 24px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.85)" }}
               >
-                {step.title}
+                {t(step.titleKey)}
               </h3>
               <p
                 className={`mt-1.5 text-xs leading-relaxed md:text-sm ${descClass}`}
                 style={{ textShadow: "0 2px 18px rgba(0,0,0,0.9), 0 1px 2px rgba(0,0,0,0.8)" }}
               >
-                {step.description}
+                {t(step.descriptionKey)}
               </p>
             </div>
           </div>
@@ -82,6 +84,7 @@ function HowItWorksStepCard({
 }
 
 export default function HowItWorks() {
+  const { t } = useLanguage();
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
   const [connectorSegment, setConnectorSegment] = useState<number | null>(null);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
@@ -153,7 +156,7 @@ export default function HowItWorks() {
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-5 md:px-6">
         <div className="animate-fade-up mb-6 w-full text-center md:mb-8" style={{ animationDelay: "50ms" }}>
           <h2 className="mb-2 text-[1.6rem] font-bold tracking-tight text-white md:text-4xl">
-            Zentrix Cashback System Work?
+            {t("howItWorks.title")}
           </h2>
         </div>
 
