@@ -34,7 +34,7 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 md:p-4"
       onClick={onClose}
     >
       {/* Backdrop */}
@@ -42,29 +42,29 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
 
       {/* Modal */}
       <div
-        className="relative w-full max-w-md animate-fade-up"
+        className="relative w-full max-w-[340px] md:max-w-md animate-fade-up"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="rounded-3xl bg-black/90 border border-white/10 overflow-hidden shadow-2xl">
+        <div className="rounded-2xl md:rounded-3xl bg-black/90 border border-white/10 overflow-hidden shadow-2xl">
           {/* Glow effect */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1/2 bg-[#18CBA8]/10 rounded-full blur-[80px] pointer-events-none" />
 
           {/* Content */}
-          <div className="relative p-8 md:p-10 flex flex-col items-center text-center">
+          <div className="relative px-4 py-5 md:px-8 md:py-6 lg:p-10 flex flex-col items-center text-center">
             {/* Close button */}
             <button
               type="button"
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors"
+              className="absolute top-2.5 right-2.5 md:top-4 md:right-4 p-1.5 md:p-2 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors"
               aria-label="Close modal"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 md:w-5 md:h-5" />
             </button>
 
             {/* Icon */}
-            <div className="w-16 h-16 rounded-full bg-[#18CBA8]/10 border border-[#18CBA8]/20 flex items-center justify-center mb-6">
+            <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full bg-[#18CBA8]/10 border border-[#18CBA8]/20 flex items-center justify-center mb-4 md:mb-5 lg:mb-6">
               <svg
-                className="w-8 h-8 text-[#18CBA8]"
+                className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-[#18CBA8]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -79,31 +79,31 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
             </div>
 
             {/* Title */}
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
+            <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-1.5 md:mb-2 lg:mb-3">
               Coming Soon!
             </h3>
 
             {/* Description */}
-            <p className="text-sm md:text-base text-white/60 leading-relaxed mb-6 max-w-[280px]">
+            <p className="text-[11px] md:text-sm lg:text-base text-white/60 leading-relaxed mb-4 md:mb-5 lg:mb-6 max-w-[260px]">
               We are working hard to bring you the best trading fee rebate experience. Stay tuned!
             </p>
 
             {/* Email signup placeholder */}
-            <div className="w-full space-y-3">
-              <div className="flex gap-2">
+            <div className="w-full space-y-2 md:space-y-3">
+              <div className="flex flex-col gap-2">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-full bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-[#18CBA8]/50 transition-colors"
+                  className="w-full px-4 py-2.5 md:py-3 rounded-full bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-[#18CBA8]/50 transition-colors"
                 />
                 <button
                   type="button"
-                  className="px-6 py-3 rounded-full bg-emerald-500 text-black font-semibold text-sm hover:bg-emerald-400 transition-colors"
+                  className="w-full px-5 py-2.5 md:px-6 md:py-3 rounded-full bg-emerald-500 text-black font-semibold text-sm hover:bg-emerald-400 transition-colors"
                 >
                   Notify Me
                 </button>
               </div>
-              <p className="text-[11px] text-white/40">
+              <p className="text-[10px] md:text-[11px] text-white/40">
                 Be the first to know when we launch
               </p>
             </div>
