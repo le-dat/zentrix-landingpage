@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { CombinedProviderWrapper } from "@/components/ui/CombinedProviderWrapper";
 import { cn } from "@/lib/utils";
+import FloatingLanguageToggle from "@/components/ui/FloatingLanguageToggle";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,7 +27,10 @@ export default async function RootLayout({
   return (
     <html lang="en" className={cn(inter.variable, "h-full antialiased")} suppressHydrationWarning>
       <body className="min-h-full flex flex-col font-sans">
-        <CombinedProviderWrapper>{children}</CombinedProviderWrapper>
+        <CombinedProviderWrapper>
+        <FloatingLanguageToggle />
+        {children}
+      </CombinedProviderWrapper>
       </body>
     </html>
   );
