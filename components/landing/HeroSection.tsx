@@ -54,7 +54,7 @@ export function HeroSection() {
           <button
             type="button"
             onClick={openComingSoon}
-            className="rounded-full bg-white px-6 py-3 text-base font-semibold text-black shadow-xl transition-colors hover:bg-white/90 md:px-8 md:py-4 md:text-lg"
+            className="rounded-full bg-white px-6 py-3 text-base font-semibold text-black shadow-xl transition-colors hover:bg-white/90 hover:cursor-pointer md:px-8 md:py-4 md:text-lg"
           >
             {t("hero.cta")}
           </button>

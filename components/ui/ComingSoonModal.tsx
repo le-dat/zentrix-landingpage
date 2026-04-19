@@ -58,7 +58,7 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
             <button
               type="button"
               onClick={onClose}
-              className="absolute top-2.5 right-2.5 md:top-4 md:right-4 p-1.5 md:p-2 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors"
+              className="absolute top-2.5 right-2.5 md:top-4 md:right-4 p-1.5 md:p-2 rounded-full text-white/50 hover:text-white hover:bg-white/10 hover:cursor-pointer transition-colors"
               aria-label="Close modal"
             >
               <X className="w-4 h-4 md:w-5 md:h-5" />
@@ -101,7 +101,7 @@ export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
                 />
                 <button
                   type="button"
-                  className="w-full px-5 py-2.5 md:px-6 md:py-3 rounded-full bg-emerald-500 text-black font-semibold text-sm hover:bg-emerald-400 transition-colors"
+                  className="w-full px-5 py-2.5 md:px-6 md:py-3 rounded-full bg-emerald-500 text-black font-semibold text-sm hover:bg-emerald-400 hover:cursor-pointer transition-colors"
                 >
                   {t("modal.notifyMe")}
                 </button>

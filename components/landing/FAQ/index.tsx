@@ -32,7 +32,7 @@ export default function FAQSection() {
               <button
                 type="button"
                 onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 hover:cursor-pointer transition-colors"
               >
                 <span className="text-sm font-medium pr-4">{t(faq.titleKey)}</span>
                 <ChevronDown

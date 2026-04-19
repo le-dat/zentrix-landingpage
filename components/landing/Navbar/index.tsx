@@ -71,7 +71,7 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               onClick={(e) => handleScroll(e, item.href)}
-              className="px-4 py-2 text-sm text-white/70 hover:text-emerald-400 transition-colors"
+              className="px-4 py-2 text-sm text-white/70 hover:text-emerald-400 hover:cursor-pointer transition-colors"
             >
               {item.label}
             </a>
@@ -84,7 +84,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={toggleLocale}
-            className="relative flex items-center h-8 w-[108px] rounded-full border border-white/10 bg-black/20 overflow-hidden hover:border-white/20 transition-colors"
+            className="relative flex items-center h-8 w-[108px] rounded-full border border-white/10 bg-black/20 overflow-hidden hover:border-white/20 hover:cursor-pointer transition-colors"
             aria-label="Toggle language"
           >
             <div
@@ -113,7 +113,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={openComingSoon}
-            className="px-5 py-2 rounded-full bg-emerald-500 text-black font-semibold text-sm hover:bg-emerald-400 transition-all hover:shadow-[0_0_15px_rgba(16,185,129,0.4)]"
+            className="px-5 py-2 rounded-full bg-emerald-500 text-black font-semibold text-sm hover:bg-emerald-400 hover:cursor-pointer transition-all hover:shadow-[0_0_15px_rgba(16,185,129,0.4)]"
           >
             {t("common.getStarted")}
           </button>
@@ -124,7 +124,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={toggleLocale}
-            className="relative flex items-center h-8 w-[88px] rounded-full border border-white/10 bg-black/20 overflow-hidden hover:border-white/20 transition-colors"
+            className="relative flex items-center h-8 w-[88px] rounded-full border border-white/10 bg-black/20 overflow-hidden hover:border-white/20 hover:cursor-pointer transition-colors"
             aria-label="Toggle language"
           >
             <div
@@ -153,7 +153,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 hover:cursor-pointer transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -174,7 +174,7 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               onClick={(e) => handleScroll(e, item.href)}
-              className="block px-4 py-3 text-sm text-white/70 hover:text-emerald-400 hover:bg-white/5 rounded-lg transition-colors"
+              className="block px-4 py-3 text-sm text-white/70 hover:text-emerald-400 hover:bg-white/5 hover:cursor-pointer rounded-lg transition-colors"
             >
               {item.label}
             </a>
@@ -182,7 +182,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={openComingSoon}
-            className="w-full mt-2 px-4 py-3 rounded-lg bg-emerald-500 text-black font-semibold text-sm hover:bg-emerald-400 transition-colors"
+            className="w-full mt-2 px-4 py-3 rounded-lg bg-emerald-500 text-black font-semibold text-sm hover:bg-emerald-400 hover:cursor-pointer transition-colors"
           >
             {t("common.getStarted")}
           </button>

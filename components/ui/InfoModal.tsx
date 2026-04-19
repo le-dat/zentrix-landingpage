@@ -67,7 +67,7 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 sm:p-2 rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-all duration-200 hover:scale-110"
+            className="p-1.5 sm:p-2 rounded-full text-white/40 hover:text-white hover:bg-white/10 hover:cursor-pointer transition-all duration-200 hover:scale-110"
             aria-label="Close modal"
           >
             <X className="w-4 h-4 sm:w-5 sm:h-5" />

@@ -43,7 +43,7 @@ export default function Footer() {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 md:w-6 md:h-6 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+              className="w-8 h-8 md:w-6 md:h-6 flex items-center justify-center text-white/60 hover:text-white hover:cursor-pointer transition-colors"
               aria-label={t(social.labelKey)}
             >
               <social.Icon className="w-6 h-6 md:w-5 md:h-5" />
