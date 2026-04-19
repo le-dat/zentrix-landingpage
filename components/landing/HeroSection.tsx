@@ -3,6 +3,7 @@
 import TrustMetrics from "./TrustMetrics/index";
 import { useComingSoonModal } from "@/components/ui/ModalContext";
 import { useLanguage } from "@/context/LanguageContext";
+import { ShimmerButton } from "../ui/shimmer-button";
 
 export function HeroSection() {
   const { openComingSoon } = useComingSoonModal();
@@ -19,7 +20,10 @@ export function HeroSection() {
 
       <div className="relative z-10 flex flex-col items-center pt-12 md:pt-20">
         <div className="mb-6 md:mb-10 w-full overflow-x-auto px-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div className="animate-fade-up mx-auto flex w-max flex-nowrap items-center gap-2 rounded-full border border-white/15 bg-black/70 px-2.5 py-1.5 pr-4 backdrop-blur-sm md:px-4 md:py-2 md:gap-2.5" style={{ animationDelay: "0ms" }}>
+          <div
+            className="animate-fade-up mx-auto flex w-max flex-nowrap items-center gap-2 rounded-full border border-white/15 bg-black/70 px-2.5 py-1.5 pr-4 backdrop-blur-sm md:px-4 md:py-2 md:gap-2.5"
+            style={{ animationDelay: "0ms" }}
+          >
             <span className="inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-white px-2 py-0.5 text-[10px] font-bold tracking-wide text-black uppercase md:px-2.5 md:py-1 md:text-[11px]">
               {t("hero.badge")}
             </span>
@@ -29,13 +33,14 @@ export function HeroSection() {
           </div>
         </div>
 
-        <h1 className="animate-fade-up mx-auto flex w-full max-w-[1200px] flex-col items-center gap-0 px-4 text-center font-bold tracking-tight" style={{ animationDelay: "100ms" }}>
+        <h1
+          className="animate-fade-up mx-auto flex w-full max-w-[1200px] flex-col items-center gap-0 px-4 text-center font-bold tracking-tight"
+          style={{ animationDelay: "100ms" }}
+        >
           <span className="text-[1.6rem] leading-[1.1] md:text-5xl md:leading-[1.02] text-white">
             {t("hero.title1")}
           </span>
-          <span
-            className="mt-1 md:mt-2 tracking-[-1px] md:tracking-[-1.5px] text-[1.6rem] leading-[1.1] md:text-5xl md:leading-[75px] bg-clip-text text-transparent bg-[linear-gradient(180deg,rgba(0,0,0,1)_0%,rgba(255,255,255,1)_0%,rgba(74,222,128,1)_66%)]"
-          >
+          <span className="mt-1 md:mt-2 tracking-[-1px] md:tracking-[-1.5px] text-[1.6rem] leading-[1.1] md:text-5xl md:leading-[75px] bg-clip-text text-transparent bg-[linear-gradient(180deg,rgba(0,0,0,1)_0%,rgba(255,255,255,1)_0%,rgba(74,222,128,1)_66%)]">
             {t("hero.title2")}
           </span>
         </h1>
@@ -51,13 +56,15 @@ export function HeroSection() {
           className="animate-fade-up mt-6 md:mt-8 flex flex-col items-center gap-3 md:gap-4 md:flex-row"
           style={{ animationDelay: "300ms" }}
         >
-          <button
-            type="button"
+          <ShimmerButton
+            className="shadow-2xl"
             onClick={openComingSoon}
-            className="rounded-full bg-white px-6 py-3 text-base font-semibold text-black shadow-xl transition-colors hover:bg-white/90 hover:cursor-pointer md:px-8 md:py-4 md:text-lg"
+            aria-label="Open coming soon modal"
           >
-            {t("hero.cta")}
-          </button>
+            <span className="text-center text-sm leading-none font-medium tracking-tight whitespace-pre-wrap text-black lg:text-lg">
+              {t("hero.cta")}
+            </span>
+          </ShimmerButton>
         </div>
         <TrustMetrics />
       </div>
