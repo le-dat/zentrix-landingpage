@@ -85,7 +85,7 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
                   <h2 className="text-white font-semibold mb-3 text-lg sm:text-xl">{children}</h2>
                 ),
                 h3: ({ children }) => (
-                  <h3 className="text-green-400 mb-4 leading-tight text-xl md:text-md">{children}</h3>
+                  <h3 className="text-green-400 mb-4 leading-tight text-sm md:text-md">{children}</h3>
                 ),
                 h4: ({ children }) => (
                   <h4 className="text-white font-semibold mb-3">{children}</h4>
