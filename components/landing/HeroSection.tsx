@@ -24,9 +24,9 @@ export function HeroSection() {
             className="animate-fade-up mx-auto flex w-max flex-nowrap items-center gap-2 rounded-full border border-white/15 bg-black/70 px-2.5 py-1.5 pr-4 backdrop-blur-sm md:px-4 md:py-2 md:gap-2.5"
             style={{ animationDelay: "0ms" }}
           >
-            <span className="inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-white px-2 py-0.5 text-[10px] font-bold tracking-wide text-black uppercase md:px-2.5 md:py-1 md:text-[11px]">
+            {/* <span className="inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-white px-2 py-0.5 text-[10px] font-bold tracking-wide text-black uppercase md:px-2.5 md:py-1 md:text-[11px]">
               {t("hero.badge")}
-            </span>
+            </span> */}
             <span className="shrink-0 whitespace-nowrap text-[11px] text-white/90 md:text-sm">
               {t("hero.subtitle")}
             </span>
