@@ -73,22 +73,49 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
           </button>
         </div>
 
-        {/* Content - Scrollable */}
         <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-6">
-          <div
-            className="text-sm sm:text-base text-zinc-300 leading-relaxed space-y-4
-                       prose prose-invert prose-base max-w-none
-                       prose-headings:text-brand-green prose-headings:font-semibold prose-headings:mb-3
-                       prose-p:text-zinc-300 prose-p:leading-7
-                       prose-strong:text-white prose-strong:font-medium
-                       prose-li:text-zinc-300 prose-li:leading-6
-                       prose-a:text-teal-400 prose-a:no-underline hover:prose-a:underline
-                       prose-hr:border-white/10
-                       prose-blockquote:border-l-teal-500 prose-blockquote:text-zinc-400
-                       prose-code:text-teal-300 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
-                       prose-pre:bg-zinc-950 prose-pre:border prose-pre:border-white/10"
-          >
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+          <div className="text-sm sm:text-base text-zinc-300 leading-relaxed space-y-4">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                h1: ({ children }) => (
+                  <h1 className="text-white font-semibold mb-3 text-xl sm:text-2xl">{children}</h1>
+                ),
+                h2: ({ children }) => (
+                  <h2 className="text-white font-semibold mb-3 text-lg sm:text-xl">{children}</h2>
+                ),
+                h3: ({ children }) => (
+                  <h3 className="text-green-400 mb-4 leading-tight text-xl md:text-md">{children}</h3>
+                ),
+                h4: ({ children }) => (
+                  <h4 className="text-white font-semibold mb-3">{children}</h4>
+                ),
+                p: ({ children }) => (
+                  <p className="text-zinc-300 leading-7 mb-4">{children}</p>
+                ),
+                strong: ({ children }) => (
+                  <strong className="text-white font-medium">{children}</strong>
+                ),
+                li: ({ children }) => (
+                  <li className="text-zinc-300 leading-6">{children}</li>
+                ),
+                a: ({ children, href }) => (
+                  <a href={href} className="text-teal-400 no-underline hover:underline">{children}</a>
+                ),
+                hr: () => <hr className="border-white/10" />,
+                blockquote: ({ children }) => (
+                  <blockquote className="border-l-teal-500 text-zinc-400">{children}</blockquote>
+                ),
+                code: ({ children }) => (
+                  <code className="text-teal-300 bg-white/5 px-1.5 py-0.5 rounded">{children}</code>
+                ),
+                pre: ({ children }) => (
+                  <pre className="bg-zinc-950 border border-white/10 mb-4">{children}</pre>
+                ),
+              }}
+            >
+              {content}
+            </ReactMarkdown>
           </div>
         </div>
       </div>
