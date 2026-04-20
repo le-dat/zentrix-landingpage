@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useComingSoonModal } from "@/components/ui/ModalContext";
 import { useLanguage } from "@/context/LanguageContext";
+import LanguageToggle from "@/components/ui/LanguageToggle";
 
 export default function Navbar() {
   const scrolled = useScrolled(100);
@@ -88,6 +89,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden items-center gap-2">
+          <LanguageToggle />
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -103,7 +105,7 @@ export default function Navbar() {
       <div
         className={cn(
           "md:hidden overflow-hidden transition-all duration-300",
-          mobileMenuOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+          mobileMenuOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0",
         )}
       >
         <div className="px-4 pb-4 pt-2 space-y-1 bg-black/90 backdrop-blur-lg border-t border-white/10">
