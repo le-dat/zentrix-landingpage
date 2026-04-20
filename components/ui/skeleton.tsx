@@ -238,9 +238,9 @@ export function LoadingOverlay({ message = "Loading..." }: { message?: string })
 
 export function SkeletonNavbar() {
   return (
-    <nav className="fixed top-0 z-50 w-full px-6 py-4">
+    <nav className="fixed top-0 z-50 w-full px-4 py-3 md:px-6 md:py-4">
       <div className="flex items-center justify-between max-w-[1200px] mx-auto">
-        <Skeleton className="w-[127px] h-[34px]" />
+        <Skeleton className="w-[110px] h-[34px]" />
         <div className="hidden md:flex items-center gap-1 border rounded-full border-white/10 p-1.5 bg-black/20">
           <Skeleton className="w-20 h-8 rounded-full" />
           <Skeleton className="w-20 h-8 rounded-full" />
