@@ -10,6 +10,7 @@
   --color-teal: #18cba8;
   --color-dark-teal: #146255;
   --color-mint: #29ffb5;
+  --color-brand-green: #00FF7F;
   --color-teal-dark: #0d3d34;
   --color-black: #0a0a0a;
   --color-white: #ffffff;
@@ -59,6 +60,7 @@
   --color-teal: var(--color-teal);
   --color-dark-teal: var(--color-dark-teal);
   --color-mint: var(--color-mint);
+  --color-brand-green: var(--color-brand-green);
   --color-teal-dark: var(--color-teal-dark);
   --color-black: var(--color-black);
   --color-white: var(--color-white);

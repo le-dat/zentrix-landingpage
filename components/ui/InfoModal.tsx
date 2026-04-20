@@ -78,7 +78,7 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
           <div
             className="text-sm sm:text-base text-zinc-300 leading-relaxed space-y-4
                        prose prose-invert prose-base max-w-none
-                       prose-headings:text-[#00FF7F] prose-headings:font-semibold prose-headings:mb-3
+                       prose-headings:text-brand-green prose-headings:font-semibold prose-headings:mb-3
                        prose-p:text-zinc-300 prose-p:leading-7
                        prose-strong:text-white prose-strong:font-medium
                        prose-li:text-zinc-300 prose-li:leading-6
