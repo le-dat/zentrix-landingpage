@@ -100,11 +100,11 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
                   <li className="text-zinc-300 leading-6">{children}</li>
                 ),
                 a: ({ children, href }) => (
-                  <a href={href} className="text-teal-400 no-underline hover:underline">{children}</a>
+                  <a href={href} className="text-green-400 no-underline hover:underline">{children}</a>
                 ),
                 hr: () => <hr className="border-white/10" />,
                 blockquote: ({ children }) => (
-                  <blockquote className="border-l-teal-500 text-zinc-400">{children}</blockquote>
+                  <blockquote className="border-l-green-500 text-zinc-400">{children}</blockquote>
                 ),
                 code: ({ children }) => (
                   <code className="text-teal-300 bg-white/5 px-1.5 py-0.5 rounded">{children}</code>
