@@ -1,6 +1,6 @@
 "use client";
 
-import { ModalProvider } from "./ModalContext";
+import { ModalProvider } from "@/context/ModalContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 
 export function CombinedProviderWrapper({ children }: { children: React.ReactNode }) {

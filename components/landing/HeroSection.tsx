@@ -1,7 +1,7 @@
 "use client";
 
 import TrustMetrics from "./TrustMetrics/index";
-import { useComingSoonModal } from "@/components/ui/ModalContext";
+import { useComingSoonModal } from "@/context/ModalContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { ShimmerButton } from "../ui/shimmer-button";
 

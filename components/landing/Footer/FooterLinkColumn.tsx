@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { useInfoModal } from "@/components/ui/ModalContext";
+import { useInfoModal } from "@/context/ModalContext";
 import { legalLinksItems } from "./data";
 
 export default function FooterLinkColumn({
