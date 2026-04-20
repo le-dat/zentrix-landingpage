@@ -28,7 +28,7 @@ export function HeroSection() {
               {t("hero.badge")}
             </span> */}
             <span className="shrink-0 whitespace-nowrap text-[11px] text-white/90 md:text-sm">
-              {t("hero.subtitle")}
+              ✨ {t("hero.subtitle")}
             </span>
           </div>
         </div>
