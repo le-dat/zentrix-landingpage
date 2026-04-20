@@ -26,8 +26,8 @@ export default function FloatingLanguageToggle({ className }: FloatingLanguageTo
     >
       <div
         className={cn(
-          "absolute top-1 bottom-1 w-[56px] rounded-full bg-emerald-500/30 transition-transform duration-200",
-          locale === "vi" ? "left-[60px]" : "left-[2px]",
+          "absolute top-1 bottom-1 w-[56px] rounded-full bg-emerald-500/30 transition-[transform] duration-200 ease-out will-change-transform",
+          locale === "vi" ? "translate-x-[60px]" : "translate-x-[2px]",
         )}
       />
       <div
