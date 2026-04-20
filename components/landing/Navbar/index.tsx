@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useScrolled } from "@/hooks/useScrolled";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useComingSoonModal } from "@/components/ui/ModalContext";
+import { useComingSoonModal } from "@/context/ModalContext";
 import { useLanguage } from "@/context/LanguageContext";
 import LanguageToggle from "@/components/ui/LanguageToggle";
 

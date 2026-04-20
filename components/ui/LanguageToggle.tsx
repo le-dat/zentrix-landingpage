@@ -19,15 +19,15 @@ export default function FloatingLanguageToggle({ className }: FloatingLanguageTo
       type="button"
       onClick={toggleLocale}
       className={cn(
-        "flex items-center h-10 w-[120px] rounded-full border border-white/10 bg-black/40 backdrop-blur-lg overflow-hidden hover:border-white/20 hover:cursor-pointer transition-colors shadow-lg",
+        "relative flex items-center h-10 w-[120px] rounded-full border border-white/10 bg-black/40 backdrop-blur-lg overflow-hidden hover:border-white/20 hover:cursor-pointer transition-colors shadow-lg",
         className,
       )}
       aria-label="Toggle language"
     >
       <div
         className={cn(
-          "absolute top-1 bottom-1 w-[56px] rounded-full bg-emerald-500/30 transition-transform duration-200",
-          locale === "vi" ? "translate-x-[60px]" : "translate-x-[2px]",
+          "absolute top-1 bottom-1 w-[56px] rounded-full bg-emerald-500/30 transition-[transform] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
+          locale === "vi" ? "translate-x-[62px]" : "translate-x-[2px]",
         )}
       />
       <div

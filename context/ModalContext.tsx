@@ -1,8 +1,8 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback } from "react";
-import { ComingSoonModal } from "./ComingSoonModal";
-import { InfoModal } from "./InfoModal";
+import { createContext, useContext, useState, useCallback } from "react";
+import { ComingSoonModal } from "@/components/ui/ComingSoonModal";
+import { InfoModal } from "@/components/ui/InfoModal";
 
 type InfoModalContentKey = "modal.infoModal.aboutUs" | "modal.infoModal.privacyPolicy" | "modal.infoModal.riskWarning";
 
