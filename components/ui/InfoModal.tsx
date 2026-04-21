@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { useEffect } from "react";
-import { X } from "lucide-react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { useLanguage } from "@/context/LanguageContext";
+import React, { useEffect, useRef } from 'react';
+import { X } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface InfoModalProps {
   isOpen: boolean;
@@ -15,26 +15,60 @@ interface InfoModalProps {
 
 export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalProps) {
   const { t } = useLanguage();
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const modal = modalRef.current;
+    if (!modal) return;
+
+    const focusable = modal.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    first?.focus();
+
+    function handleTabKey(e: KeyboardEvent) {
+      if (e.key !== 'Tab') return;
+      if (focusable.length === 0) return;
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last?.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first?.focus();
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleTabKey);
+    return () => document.removeEventListener('keydown', handleTabKey);
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     };
   }, [isOpen]);
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === 'Escape') onClose();
     };
     if (isOpen) {
-      window.addEventListener("keydown", handleEsc);
+      window.addEventListener('keydown', handleEsc);
     }
-    return () => window.removeEventListener("keydown", handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
@@ -52,6 +86,7 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
 
       {/* Modal */}
       <div
+        ref={modalRef}
         className="relative w-full max-w-4xl h-full max-h-screen md:max-h-[90vh] bg-gradient-to-b from-zinc-900 to-black border border-white/10 rounded-xl sm:rounded-2xl shadow-2xl shadow-black/50 animate-in zoom-in-95 fade-in duration-200 flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
@@ -85,22 +120,20 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
                   <h2 className="text-white font-semibold mb-3 text-lg sm:text-xl">{children}</h2>
                 ),
                 h3: ({ children }) => (
-                  <h3 className="text-green-400 mb-4 leading-tight text-md capitalize">{children}</h3>
+                  <h3 className="text-green-400 mb-4 leading-tight text-md capitalize">
+                    {children}
+                  </h3>
                 ),
-                h4: ({ children }) => (
-                  <h4 className="text-white font-semibold mb-3">{children}</h4>
-                ),
-                p: ({ children }) => (
-                  <p className="text-zinc-300 leading-7 mb-4">{children}</p>
-                ),
+                h4: ({ children }) => <h4 className="text-white font-semibold mb-3">{children}</h4>,
+                p: ({ children }) => <p className="text-zinc-300 leading-7 mb-4">{children}</p>,
                 strong: ({ children }) => (
                   <strong className="text-white font-medium">{children}</strong>
                 ),
-                li: ({ children }) => (
-                  <li className="text-zinc-300 leading-6">{children}</li>
-                ),
+                li: ({ children }) => <li className="text-zinc-300 leading-6">{children}</li>,
                 a: ({ children, href }) => (
-                  <a href={href} className="text-green-400 no-underline hover:underline">{children}</a>
+                  <a href={href} className="text-green-400 no-underline hover:underline">
+                    {children}
+                  </a>
                 ),
                 hr: () => <hr className="border-white/10" />,
                 blockquote: ({ children }) => (

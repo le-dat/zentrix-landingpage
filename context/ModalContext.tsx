@@ -1,10 +1,13 @@
-"use client";
+'use client';
 
-import { createContext, useContext, useState, useCallback } from "react";
-import { ComingSoonModal } from "@/components/ui/ComingSoonModal";
-import { InfoModal } from "@/components/ui/InfoModal";
+import { createContext, useContext, useState, useCallback } from 'react';
+import { ComingSoonModal } from '@/components/ui/ComingSoonModal';
+import { InfoModal } from '@/components/ui/InfoModal';
 
-type InfoModalContentKey = "modal.infoModal.aboutUs" | "modal.infoModal.privacyPolicy" | "modal.infoModal.riskWarning";
+type InfoModalContentKey =
+  | 'modal.infoModal.aboutUs'
+  | 'modal.infoModal.privacyPolicy'
+  | 'modal.infoModal.riskWarning';
 
 interface ModalContextValue {
   openComingSoon: () => void;
@@ -20,14 +23,15 @@ const ModalContext = createContext<ModalContextValue | null>(null);
 export function ModalProvider({ children }: { children: React.ReactNode }) {
   const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
-  const [infoContentKey, setInfoContentKey] = useState<InfoModalContentKey>("modal.infoModal.aboutUs");
+  const [infoContentKey, setInfoContentKey] =
+    useState<InfoModalContentKey>('modal.infoModal.aboutUs');
 
   const openComingSoon = useCallback(() => setIsComingSoonOpen(true), []);
   const closeComingSoon = useCallback(() => setIsComingSoonOpen(false), []);
 
   const openInfoModal = useCallback((contentKey: InfoModalContentKey) => {
-    setInfoContentKey(contentKey);
     setIsInfoOpen(true);
+    setInfoContentKey(contentKey);
   }, []);
   const closeInfoModal = useCallback(() => setIsInfoOpen(false), []);
 
@@ -57,7 +61,7 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
 export function useComingSoonModal() {
   const context = useContext(ModalContext);
   if (!context) {
-    throw new Error("useComingSoonModal must be used within ModalProvider");
+    throw new Error('useComingSoonModal must be used within ModalProvider');
   }
   return context;
 }
@@ -65,7 +69,7 @@ export function useComingSoonModal() {
 export function useInfoModal() {
   const context = useContext(ModalContext);
   if (!context) {
-    throw new Error("useInfoModal must be used within ModalProvider");
+    throw new Error('useInfoModal must be used within ModalProvider');
   }
   return {
     openInfoModal: context.openInfoModal,

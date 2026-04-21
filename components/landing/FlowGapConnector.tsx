@@ -1,14 +1,10 @@
-"use client";
+'use client';
 
-import { useId } from "react";
+import { useId } from 'react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
-import { REBATE_FLOW_DRAW_EASE } from "@/components/landing/RebateFlowBorderTrace";
-
-const GAP_LINE_DURATION_S = 0.55;
-const TRACK = "rgba(63, 63, 70, 0.55)";
-const SEGMENT_LEN = 24;
+import { GAP_LINE_DURATION_S, TRACK_COLOR, SEGMENT_LEN } from '@/constants/animation';
 
 interface FlowGapConnectorProps {
   active: boolean;
@@ -17,11 +13,11 @@ interface FlowGapConnectorProps {
 }
 
 export function FlowGapConnector({ active, className, style }: FlowGapConnectorProps) {
-  const gradId = useId().replace(/:/g, "");
+  const gradId = useId().replace(/:/g, '');
 
   return (
     <svg
-      className={cn("pointer-events-none overflow-visible", className)}
+      className={cn('pointer-events-none overflow-visible', className)}
       style={style}
       width={24}
       height={8}
@@ -38,7 +34,7 @@ export function FlowGapConnector({ active, className, style }: FlowGapConnectorP
       <path
         d="M 0 4 L 24 4"
         fill="none"
-        stroke={TRACK}
+        stroke={TRACK_COLOR}
         strokeDasharray="3 4"
         strokeLinecap="round"
         strokeWidth={1}
