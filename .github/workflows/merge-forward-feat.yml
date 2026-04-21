@@ -1,4 +1,4 @@
-name: Merge-forward skill branches
+name: Merge-forward feat branches
 
 on:
   push:
