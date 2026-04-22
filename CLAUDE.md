@@ -19,34 +19,55 @@ pnpm run build-storybook
 
 ## Architecture
 
-- **App Router**: Pages are in `app/` directory. `app/page.tsx` is a thin wrapper that renders `LandingPageClient` from `components/landing/`
-- **Tailwind CSS v4**: CSS-based config with `@import "tailwindcss"` and `@theme` directive in `app/globals.css` — no `tailwind.config.js`
-- **TypeScript**: Strict mode enabled, path alias `@/*` maps to project root
-- **Fonts**: Inter via `next/font/google` (variable `--font-inter`)
-- **ESLint 9**: Flat config in `eslint.config.mjs` with `eslint-config-next/core-web-vitals` and `eslint-config-next/typescript`
-- **Storybook 8**: Component library with addon-essentials and addon-interactions
-
-## Project Structure
-
-```
-app/                  # Next.js App Router (layout, pages, globals.css)
-components/
-  landing/            # Landing page sections (HeroSection, Navbar, FAQ, Footer, etc.)
-  ui/                 # Shared primitives (shadcn/ui, button, skeleton, etc.)
-hooks/                # Custom React hooks (useDevice, useScrolled)
-lib/                  # Utilities (lib/utils.ts with cn() helper)
-docs/spec.md          # Detailed design spec (LP-01 through LP-11)
-```
+- **App Router**: `app/page.tsx` is a thin server wrapper that renders `LandingPageClient` from `components/landing/`. All landing components are client components.
+- **Tailwind CSS v4**: CSS-based config via `@import "tailwindcss"` and `@theme` directive in `app/globals.css` — no `tailwind.config.js`. Mobile-first: base styles are mobile, `md:` prefix adds desktop styles.
+- **i18n**: No external i18n library. Translations live in `messages/en.json` and `messages/vi.json`, accessed via `useLanguage().t()` from `context/LanguageContext`. The context manages locale state (persisted to `localStorage`).
+- **API Routes**: Next.js Route Handlers in `app/api/`. `app/api/subscribers/register/route.ts` proxies to `NOTI_API_BASE` env var (the noti-server). Client-side calls go through `lib/api/notiApi.ts`.
+- **TypeScript**: Strict mode, path alias `@/*` → project root. Types in `types/` (e.g. `types/locale.ts`).
+- **ESLint 9**: Flat config in `eslint.config.mjs` with `eslint-config-next/core-web-vitals`.
+- **Storybook 8**: Component library with addon-essentials and addon-interactions.
 
 ## Design System
 
-The full design specification is in `docs/spec.md` covering LP-01 (Hero) through LP-11 (Footer). Key UX principles:
+Full spec in `docs/spec.md` (LP-01 through LP-11). Key points:
 
 - Brand teal `#18CBA8`, mint `#29FFB5`, dark `#146255`
 - Inter font, 48-64px headlines, 16-18px body, 1.7 line-height
 - Mobile breakpoint at 768px
 - Subtle animations respecting `prefers-reduced-motion`
 
+## Project Structure
+
+```
+app/
+  api/subscribers/register/route.ts  # API route proxying to noti-server
+  layout.tsx                         # Root layout with CombinedProviderWrapper
+  page.tsx                           # Thin wrapper → LandingPageClient
+components/
+  landing/         # Landing page sections (HeroSection, Navbar, FAQ, Footer, etc.)
+  ui/              # Shared primitives (shadcn/ui, LanguageToggle, InfoModal, ComingSoonModal, etc.)
+context/
+  LanguageContext.tsx   # i18n: locale + t()
+  ModalContext.tsx       # Global modal state (ComingSoonModal, InfoModal)
+hooks/             # useDevice, useScrolled
+lib/
+  api/notiApi.ts   # registerSubscriber() — calls /api/subscribers/register
+  utils.ts         # cn() helper
+messages/
+  en.json, vi.json   # i18n translation files
+types/
+  locale.ts         # Locale type ("en" | "vi")
+  index.ts          # Shared types
+```
+
+## Providers
+
+`CombinedProviderWrapper` wraps `LanguageProvider` (outer) + `ModalProvider` (inner). `ModalContext` manages `isComingSoonOpen` / `isInfoModalOpen` + their open/close setters — import `useModal` from `@/context/ModalContext`.
+
 ## Development Workflow
 
-Feature branches (`feat/*`) with automated `Merge-forward` workflow — see `.github/workflows/merge-forward-feat.yml`. Every merge to master triggers lint + tsc validation before forward-merging to active feature branches.
+Feature branches (`feat/*`) with automated `Merge-forward` workflow — see `.github/workflows/merge-forward-feat.yml`. Every merge to master triggers lint + tsc validation before forward-merging to active `feat/*` branches.
+
+## Related Services
+
+The landing page proxies subscriber registration to a separate `noti-server` (NestJS) via `NOTI_API_BASE`. The noti-server repo is a sibling: `../noti-server/`.
