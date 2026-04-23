@@ -138,6 +138,9 @@
     "errorMessage": "Không thể đăng ký. Vui lòng thử lại.",
     "done": "Xong",
     "tryAgain": "Thử Lại",
+    "emailExists": "Email này đã được đăng ký.",
+    "serverError": "Đã xảy ra lỗi máy chủ. Vui lòng thử lại sau.",
+    "warningTitle": "Thông báo",
     "infoModal": {
       "aboutUs": {
         "title": "Về Chúng Tôi",

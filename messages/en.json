@@ -138,6 +138,9 @@
     "errorMessage": "Failed to subscribe. Please try again.",
     "done": "Done",
     "tryAgain": "Try Again",
+    "emailExists": "This email is already registered.",
+    "serverError": "A server error occurred. Please try again later.",
+    "warningTitle": "Notice",
     "infoModal": {
       "aboutUs": {
         "title": "About Us",

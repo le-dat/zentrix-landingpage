@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useEffect, useCallback, useState } from 'react';
-import { X, Check, Loader2 } from 'lucide-react';
+import { X, Check, Loader2, AlertTriangle } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { registerSubscriber, type ApiError } from '@/lib/api/notiApi';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
-type ModalStatus = 'idle' | 'loading' | 'success' | 'error';
+type ModalStatus = 'idle' | 'loading' | 'success' | 'error' | 'warning';
 
 interface ModalState {
   status: ModalStatus;
@@ -47,7 +47,7 @@ function useComingSoonModal(onClose: () => void) {
       const { message, statusCode } = err as ApiError & { statusCode?: number };
       // 409 (conflict) → already registered, treat as success
       if (statusCode === 409) {
-        setStatus('success');
+        setStatus('warning', t('modal.emailExists'));
       } else {
         setStatus('error', message || t('modal.serverError'));
       }
@@ -78,10 +78,10 @@ function ModalIcon({ status }: { status: ModalStatus }) {
         />
       </svg>
     ),
-    loading: <Loader2 className="w-8 h-8 text-emerald-400 animate-spin" />,
     success: (
       <Check className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-emerald-400 animate-checkmark" />
     ),
+    loading: null,
     error: (
       <svg
         className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-red-400 animate-checkmark"
@@ -93,6 +93,9 @@ function ModalIcon({ status }: { status: ModalStatus }) {
         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
       </svg>
     ),
+    warning: (
+      <AlertTriangle className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-amber-400 animate-checkmark" />
+    ),
   };
 
   const styles = {
@@ -102,6 +105,8 @@ function ModalIcon({ status }: { status: ModalStatus }) {
       'w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full bg-emerald-500/20 border border-emerald-500/30 animate-success-pop',
     error:
       'w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full bg-red-500/20 border border-red-500/30 animate-success-pop',
+    warning:
+      'w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full bg-amber-500/20 border border-amber-500/30 animate-success-pop',
   };
 
   return (
@@ -123,6 +128,7 @@ function ModalTitle({
     loading: t('modal.comingSoon'),
     success: t('modal.successTitle'),
     error: t('modal.errorTitle'),
+    warning: t('modal.warningTitle'),
   };
   return (
     <h3 className="text-base md:text-lg lg:text-xl font-bold text-white mb-1.5 md:mb-2 lg:mb-3">
@@ -145,6 +151,7 @@ function ModalDescription({
     loading: '',
     success: t('modal.successMessage'),
     error: serverError || t('modal.errorMessage'),
+    warning: serverError || t('modal.errorMessage'),
   };
   return (
     <p className="text-[11px] md:text-sm lg:text-base text-white/60 leading-relaxed mb-4 md:mb-5 lg:mb-6 max-w-[260px]">
@@ -281,6 +288,15 @@ function ComingSoonModalContent({
           {modal.status === 'loading' && <LoadingForm />}
           {modal.status === 'success' && <SuccessForm onDone={onClose} t={modal.t} />}
           {modal.status === 'error' && <ErrorForm onRetry={modal.handleRetry} t={modal.t} />}
+          {modal.status === 'warning' && (
+            <button
+              type="button"
+              className="px-6 py-2.5 md:px-8 md:py-3 rounded-full bg-amber-500 text-black font-semibold text-sm hover:bg-amber-400 hover:cursor-pointer transition-colors"
+              onClick={modal.handleRetry}
+            >
+              {modal.t('modal.done')}
+            </button>
+          )}
         </div>
       </div>
     </div>
