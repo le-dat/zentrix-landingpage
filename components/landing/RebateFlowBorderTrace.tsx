@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useId, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
+import { useEffect, useId, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 export interface RebateFlowBorderTraceProps {
   className?: string;
@@ -10,12 +10,7 @@ export interface RebateFlowBorderTraceProps {
   cardRadiusPx?: number;
 }
 
-function buildHalfPaths(
-  w: number,
-  h: number,
-  insetPx: number,
-  cardRadiusPx: number,
-) {
+function buildHalfPaths(w: number, h: number, insetPx: number, cardRadiusPx: number) {
   const inset = insetPx;
   const iw = w - 2 * inset;
   const ih = h - 2 * inset;
@@ -33,7 +28,7 @@ function buildHalfPaths(
     `L ${xr - r} ${yb}`,
     `A ${r} ${r} 0 0 0 ${xr} ${yb - r}`,
     `L ${xr} ${midY}`,
-  ].join(" ");
+  ].join(' ');
 
   const pathUp = [
     `M ${xl} ${midY}`,
@@ -42,7 +37,7 @@ function buildHalfPaths(
     `L ${xr - r} ${yt}`,
     `A ${r} ${r} 0 0 1 ${xr} ${yt + r}`,
     `L ${xr} ${midY}`,
-  ].join(" ");
+  ].join(' ');
 
   return { pathDown, pathUp, viewBox: `0 0 ${w} ${h}` as const };
 }
@@ -59,7 +54,7 @@ export function RebateFlowBorderTrace({
   insetPx = 1,
   cardRadiusPx = 15,
 }: RebateFlowBorderTraceProps) {
-  const gradId = useId().replace(/:/g, "");
+  const gradId = useId().replace(/:/g, '');
   const svgRef = useRef<SVGSVGElement>(null);
   const [size, setSize] = useState({ w: 100, h: 100 });
   const rafRef = useRef<number | null>(null);
@@ -75,7 +70,7 @@ export function RebateFlowBorderTrace({
       const w = Math.max(rect.width, 1);
       const h = Math.max(rect.height, 1);
       setSize((prev) =>
-        Math.abs(prev.w - w) < 0.25 && Math.abs(prev.h - h) < 0.25 ? prev : { w, h },
+        Math.abs(prev.w - w) < 0.25 && Math.abs(prev.h - h) < 0.25 ? prev : { w, h }
       );
     }
 
@@ -100,31 +95,32 @@ export function RebateFlowBorderTrace({
 
   const { pathDown, pathUp, viewBox } = buildHalfPaths(size.w, size.h, insetPx, cardRadiusPx);
 
+  const prefix = `rbt-${gradId}-`;
   const strokeW = 2;
   const trackW = 1.2;
-  const trackColor = "rgba(24, 203, 168, 0.3)";
+  const trackColor = 'rgba(24, 203, 168, 0.3)';
 
   return (
     <svg
       ref={svgRef}
       className={cn(
-        "pointer-events-none absolute inset-0 z-0 size-full overflow-visible [shape-rendering:geometricPrecision]",
-        className,
+        'pointer-events-none absolute inset-0 z-0 size-full overflow-visible [shape-rendering:geometricPrecision]',
+        className
       )}
       viewBox={viewBox}
       preserveAspectRatio="xMidYMid meet"
       aria-hidden
     >
       <style>{`
-        .trace-path {
+        .${prefix}trace-path {
           transition: opacity 0.2s;
         }
-        .trace-draw {
+        .${prefix}trace-draw {
           stroke-dasharray: 1000;
           stroke-dashoffset: 1000;
           transition: stroke-dashoffset ${DRAW_DURATION_S}s ease-out, opacity 0.2s;
         }
-        .trace-draw.active {
+        .${prefix}active {
           stroke-dashoffset: 0;
         }
       `}</style>
@@ -135,7 +131,7 @@ export function RebateFlowBorderTrace({
         </linearGradient>
       </defs>
 
-      <g className="trace-path" style={{ opacity: active ? 1 : 0 }}>
+      <g className={`${prefix}trace-path`} style={{ opacity: active ? 1 : 0 }}>
         <path
           d={pathDown}
           fill="none"
@@ -161,7 +157,7 @@ export function RebateFlowBorderTrace({
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={strokeW}
-        className={cn("trace-draw", active ? "active" : "")}
+        className={`${prefix}trace-draw${active ? ` ${prefix}active` : ''}`}
         style={{ opacity: active ? 1 : 0 }}
       />
       <path
@@ -171,7 +167,7 @@ export function RebateFlowBorderTrace({
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={strokeW}
-        className={cn("trace-draw", active ? "active" : "")}
+        className={`${prefix}trace-draw${active ? ` ${prefix}active` : ''}`}
         style={{ opacity: active ? 1 : 0 }}
       />
     </svg>

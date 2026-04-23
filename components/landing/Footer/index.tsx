@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useLanguage } from "@/context/LanguageContext";
-import Image from "next/image";
-import { footerLinkCategories, socials } from "./data";
-import FooterLinkColumn from "./FooterLinkColumn";
+import { useLanguage } from '@/context/LanguageContext';
+import Image from 'next/image';
+import { footerLinkCategories, socials } from './data';
+import FooterLinkColumn from './FooterLinkColumn';
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -21,7 +21,7 @@ export default function Footer() {
               width={127}
               height={10}
               className="object-contain"
-              style={{ width: "auto", height: "auto" }}
+              style={{ width: 'auto', height: 'auto' }}
             />
           </div>
 
@@ -53,7 +53,9 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="text-center md:text-left">
-          <p className="text-xs text-white/40">© 2026 Zentrix. All rights reserved.</p>
+          <p className="text-xs text-white/40">
+            © {new Date().getFullYear()} Zentrix. All rights reserved.
+          </p>
         </div>
       </div>
     </section>
