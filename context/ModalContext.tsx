@@ -52,13 +52,14 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     setIsInfoOpen(true);
     setInfoContentKey(contentKey);
 
-    // Update URL slug in hash without scrolling the browser
+    // Update URL slug in ?ref= without scrolling the browser
     if (typeof window !== 'undefined') {
       const slug = SLUG_MAP[contentKey];
       if (slug) {
-        const newHash = `#${slug}`;
-        if (window.location.hash !== newHash) {
-          window.history.pushState(null, '', newHash);
+        const url = new URL(window.location.href);
+        if (url.searchParams.get('ref') !== slug) {
+          url.searchParams.set('ref', slug);
+          window.history.pushState(null, '', url.pathname + url.search);
         }
       }
     }
@@ -67,24 +68,25 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
   const closeInfoModal = useCallback(() => {
     setIsInfoOpen(false);
 
-    // Clear hash from URL
+    // Clear ?ref from URL
     if (typeof window !== 'undefined') {
-      if (window.location.hash) {
-        window.history.pushState(null, '', window.location.pathname + window.location.search);
+      const url = new URL(window.location.href);
+      if (url.searchParams.has('ref')) {
+        url.searchParams.delete('ref');
+        const newUrl = url.search ? url.pathname + url.search : url.pathname;
+        window.history.pushState(null, '', newUrl);
       }
     }
   }, []);
 
-  // Listen for hash and query changes to auto-open matching modals
+  // Listen for query changes to auto-open matching modals
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const handleUrlChange = () => {
-      const hash = window.location.hash.replace('#', '');
       const urlParams = new URLSearchParams(window.location.search);
-      const modalParam = urlParams.get('modal');
+      const slug = urlParams.get('ref');
 
-      const slug = hash || modalParam;
       if (slug && KEY_MAP[slug]) {
         const targetKey = KEY_MAP[slug];
         setIsInfoOpen(true);
@@ -101,11 +103,9 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     // Run check on mount
     handleUrlChange();
 
-    window.addEventListener('hashchange', handleUrlChange);
     window.addEventListener('popstate', handleUrlChange);
 
     return () => {
-      window.removeEventListener('hashchange', handleUrlChange);
       window.removeEventListener('popstate', handleUrlChange);
     };
   }, []);
