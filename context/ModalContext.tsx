@@ -1,13 +1,32 @@
 'use client';
 
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { ComingSoonModal } from '@/components/ui/ComingSoonModal';
-import { InfoModal } from '@/components/ui/InfoModal';
+import { InfoModal, type InfoModalContentKey } from '@/components/ui/InfoModal';
 
-type InfoModalContentKey =
-  | 'modal.infoModal.aboutUs'
-  | 'modal.infoModal.privacyPolicy'
-  | 'modal.infoModal.riskWarning';
+const KEY_MAP: Record<string, InfoModalContentKey> = {
+  'about-us': 'modal.infoModal.aboutUs',
+  aboutus: 'modal.infoModal.aboutUs',
+  about: 'modal.infoModal.aboutUs',
+  aboutUs: 'modal.infoModal.aboutUs',
+
+  'privacy-policy': 'modal.infoModal.privacyPolicy',
+  privacypolicy: 'modal.infoModal.privacyPolicy',
+  privacy: 'modal.infoModal.privacyPolicy',
+  privacyPolicy: 'modal.infoModal.privacyPolicy',
+
+  'risk-warning': 'modal.infoModal.riskWarning',
+  riskwarning: 'modal.infoModal.riskWarning',
+  risk: 'modal.infoModal.riskWarning',
+  riskWarning: 'modal.infoModal.riskWarning',
+};
+
+// Map Modal Content Key to SEO-friendly URL slug
+const SLUG_MAP: Record<InfoModalContentKey, string> = {
+  'modal.infoModal.aboutUs': 'about-us',
+  'modal.infoModal.privacyPolicy': 'privacy-policy',
+  'modal.infoModal.riskWarning': 'risk-warning',
+};
 
 interface ModalContextValue {
   openComingSoon: () => void;
@@ -32,8 +51,64 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
   const openInfoModal = useCallback((contentKey: InfoModalContentKey) => {
     setIsInfoOpen(true);
     setInfoContentKey(contentKey);
+
+    // Update URL slug in ?ref= without scrolling the browser
+    if (typeof window !== 'undefined') {
+      const slug = SLUG_MAP[contentKey];
+      if (slug) {
+        const url = new URL(window.location.href);
+        if (url.searchParams.get('ref') !== slug) {
+          url.searchParams.set('ref', slug);
+          window.history.pushState(null, '', url.pathname + url.search);
+        }
+      }
+    }
   }, []);
-  const closeInfoModal = useCallback(() => setIsInfoOpen(false), []);
+
+  const closeInfoModal = useCallback(() => {
+    setIsInfoOpen(false);
+
+    // Clear ?ref from URL
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has('ref')) {
+        url.searchParams.delete('ref');
+        const newUrl = url.search ? url.pathname + url.search : url.pathname;
+        window.history.pushState(null, '', newUrl);
+      }
+    }
+  }, []);
+
+  // Listen for query changes to auto-open matching modals
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handleUrlChange = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const slug = urlParams.get('ref');
+
+      if (slug && KEY_MAP[slug]) {
+        const targetKey = KEY_MAP[slug];
+        setIsInfoOpen(true);
+        setInfoContentKey(targetKey);
+      } else {
+        // Only close if it's currently open to avoid unnecessary re-renders
+        setIsInfoOpen((prev) => {
+          if (prev) return false;
+          return prev;
+        });
+      }
+    };
+
+    // Run check on mount
+    handleUrlChange();
+
+    window.addEventListener('popstate', handleUrlChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleUrlChange);
+    };
+  }, []);
 
   return (
     <ModalContext.Provider
@@ -51,8 +126,8 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
       <InfoModal
         isOpen={isInfoOpen}
         onClose={closeInfoModal}
-        titleKey={`${infoContentKey}.title`}
-        contentKey={`${infoContentKey}.body`}
+        activeContentKey={infoContentKey}
+        onSelectContentKey={openInfoModal}
       />
     </ModalContext.Provider>
   );

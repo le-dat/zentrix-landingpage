@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -10,7 +10,7 @@
   --color-teal: #18cba8;
   --color-dark-teal: #146255;
   --color-mint: #29ffb5;
-  --color-brand-green: #00FF7F;
+  --color-brand-green: #00ff7f;
   --color-teal-dark: #0d3d34;
   --color-black: #0a0a0a;
   --color-white: #ffffff;
@@ -75,7 +75,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
   --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
   --font-heading: var(--font-inter);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -138,24 +138,24 @@
     }
   }
   --animate-marquee: marquee var(--duration) infinite linear;
-  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite
-;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   @keyframes marquee {
-  from {
-    transform: translateX(0);
+    from {
+      transform: translateX(0);
     }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
     }
   }
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
+    from {
+      transform: translateY(0);
     }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
     }
-  }}
+  }
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -309,4 +309,13 @@ body {
   stroke-dasharray: 24;
   stroke-dashoffset: 24;
   animation: checkmark 0.5s ease-out 0.2s forwards;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+}
+.scrollbar-none {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
 }

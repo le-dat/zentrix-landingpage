@@ -5,17 +5,36 @@ import { X } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useLanguage } from '@/context/LanguageContext';
+import { legalLinksItems, type FooterLinkItem } from '@/components/landing/Footer/data';
+
+export type InfoModalContentKey =
+  | 'modal.infoModal.aboutUs'
+  | 'modal.infoModal.privacyPolicy'
+  | 'modal.infoModal.riskWarning';
 
 interface InfoModalProps {
   isOpen: boolean;
   onClose: () => void;
-  titleKey: string;
-  contentKey: string;
+  activeContentKey: InfoModalContentKey;
+  onSelectContentKey: (key: InfoModalContentKey) => void;
 }
 
-export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalProps) {
+export function InfoModal({
+  isOpen,
+  onClose,
+  activeContentKey,
+  onSelectContentKey,
+}: InfoModalProps) {
   const { t } = useLanguage();
   const modalRef = useRef<HTMLDivElement>(null);
+  const contentAreaRef = useRef<HTMLDivElement>(null);
+
+  // Scroll to top when switching content key
+  useEffect(() => {
+    if (contentAreaRef.current) {
+      contentAreaRef.current.scrollTop = 0;
+    }
+  }, [activeContentKey]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -73,8 +92,17 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
 
   if (!isOpen) return null;
 
+  const titleKey = `${activeContentKey}.title`;
+  const contentKey = `${activeContentKey}.body`;
+
   const title = t(titleKey);
   const content = t(contentKey) as string;
+
+  // Filter legal links that have a valid modal key
+  const activeTabs: FooterLinkItem[] = legalLinksItems.filter(
+    (item): item is FooterLinkItem & { modalContentKey: InfoModalContentKey } =>
+      !!item.modalContentKey
+  );
 
   return (
     <div
@@ -87,7 +115,7 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
       {/* Modal */}
       <div
         ref={modalRef}
-        className="relative w-full max-w-4xl h-full max-h-screen md:max-h-[90vh] bg-gradient-to-b from-zinc-900 to-black border border-white/10 rounded-xl sm:rounded-2xl shadow-2xl shadow-black/50 animate-in zoom-in-95 fade-in duration-200 flex flex-col overflow-hidden"
+        className="relative w-full max-w-4xl h-full max-h-screen md:h-[80vh] md:max-h-[85vh] bg-gradient-to-b from-zinc-900 to-black border border-white/10 rounded-xl sm:rounded-2xl shadow-2xl shadow-black/50 animate-in zoom-in-95 fade-in duration-200 flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Glow effect */}
@@ -108,47 +136,106 @@ export function InfoModal({ isOpen, onClose, titleKey, contentKey }: InfoModalPr
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-6">
-          <div className="text-sm sm:text-base text-zinc-300 leading-relaxed space-y-4">
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h1: ({ children }) => (
-                  <h1 className="text-white font-semibold mb-3 text-xl sm:text-2xl">{children}</h1>
-                ),
-                h2: ({ children }) => (
-                  <h2 className="text-white font-semibold mb-3 text-lg sm:text-xl">{children}</h2>
-                ),
-                h3: ({ children }) => (
-                  <h3 className="text-green-400 mb-4 leading-tight text-md capitalize">
-                    {children}
-                  </h3>
-                ),
-                h4: ({ children }) => <h4 className="text-white font-semibold mb-3">{children}</h4>,
-                p: ({ children }) => <p className="text-zinc-300 leading-7 mb-4">{children}</p>,
-                strong: ({ children }) => (
-                  <strong className="text-white font-medium">{children}</strong>
-                ),
-                li: ({ children }) => <li className="text-zinc-300 leading-6">{children}</li>,
-                a: ({ children, href }) => (
-                  <a href={href} className="text-green-400 no-underline hover:underline">
-                    {children}
-                  </a>
-                ),
-                hr: () => <hr className="border-white/10" />,
-                blockquote: ({ children }) => (
-                  <blockquote className="border-l-green-500 text-zinc-400">{children}</blockquote>
-                ),
-                code: ({ children }) => (
-                  <code className="text-teal-300 bg-white/5 px-1.5 py-0.5 rounded">{children}</code>
-                ),
-                pre: ({ children }) => (
-                  <pre className="bg-zinc-950 border border-white/10 mb-4">{children}</pre>
-                ),
-              }}
-            >
-              {content}
-            </ReactMarkdown>
+        {/* Modal Layout: Sidebar on Desktop, Horizontal Tabs on Mobile */}
+        <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+          {/* Desktop Left Sidebar */}
+          <div className="hidden md:flex w-64 border-r border-white/10 bg-zinc-950/20 p-4 flex-col gap-1.5 shrink-0 overflow-y-auto">
+            {activeTabs.map((item) => {
+              const isActive = item.modalContentKey === activeContentKey;
+              return (
+                <button
+                  key={item.key}
+                  type="button"
+                  onClick={() => {
+                    if (item.modalContentKey) onSelectContentKey(item.modalContentKey);
+                  }}
+                  className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-200 flex items-center justify-between group ${
+                    isActive
+                      ? 'bg-green-500/10 text-green-400 font-semibold border-l-2 border-green-500 pl-3'
+                      : 'text-white/50 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  <span className="truncate">{t(item.labelKey)}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Mobile Top Tabs */}
+          <div className="flex md:hidden overflow-x-auto gap-2 p-3 border-b border-white/5 bg-zinc-950/20 scrollbar-none shrink-0">
+            {activeTabs.map((item) => {
+              const isActive = item.modalContentKey === activeContentKey;
+              return (
+                <button
+                  key={item.key}
+                  type="button"
+                  onClick={() => {
+                    if (item.modalContentKey) onSelectContentKey(item.modalContentKey);
+                  }}
+                  className={`shrink-0 px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 flex items-center gap-1.5 ${
+                    isActive
+                      ? 'bg-green-500/10 text-green-400 border border-green-500/20'
+                      : 'bg-white/5 text-white/60 hover:text-white border border-transparent'
+                  }`}
+                >
+                  <span>{t(item.labelKey)}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Markdown Content Area */}
+          <div
+            ref={contentAreaRef}
+            className="flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-6 scrollbar-thin scrollbar-thumb-white/10"
+          >
+            <div className="text-sm sm:text-base text-zinc-300 leading-relaxed space-y-4">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  h1: ({ children }) => (
+                    <h1 className="text-white font-semibold mb-3 text-xl sm:text-2xl">
+                      {children}
+                    </h1>
+                  ),
+                  h2: ({ children }) => (
+                    <h2 className="text-white font-semibold mb-3 text-lg sm:text-xl">{children}</h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 className="text-green-400 mb-4 leading-tight text-md capitalize">
+                      {children}
+                    </h3>
+                  ),
+                  h4: ({ children }) => (
+                    <h4 className="text-white font-semibold mb-3">{children}</h4>
+                  ),
+                  p: ({ children }) => <p className="text-zinc-300 leading-7 mb-4">{children}</p>,
+                  strong: ({ children }) => (
+                    <strong className="text-white font-medium">{children}</strong>
+                  ),
+                  li: ({ children }) => <li className="text-zinc-300 leading-6">{children}</li>,
+                  a: ({ children, href }) => (
+                    <a href={href} className="text-green-400 no-underline hover:underline">
+                      {children}
+                    </a>
+                  ),
+                  hr: () => <hr className="border-white/10" />,
+                  blockquote: ({ children }) => (
+                    <blockquote className="border-l-green-500 text-zinc-400">{children}</blockquote>
+                  ),
+                  code: ({ children }) => (
+                    <code className="text-teal-300 bg-white/5 px-1.5 py-0.5 rounded">
+                      {children}
+                    </code>
+                  ),
+                  pre: ({ children }) => (
+                    <pre className="bg-zinc-950 border border-white/10 mb-4">{children}</pre>
+                  ),
+                }}
+              >
+                {content}
+              </ReactMarkdown>
+            </div>
           </div>
         </div>
       </div>
